@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   useLocation,
 } from "react-router-dom";
 import gsap from "gsap";
