@@ -78,7 +78,7 @@ export default function App() {
       <Wrapper>
         <Header />
         <Routes >
-          <Route path="/" element={<PageTransition><ReactVideoCards title="ReactVideoCardssdss" /></PageTransition>} />
+          <Route path="/" element={<PageTransition><ReactVideoCards title="s" /></PageTransition>} />
           <Route path="/Work" element={<PageTransition><Work title="ReactVideoCards" /></PageTransition>} />
           <Route path="/g" element={<PageTransition><Work title="ReactVideoCards" /></PageTransition>} />
         </Routes>
