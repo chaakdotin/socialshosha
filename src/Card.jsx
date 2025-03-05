@@ -4,7 +4,7 @@ export default function Card({ text, img }) {
   return (
     <div className="card">
       <div className="text">{text}</div>
-      <div className="image-container">
+      <div className="image-container fff">
         <img src={img} alt={text} />
       </div>
     </div>
