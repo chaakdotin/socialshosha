@@ -80,6 +80,7 @@ export default function App() {
         <Routes >
           <Route path="/" element={<PageTransition><ReactVideoCards title="ReactVideoCards" /></PageTransition>} />
           <Route path="/Work" element={<PageTransition><Work title="ReactVideoCards" /></PageTransition>} />
+          <Route path="/g" element={<PageTransition><Work title="ReactVideoCards" /></PageTransition>} />
         </Routes>
       </Wrapper>
     </Router>
