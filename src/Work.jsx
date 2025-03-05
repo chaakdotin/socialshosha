@@ -36,7 +36,7 @@ const styles = `
   
   body {
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     font-family: sans-serif;
     background: #f0f0f0;
   }

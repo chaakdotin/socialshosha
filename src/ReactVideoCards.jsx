@@ -20,144 +20,177 @@ const ReactVideoCards = () => {
         if (!cards.length) return;
 
         // Animate the first card on load.
-        gsap.fromTo(
-            cards[0],
-            { y: "-100vh", x: "-10vw" },
-            { y: "0", x: "0", duration: 1, ease: "power2.out", onComplete: setupFirstCardTrigger }
-        );
+        // gsap.fromTo(
+        // cards[0],
+        // { y: "-100vh", x: "-10vw" },
+        // { y: "0", x: "0", duration: 1, ease: "power2.out", onComplete: setupFirstCardTrigger }
+        // );
 
         // Set up scroll-trigger animations for the first card.
-        function setupFirstCardTrigger() {
+        ScrollTrigger.create({
+            trigger: cards[0],
+            start: "top top",
+            end: "top -50%",
+            scrub: true,
+            onUpdate: self => {
+                const p = self.progress;
+                if (p <= 0.01) { cards[0].style.transform = "none"; return; } let xVal, yVal, rotVal; if (self.direction > 0) { //
+
+                    xVal = -20 * Math.sin(Math.PI * p);
+                    yVal = -20 * Math.sin(Math.PI * p);
+                    rotVal = -5 * Math.sin(Math.PI * p);
+                } else { // scrolling up
+                    xVal = 10 * Math.sin(Math.PI * p);
+                    yVal = -10 * Math.sin(Math.PI * p);
+                    rotVal = 5 * Math.sin(Math.PI * p);
+                }
+                cards[0].style.transform = `translate(${xVal}vw, ${yVal}vh) rotate(${rotVal}deg)`;
+            },
+            onLeaveBack: () => {
+                cards[0].style.transform = "none";
+            }
+        });
+
+        // Set up scroll triggers for the remaining cards.
+        cards.forEach((card, index) => {
+            if (index === 0) return; // skip the first card
+            const isLast = index === cards.length - 1;
             ScrollTrigger.create({
-                trigger: cards[0],
-                start: "top top",
+                trigger: card,
+                start: "top center",
                 end: "top -50%",
                 scrub: true,
                 onUpdate: self => {
                     const p = self.progress;
-                    if (p <= 0.01) {
-                        cards[0].style.transform = "none";
+                    if (isLast && p >= 0.99) {
+                        card.style.transform = "none";
                         return;
                     }
                     let xVal, yVal, rotVal;
-                    if (self.direction > 0) { // scrolling down
+                    if (self.direction > 0) {
                         xVal = -20 * Math.sin(Math.PI * p);
                         yVal = -20 * Math.sin(Math.PI * p);
                         rotVal = -5 * Math.sin(Math.PI * p);
-                    } else { // scrolling up
+                    } else {
                         xVal = 10 * Math.sin(Math.PI * p);
                         yVal = -10 * Math.sin(Math.PI * p);
                         rotVal = 5 * Math.sin(Math.PI * p);
                     }
-                    cards[0].style.transform = `translate(${xVal}vw, ${yVal}vh) rotate(${rotVal}deg)`;
+                    card.style.transform = `translate(${xVal}vw, ${yVal}vh) rotate(${rotVal}deg)`;
                 },
                 onLeaveBack: () => {
-                    cards[0].style.transform = "none";
+                    card.style.transform = "none";
                 }
             });
-
-            // Set up scroll triggers for the remaining cards.
-            cards.forEach((card, index) => {
-                if (index === 0) return; // skip the first card
-                const isLast = index === cards.length - 1;
-                ScrollTrigger.create({
-                    trigger: card,
-                    start: "top center",
-                    end: "top -50%",
-                    scrub: true,
-                    onUpdate: self => {
-                        const p = self.progress;
-                        if (isLast && p >= 0.99) {
-                            card.style.transform = "none";
-                            return;
-                        }
-                        let xVal, yVal, rotVal;
-                        if (self.direction > 0) {
-                            xVal = -20 * Math.sin(Math.PI * p);
-                            yVal = -20 * Math.sin(Math.PI * p);
-                            rotVal = -5 * Math.sin(Math.PI * p);
-                        } else {
-                            xVal = 10 * Math.sin(Math.PI * p);
-                            yVal = -10 * Math.sin(Math.PI * p);
-                            rotVal = 5 * Math.sin(Math.PI * p);
-                        }
-                        card.style.transform = `translate(${xVal}vw, ${yVal}vh) rotate(${rotVal}deg)`;
-                    },
-                    onLeaveBack: () => {
-                        card.style.transform = "none";
-                    }
-                });
-            });
-        }
+        });
     }, []);
 
     return (
         <>
             {/* Inline CSS styles – you can move these to a separate file as needed */}
-            <style>{`
-                body, html {
-                margin: 0;
-                padding: 0;
-                overflow-x: hidden;
-                font-family: sans-serif;
-                background: transparent;
+            <style>
+                {
+
+                    ` body,
+                html {
+                    margin: 0;
+                    padding: 0;
+                    overflow-x: hidden;
+                    font-family: sans-serif;
+                    background: transparent;
                 }
+
                 .background-video {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                z-index: -1;
-                overflow: hidden;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100vh;
+                    z-index: -1;
+                    overflow: hidden;
                 }
+
                 .background-video video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
+
                 .cards-container {
-                position: relative;
-                z-index: 1;
+                    position: relative;
+                    z-index: 1;
                 }
-                .card {
-                width: 100%!important;
-                height: 100vh!important;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 3em;
-                color: #fff;
-                will-change: transform;
-                background: rgba(0, 0, 0, 0.5);
-                }
+
                 .cards {
-                width: 100%;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 3em;
-                color: #fff;
-                will-change: transform;
-                background: rgba(22, 160, 133, 1);
+                    width: 100% !important;
+                    height: 100vh !important;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 3em;
+                    color: #fff;
+                    will-change: transform;
+                    background: rgba(0, 0, 0, 0.5);
                 }
-                /* Demo background colors for each card */
-                .card:nth-child(1) { background: rgba(255, 255, 255, 0.4); }
-                .card:nth-child(2) { background: rgba(52, 152, 219, 0.8); }
-                .card:nth-child(3) { background: rgba(155, 89, 182, 0.8); }
-                .card:nth-child(4) { background: rgba(230, 126, 34, 0.8); }
-                .card:nth-child(5) { background: rgba(231, 76, 60, 0.8); }
-                .card:nth-child(6) { background: rgba(241, 196, 15, 0.8); }
-                .card:nth-child(7) { background: rgba(46, 204, 113, 0.8); }
-                .card:nth-child(8) { background: rgba(52, 73, 94, 0.8); }
-                .card:nth-child(9) { background: rgba(22, 160, 133, 0.8); }
-                .card:nth-child(10) { background: rgba(39, 174, 96, 0.8); }
-                
-            `}</style>
+
+                .cardss {
+                    width: 100%;
+                    height: 100vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 3em;
+                    color: #fff;
+                    will-change: transform;
+                    background: rgba(22, 160, 133, 1);
+                }
+
+                /* Demo background colors for each cards */
+                .cards:nth-child(1) {
+                    background: rgba(255, 255, 255, 0.4);
+                }
+
+                .cards:nth-child(2) {
+                    background: rgba(52, 152, 219, 0.8);
+                }
+
+                .cards:nth-child(3) {
+                    background: rgba(155, 89, 182, 0.8);
+                }
+
+                .cards:nth-child(4) {
+                    background: rgba(230, 126, 34, 0.8);
+                }
+
+                .cards:nth-child(5) {
+                    background: rgba(231, 76, 60, 0.8);
+                }
+
+                .cards:nth-child(6) {
+                    background: rgba(241, 196, 15, 0.8);
+                }
+
+                .cards:nth-child(7) {
+                    background: rgba(46, 204, 113, 0.8);
+                }
+
+                .cards:nth-child(8) {
+                    background: rgba(52, 73, 94, 0.8);
+                }
+
+                .cards:nth-child(9) {
+                    background: rgba(22, 160, 133, 0.8);
+                }
+
+                .cards:nth-child(10) {
+                    background: rgba(39, 174, 96, 0.8);
+                }
+
+                `
+                }
+            </style>
 
             {/* Fixed navigation (header) */}
-            
 
             {/* Background video */}
             <div className="background-video">
@@ -169,14 +202,17 @@ const ReactVideoCards = () => {
 
             {/* Cards container */}
             <div className="cards-container">
-                <div className="card" ref={addToRefs}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 1684 419" style={{ position: 'absolute', bottom: '0', padding:`15px` }}>
+                <div className="cards" ref={addToRefs}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 1684 419"
+                        style={{ position: 'absolute', bottom: '0', padding: `15px` }}>
                         <path d="M1684 215.276v90.04H0v-90.04z"></path>
                         <path d="M1483.31 102h95.98v316.592h-95.98z"></path>
-                        <path d="M1684 328.552v90.04h-200.684v-90.04zM1684 102v90.04h-200.684V102zM1177.93 102h95.98v316.592h-95.98z">
+                        <path
+                            d="M1684 328.552v90.04h-200.684v-90.04zM1684 102v90.04h-200.684V102zM1177.93 102h95.98v316.592h-95.98z">
                         </path>
                         <path d="M1177.93 102h95.98l186.14 316.592h-95.98z"></path>
-                        <path d="M1364.07 102h95.98v316.592h-95.98zM1058.68 102h95.98v316.592h-95.98zM852.18 102h95.98v316.592h-95.98z">
+                        <path
+                            d="M1364.07 102h95.98v316.592h-95.98zM1058.68 102h95.98v316.592h-95.98zM852.18 102h95.98v316.592h-95.98z">
                         </path>
                         <path d="M1035.41 328.552v90.04H852.177v-90.04zM535.156 102h95.98v316.592h-95.98z"></path>
                         <path
@@ -187,15 +223,15 @@ const ReactVideoCards = () => {
                         </path>
                     </svg>
                 </div>
-                <div className="card" ref={addToRefs}>Card 2</div>
-                <div className="card" ref={addToRefs}>Card 3</div>
-                <div className="card" ref={addToRefs}>Card 4</div>
-                <div className="card" ref={addToRefs}>Card 5</div>
-                <div className="card" ref={addToRefs}>Card 6</div>
-                <div className="card" ref={addToRefs}>Card 7</div>
-                <div className="card" ref={addToRefs}>Card 8</div>
-                <div className="card" ref={addToRefs}>Card 9</div>
-                <div className="card" ref={addToRefs}>Card 10</div>
+                <div className="cards" ref={addToRefs}>Card 2</div>
+                <div className="cards" ref={addToRefs}>Card 3</div>
+                <div className="cards" ref={addToRefs}>Card 4</div>
+                <div className="cards" ref={addToRefs}>Card 5</div>
+                <div className="cards" ref={addToRefs}>Card 6</div>
+                <div className="cards" ref={addToRefs}>Card 7</div>
+                <div className="cards" ref={addToRefs}>Card 8</div>
+                <div className="cards" ref={addToRefs}>Card 9</div>
+                <div className="cards" ref={addToRefs}>Card 10</div>
             </div>
 
             {/* Extra cards div (if needed) */}
