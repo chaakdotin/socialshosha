@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Route-based Stack Transition</title>
+  <style>
+    /* Basic resets */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: sans-serif;
+      background: transparent;
+    }
+    /* Background Video Container */
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .background-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Navigation Menu in upper right */
+    .menu {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+    .menu ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    .menu li {
+      cursor: pointer;
+    }
+    .menu a {
+      text-decoration: none;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .menu a:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    /* Pages Container with perspective for 3D effect */
+    .pages-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      perspective: 800px;
+    }
+    .page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+      color: #fff;
+      backface-visibility: hidden;
+      opacity: 0;
+      transform: translateY(0) rotateX(0);
+    }
+    .page.active {
+      opacity: 1;
+    }
+    /* Demo background colors for pages */
+    #home { background: rgba(26,188,156,0.9); }
+    #about { background: rgba(52,152,219,0.9); }
+    #work { background: rgba(155,89,182,0.9); }
+    #contact { background: rgba(230,126,34,0.9); }
+    #blogs { background: rgba(231,76,60,0.9); }
+  </style>
+</head>
+<body>
+  <!-- Background Video Div -->
+  <div class="background-video">
+    <video autoplay loop muted playsinline>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Navigation Menu -->
+  <div class="menu">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#blogs">Blogs</a></li>
+    </ul>
+  </div>
+
+  <!-- Pages Container -->
+  <div class="pages-container">
+    <div class="page" id="home">Home</div>
+    <div class="page" id="about">About</div>
+    <div class="page" id="work">Work</div>
+    <div class="page" id="contact">Contact</div>
+    <div class="page" id="blogs">Blogs</div>
+  </div>
+
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script>
+    // List of routes in order
+    const routes = ["home", "about", "work", "contact", "blogs"];
+    let currentRoute = null; // e.g., "home"
+    
+    // Function to animate a page transition from the current page to the target page.
+    function switchPage(newRoute) {
+      const newPage = document.getElementById(newRoute);
+      const currentPage = document.querySelector('.page.active');
+      
+      // If there's no current page, just show the new page.
+      if (!currentPage) {
+        newPage.classList.add("active");
+        gsap.set(newPage, { y: "0%", rotationX: 0, opacity: 1 });
+        currentRoute = newRoute;
+        return;
+      }
+      if (currentPage === newPage) return;
+      
+      // Determine navigation direction (forward if new page is lower in the routes array)
+      const currentIndex = routes.indexOf(currentRoute);
+      const newIndex = routes.indexOf(newRoute);
+      const forward = newIndex > currentIndex;
+      
+      // Prepare the incoming page: start off-screen at the bottom with a slight rotation.
+      gsap.set(newPage, {
+        y: "100%",
+        opacity: 0,
+        rotationX: forward ? -10 : 10,
+        zIndex: 2
+      });
+      // Ensure current page is above the incoming page.
+      gsap.set(currentPage, { zIndex: 3 });
+      
+      // Create timeline for transition.
+      const tl = gsap.timeline({
+        onComplete: () => {
+          currentPage.classList.remove("active");
+          newPage.classList.add("active");
+          // Reset properties.
+          gsap.set(newPage, { y: "0%", rotationX: 0, opacity: 1, zIndex: 1 });
+          gsap.set(currentPage, { y: "0%", rotationX: 0, opacity: 0, zIndex: 1 });
+          currentRoute = newRoute;
+        }
+      });
+      
+      // Animate current page out: slide down a bit, rotate (stack effect), and fade out.
+      tl.to(currentPage, { 
+        duration: 0.5, 
+        y: "20%", 
+        rotationX: 10, 
+        opacity: 0, 
+        ease: "power2.in" 
+      }, 0);
+      
+      // Animate incoming page in: slide upward from bottom while rotating into place and fading in.
+      tl.fromTo(newPage, 
+        { y: "100%", rotationX: forward ? -10 : 10, opacity: 0 },
+        { duration: 0.5, y: "0%", rotationX: 0, opacity: 1, ease: "power2.out" },
+        0);
+    }
+    
+    // Handle route changes using the hash.
+    function handleRouteChange() {
+      let hash = window.location.hash;
+      if (!hash) {
+        hash = "#home";
+        window.location.hash = hash;
+      }
+      const newRoute = hash.substring(1);
+      // If this is the first load, immediately show the page.
+      if (!currentRoute) {
+        const page = document.getElementById(newRoute);
+        page.classList.add("active");
+        gsap.set(page, { y: "0%", rotationX: 0, opacity: 1 });
+        currentRoute = newRoute;
+      } else {
+        // Animate transition to the new route.
+        switchPage(newRoute);
+      }
+    }
+    
+    window.addEventListener("hashchange", handleRouteChange);
+    window.addEventListener("load", handleRouteChange);
+  </script>
+</body>
+</html>
