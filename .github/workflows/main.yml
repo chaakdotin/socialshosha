@@ -1,16 +1,26 @@
-            - name: Node VPS Deployment
-  # You may pin to the exact commit or the version.
-  # uses: Techie-Pi/node-vps-deployment@50ecdbc510049c79b73f6a548cd4d33b3e41b1ce
-  uses: Techie-Pi/node-vps-deployment@v1.1
-  with:
-    # Remote host
-    host: ${{ secrets.HOST }}
-    # Username to login
-    username: ${{ secrets.USERNAME }}
-    # SSH port
-    port: ${{ secrets.PORT }}
-    # SSH password
-    key: ${{ secrets.SSHKEY }}
-    # Deploy automatically
-    script: "cd /var/www/html/socialshosha && .scripts/deploy.sh"
-          
+name: d
+
+# Trigger the workflow on push and
+# pull request events on the master branch
+on:
+
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+# Authenticate to the the server via ssh
+# and run our deployment script
+jobs:
+  deploy:
+    steps:
+      - run: echo "running deploy"
+      - uses: actions/checkout@v3
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: "cd /var/www/html/socialshosha && .scripts/deploy.sh"
