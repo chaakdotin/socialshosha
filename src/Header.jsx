@@ -15,7 +15,7 @@ export default function Header() {
                         <li className="nav-item p4 ttu slash-light">
                             <NavLink to="/" className="router-link-active router-link-exact-active link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
-                                <span className="text">Home</span>
+                                <span className="text">Homes</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
