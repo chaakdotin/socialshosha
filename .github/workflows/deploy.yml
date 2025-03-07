@@ -24,6 +24,6 @@ jobs:
           port: ${{ secrets.PORT }}
           password: ${{ secrets.SSHKEY }}
           script: |
-            cd /var/www/html/socialshosha || exit 1
+            cd /home/otlu-socialshosha/htdocs/socialshosha.otlu.online || exit 1
             chmod +x .scripts/deploy.sh
             .scripts/deploy.sh
