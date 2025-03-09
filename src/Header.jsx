@@ -27,9 +27,9 @@ export default function Header() {
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/h" className="link--has-dot link nav-item__link">
+                            <NavLink to="/services" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
-                                <span className="text">Entertainment</span>
+                                <span className="text">Services</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
@@ -55,7 +55,7 @@ export default function Header() {
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/a" className="link--has-dot link nav-item__link">
+                            <NavLink to="/Contact" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">Contact</span>
                             </NavLink>

@@ -1,0 +1,86 @@
+/* Global resets and background */
+@font-face {
+    font-family: 'Stratos';
+    src: url('https://cdn.prod.website-files.com/64e6091972f5864e5b3e6f9e/64edc12c53bc14e5e1b097b9_Stratos-SemiBold.woff2') format('woff2');
+    font-weight: 600; /* SemiBold */
+    font-style: normal;
+  }
+.marquee {
+    color: var(--white);
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    border-radius: 1vw;
+    height: 25vw;
+    margin-top: 1vw;
+    
+    font-size: 24.375vw;
+    line-height: .85;
+    position: relative;
+    overflow: hidden;
+}
+  /* Box with horizontal margins, wipe-in animation, and responsive height */
+  .animated-box {
+    --box-height: 20vw; /* Base height for the box */
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    height: var(--box-height);
+    letter-spacing: -.05em;
+    background-color: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    text-transform: uppercase;
+    position: relative;
+    transform-origin: left;
+    font-family: 'Stratos', sans-serif;
+    transform: scaleX(0);
+    animation: wipeIn 1.5s forwards;
+  }
+  
+  /* Container for the scrolling text.
+     The container is vertically centered and the text is duplicated for a seamless scroll effect. */
+  .text-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    white-space: nowrap;
+    transform: translateY(-50%) translateX(0);
+    animation: scrollText 30s linear infinite;
+    animation-delay: 1.5s;
+  }
+  
+  /* The text styling: font size is 90% of the box height and text is white */
+  .animated-text {
+    font-size: calc(var(--box-height) * 1.1);
+    color: #fff;
+    margin-right: 50px; /* Space between duplicate texts */
+
+    line-height: .85;
+  }
+  
+  /* Wipe-in animation for the box */
+  @keyframes wipeIn {
+    to {
+      transform: scaleX(1);
+    }
+  }
+  
+  /* Continuous scroll animation for the text.
+     Note that the vertical translateY(-50%) is maintained throughout the animation. */
+  @keyframes scrollText {
+    0% {
+      transform: translateY(-50%) translateX(0);
+    }
+    100% {
+      transform: translateY(-50%) translateX(-50%);
+    }
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 600px) {
+    .animated-box {
+      --box-height: 250px;
+    }
+    .animated-text {
+      font-size: calc(var(--box-height) * 0.9);
+    }
+  }

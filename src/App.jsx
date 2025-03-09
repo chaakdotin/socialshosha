@@ -10,9 +10,10 @@ import {
 import gsap from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from './Header'
-import ReactVideoCards from './ReactVideoCards'
+import Home from './ReactVideoCards'
 import Work from './Work'
-
+import Contact from './Contact'
+import Services from './Services'
 const pageVariants = {
   initial: { opacity: 0, y: 50 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -28,8 +29,10 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Header />
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><ReactVideoCards /></PageWrapper>} />
+        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
         <Route path="/work" element={<PageWrapper><Work /></PageWrapper>} />
+        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );

@@ -1,7 +1,7 @@
 /* Flex containers for the image boxes */
 .containers {
     display: flex;
-    height: 60vh;
+    height: 80vh;
     overflow: hidden;
   }
   
@@ -13,7 +13,7 @@
     position: relative;
     overflow: hidden;
     transition: flex 0.5s ease;
-    flex: 1; /* Default: 25% when there is an active box elsewhere */
+    flex: .5; /* Default: 25% when there is an active box elsewhere */
   }
   
   /* The active box expands to 50% (flex: 2) */
