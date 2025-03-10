@@ -22,7 +22,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
-          password: ${{ secrets.SSHKEY }}
+          key: ${{ secrets.SSHKEY }}
           script: |
             cd /home/otlu-socialshosha/htdocs/socialshosha.otlu.online || exit 1
             chmod +x .scripts/deploy.sh
