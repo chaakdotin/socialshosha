@@ -7,7 +7,9 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
-import gsap from "gsap";
+import {gsap,ScrollTrigger} from "gsap/all";
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 import { AnimatePresence, motion } from "framer-motion";
 import Header from './Header'
 import Home from './ReactVideoCards'
@@ -24,9 +26,12 @@ const pageVariants = {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-
+  // const lenis = useLenis(({ scroll }) => {
+  //   // called every scroll
+  // })
   return (
-    <AnimatePresence mode="wait">
+    
+    <AnimatePresence mode="wait" >
       <Header />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
@@ -39,11 +44,14 @@ const AnimatedRoutes = () => {
 };
 
 const PageWrapper = ({ children }) => (
+  
   <motion.div
     variants={pageVariants}
     initial="initial"
     animate="animate"
     exit="exit"
+    className="smooth-scroll"
+    
   >
     {children}
   </motion.div>
@@ -51,6 +59,45 @@ const PageWrapper = ({ children }) => (
 
 
 const App = () => {
+  gsap.registerPlugin(ScrollTrigger)
+ useEffect(() => {
+  const update = (time, deltaTime, frame) => {
+    lenis.raf(time * 1000)
+  }
+  
+  const resize = (e) => {
+    ScrollTrigger.refresh()
+  }
+  
+  const lenis = new Lenis({
+    duration: .7,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    infinite: false,
+  })
+  
+  lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+    // console.log({ scroll, limit, velocity, direction, progress })
+    ScrollTrigger.update()
+  })
+  
+  gsap.ticker.add(update)
+  
+  ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+      if (arguments.length) {
+        lenis.scroll = value
+      }
+      return lenis.scroll
+    },
+    getBoundingClientRect() {
+      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    }
+  })
+  
+  ScrollTrigger.defaults({ scroller: document.body })
+  
+  window.addEventListener('resize', resize)
+ })
   return (
     <Router>
       <AnimatedRoutes />
