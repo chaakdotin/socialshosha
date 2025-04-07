@@ -16,30 +16,21 @@ import Home from './ReactVideoCards'
 import Work from './Work'
 import Contact from './Contact'
 import Services from './Services'
-const pageVariants = {
-  initial: { opacity: 0, y: 50 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  exit: { opacity: 0, y: -50, transition: { duration: 0.5 } }
-};
+import PageLoadAnimation from './PageLoadAnimation'
+// const pageVariants = {
+//   initial: { opacity: 0, y: 50 },
+//   animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+//   exit: { opacity: 0, y: -50, transition: { duration: 0.5 } }
+// };
 // PageTransition wrapper to animate a page on mount (when route changes)
 
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  // const lenis = useLenis(({ scroll }) => {
-  //   // called every scroll
-  // })
   return (
-    
-    <AnimatePresence mode="wait" >
-      <Header />
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-        <Route path="/work" element={<PageWrapper><Work /></PageWrapper>} />
-        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-        <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
-      </Routes>
-    </AnimatePresence>
+    <>
+      
+    </>
   );
 };
 
@@ -60,47 +51,55 @@ const PageWrapper = ({ children }) => (
 
 const App = () => {
   gsap.registerPlugin(ScrollTrigger)
- useEffect(() => {
-  const update = (time, deltaTime, frame) => {
-    lenis.raf(time * 1000)
-  }
-  
-  const resize = (e) => {
-    ScrollTrigger.refresh()
-  }
-  
-  const lenis = new Lenis({
-    duration: .7,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    infinite: false,
-  })
-  
-  lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-    // console.log({ scroll, limit, velocity, direction, progress })
-    ScrollTrigger.update()
-  })
-  
-  gsap.ticker.add(update)
-  
-  ScrollTrigger.scrollerProxy(document.body, {
-    scrollTop(value) {
-      if (arguments.length) {
-        lenis.scroll = value
-      }
-      return lenis.scroll
-    },
-    getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+  useEffect(() => {
+    const update = (time, deltaTime, frame) => {
+      lenis.raf(time * 1000)
     }
+    
+    const resize = (e) => {
+      ScrollTrigger.refresh()
+    }
+    
+    const lenis = new Lenis({
+      duration: .7,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      infinite: false,
+    })
+    
+    lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+      // console.log({ scroll, limit, velocity, direction, progress })
+      ScrollTrigger.update()
+    });
+    
+    gsap.ticker.add(update)
+    
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value) {
+        if (arguments.length) {
+          lenis.scroll = value
+        }
+        return lenis.scroll
+      },
+      getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+      }
+    })
+    
+    ScrollTrigger.defaults({ scroller: document.body })
+    
+    window.addEventListener('resize', resize)
   })
-  
-  ScrollTrigger.defaults({ scroller: document.body })
-  
-  window.addEventListener('resize', resize)
- })
   return (
     <Router>
-      <AnimatedRoutes />
+      <Header />
+      <Routes >
+        <Route element={<PageLoadAnimation />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
+        </Route>
+      </Routes>
     </Router>
   );
 };

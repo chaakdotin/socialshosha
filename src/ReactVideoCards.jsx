@@ -33,6 +33,7 @@ const ReactVideoCards = () => {
             start: "top top",
             end: "top -50%",
             scrub: true,
+
             onUpdate: self => {
                 const p = self.progress;
                 if (p <= 0.01) { cards[0].style.transform = "none"; return; } let xVal, yVal, rotVal; if (self.direction > 0) { //
@@ -58,7 +59,7 @@ const ReactVideoCards = () => {
             const isLast = index === cards.length - 1;
             ScrollTrigger.create({
                 trigger: card,
-                start: "top center",
+                start: "top top",
                 end: "top -50%",
                 scrub: true,
                 onUpdate: self => {
