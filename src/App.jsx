@@ -10,7 +10,6 @@ import {
 import {gsap,ScrollTrigger} from "gsap/all";
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
-import { AnimatePresence, motion } from "framer-motion";
 import Header from './Header'
 import Home from './ReactVideoCards'
 import Work from './Work'
@@ -94,7 +93,7 @@ const App = () => {
       <Header />
       <Routes >
         <Route element={<PageLoadAnimation />}>
-        
+
           <Route path="/" element={<Home />} />
           <Route path="/work" element={<Work />} />
           <Route path="/contact" element={<Contact />} />
