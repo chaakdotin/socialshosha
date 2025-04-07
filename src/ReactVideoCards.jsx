@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
+import LetsTalk from './LetsTalk'
 const ReactVideoCards = () => {
     // Use a ref to hold an array of card elements.
     const cardsRef = useRef([]);
@@ -235,7 +236,7 @@ const ReactVideoCards = () => {
             </div>
 
             {/* Extra cards div (if needed) */}
-            <div className="cards">Card 10</div>
+            <LetsTalk />
         </>
     );
 };
