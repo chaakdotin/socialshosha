@@ -2,93 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vast Full-Screen Reveal on Scroll - Smooth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cyclic Stacked Videos with Centered Section & Side Text</title>
   <style>
-    /* Basic resets */
-    body, html {
+    /* पूरे पेज के लिए बेसिक सेटअप */
+    body {
       margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      font-family: sans-serif;
     }
-    /* Fixed overlay container that covers the viewport */
-    .reveal-screen {
-      position: fixed;
-      top: 0;
+    /* Left text section - स्क्रीन के बाएँ 25% में, vertical center में */
+    .left-text {
+      position: absolute;
+      top: 50%;
       left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1000;
-      pointer-events: none;
+      width: 25%;
+      transform: translateY(-50%);
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background: #eee;
     }
-    /* Panels are 100vh tall so they are "vast" and overlap at the center */
-    .reveal-panel {
+    /* Right text section - स्क्रीन के दाएँ 25% में, vertical center में */
+    .right-text {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 25%;
+      transform: translateY(-50%);
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background: #eee;
+    }
+    /* Center video section - 50% चौड़ाई में, बिल्कुल center में */
+    .video-section {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      transform: translate(-50%, -50%);
+    }
+    /* वीडियो स्टैक कंटेनर */
+    .video-stack {
+      position: relative;
+      width: 100%;
+    }
+    /* वीडियो का बेसिक स्टाइल */
+    .video-stack video {
       position: absolute;
       width: 100%;
-      height: 100vh;
-      background: #000;
+      top: 0;
+      left: 0;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.6s ease, opacity 0.6s ease;
     }
-    /* Position the top panel so its bottom half overlaps the center */
-    .reveal-panel.top {
-      top: -50vh;
-      transform-origin: bottom;
+    /* पोजीशन क्लासेस - वीडियो को अलग-अलग offset देने के लिए */
+    .top {
+      transform: translate(200px, -200px);
+      z-index: 3;
     }
-    /* Position the bottom panel so its top half overlaps the center */
-    .reveal-panel.bottom {
-      bottom: -50vh;
-      transform-origin: top;
+    .middle {
+      transform: translate(100px, -100px);
+      z-index: 2;
     }
-    /* Main content behind the panels */
-    .content {
-      height: 200vh; /* Extra height to enable scrolling */
-      background: url('https://via.placeholder.com/1200x800') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: #fff;
+    .bottom {
+      transform: translate(0, 0);
+      z-index: 1;
+    }
+    /* wipe out animation: टॉप वीडियो दाईं ओर शिफ्ट होकर fade-out होगी */
+    @keyframes wipeOut {
+      from { transform: translate(200px, -200px); opacity: 1; }
+      to   { transform: translate(300px, -300px); opacity: 0; }
+    }
+    .wipe-out {
+      animation: wipeOut 0.6s forwards;
+    }
+    /* wipe in animation: नई वीडियो lower left से आकर fade-in होगी */
+    @keyframes wipeIn {
+      from { transform: translate(-0px, 0px); opacity: 0; }
+      to   { transform: translate(0, 0); opacity: 1; }
+    }
+    .wipe-in {
+      animation: wipeIn 0.6s forwards;
     }
   </style>
 </head>
 <body>
-  <!-- Overlay with two panels covering the viewport fully -->
-  <div class="reveal-screen">
-    <div class="reveal-panel top"></div>
-    <div class="reveal-panel bottom"></div>
+  <!-- Left Text Section -->
+  <div class="left-text">
+    <p>यहाँ बाएँ तरफ का टेक्स्ट है।</p>
   </div>
-  
-  <!-- Content to be revealed -->
-  <div class="content">
-    Scroll to Reveal Full Screen Content
+
+  <!-- Center Video Section -->
+  <div class="video-section">
+    <div class="video-stack">
+      <video class="top" src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4" autoplay muted loop></video>
+      <video class="middle" src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4" autoplay muted loop></video>
+      <video class="bottom" src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4" autoplay muted loop></video>
+    </div>
   </div>
-  
-  <!-- Include GSAP and ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Right Text Section -->
+  <div class="right-text">
+    <p>यहाँ दाएँ तरफ का टेक्स्ट है।</p>
+  </div>
+
   <script>
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Create a timeline that ties the panel animations to scroll progress.
-    const revealTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".content",
-        start: "center center", // When the center of the content reaches the viewport's center
-        end: "+=300",           // Adjust the scroll distance as needed
-        scrub: 1                // A 1-second smoothing delay for smoother motion
-      }
-    });
-    
-    // Animate the top panel moving upward by 100% of its height (100vh)
-    revealTimeline.to(".reveal-panel.top", { 
-      y: "-100%", 
-      ease: "power2.inOut"
-    }, 0);
-    
-    // Animate the bottom panel moving downward by 100% of its height (100vh)
-    revealTimeline.to(".reveal-panel.bottom", { 
-      y: "100%", 
-      ease: "power2.inOut"
-    }, 0);
+    function rotateVideos() {
+      // तीन video elements का चयन करें
+      const topVideo = document.querySelector('.video-stack .top');
+      const middleVideo = document.querySelector('.video-stack .middle');
+      const bottomVideo = document.querySelector('.video-stack .bottom');
+
+      // टॉप वीडियो पर wipe-out animation लगाएं
+      topVideo.classList.add('wipe-out');
+
+      // 600ms बाद क्लासेस reassign करके positions बदलें
+      setTimeout(() => {
+        // टॉप वीडियो wipe-out के बाद bottom position में आकर wipe-in effect के साथ सेट होगी
+        topVideo.classList.remove('wipe-out', 'top');
+        topVideo.classList.add('bottom', 'wipe-in');
+
+        // Middle वीडियो ऊपर shift होकर top बन जाती है
+        middleVideo.classList.remove('middle');
+        middleVideo.classList.add('top');
+
+        // Bottom वीडियो middle बन जाती है
+        bottomVideo.classList.remove('bottom');
+        bottomVideo.classList.add('middle');
+
+        // wipe-in effect खत्म होने के बाद wipe-in class हटा दें
+        setTimeout(() => {
+          topVideo.classList.remove('wipe-in');
+        }, 600);
+      }, 600);
+    }
+
+    // हर 2 सेकंड में वीडियो rotate करें
+    setInterval(rotateVideos, 2000);
   </script>
 </body>
 </html>

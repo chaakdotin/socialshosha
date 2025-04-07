@@ -5,34 +5,37 @@ const LetsTalk = () => {
   const middleVideoRef = useRef(null);
   const bottomVideoRef = useRef(null);
 
-  const rotateVideos = () => {
-    const topVideo = topVideoRef.current;
-    const middleVideo = middleVideoRef.current;
-    const bottomVideo = bottomVideoRef.current;
-    if (!topVideo || !middleVideo || !bottomVideo) return;
-
-    // Add wipe-out animation to the top video
-    topVideo.classList.add('wipe-out');
-
-    // After 600ms, update the classes to rotate positions
-    setTimeout(() => {
-      topVideo.classList.remove('wipe-out', 'top');
-      topVideo.classList.add('bottom', 'wipe-in');
-
-      middleVideo.classList.remove('middle');
-      middleVideo.classList.add('top');
-
-      bottomVideo.classList.remove('bottom');
-      bottomVideo.classList.add('middle');
-
-      // Remove the wipe-in class after the animation completes
-      setTimeout(() => {
-        topVideo.classList.remove('wipe-in');
-      }, 600);
-    }, 600);
-  };
-
   useEffect(() => {
+    const rotateVideos = () => {
+      // Select the three video elements
+      const topVideo = document.querySelector('.video-stack .top');
+      const middleVideo = document.querySelector('.video-stack .middle');
+      const bottomVideo = document.querySelector('.video-stack .bottom');
+
+      // Apply wipe-out animation to the top video
+      topVideo.classList.add('wipe-out');
+
+      // After 600ms, reassign the classes to change positions
+      setTimeout(() => {
+        // The top video moves to the bottom position with a wipe-in effect
+        topVideo.classList.remove('wipe-out', 'top');
+        topVideo.classList.add('bottom', 'wipe-in');
+
+        // Middle video shifts up to become the top video
+        middleVideo.classList.remove('middle');
+        middleVideo.classList.add('top');
+
+        // Bottom video becomes the middle video
+        bottomVideo.classList.remove('bottom');
+        bottomVideo.classList.add('middle');
+
+        // Remove the wipe-in effect after it finishes
+        setTimeout(() => {
+          topVideo.classList.remove('wipe-in');
+        }, 600);
+      }, 600);
+    };
+
     const intervalId = setInterval(rotateVideos, 2000);
     return () => clearInterval(intervalId);
   }, []);
