@@ -184,7 +184,7 @@ const ReactVideoCards = () => {
                 }
 
                 .cards:nth-child(10) {
-                    background: rgba(39, 174, 96, 0.8);
+                    background: rgba(39, 174, 96, 1);
                 }
 
                 `
