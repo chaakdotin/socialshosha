@@ -14,9 +14,9 @@ export default function LetsTalk() {
                     <div className='d-flex video-container '>
                         <div className='col-2 f d-flex justify-content-end'>
                             <ul className='d-flex flex-column'>
-                                <li className='d-flex justify-content-start'><a href="">Linkedln</a></li>
-                                <li className='d-flex justify-content-start'><a href="">Twitter</a></li>
-                                <li className='d-flex justify-content-start'><a href="">Instagram</a></li>
+                                <li className='d-flex justify-content-start'><a href="#">Linkedln</a></li>
+                                <li className='d-flex justify-content-start'><a href="#">Twitter</a></li>
+                                <li className='d-flex justify-content-start'><a href="#">Instagram</a></li>
                             </ul>
                         </div>
                         <div className='col-5 d-flex justify-content-space-between videos'>
