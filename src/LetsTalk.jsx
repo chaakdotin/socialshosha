@@ -45,6 +45,7 @@ const LetsTalk = () => {
       <style>{`
         .containers {
           display: flex;
+          flex-direction: column;
           height: 100vh;
           width: 100%;
           
@@ -54,8 +55,6 @@ const LetsTalk = () => {
           width: 25%;
           display: flex;
           align-items: center;
-          justify-content: center;
-          background: #eee;
           padding: 20px;
           box-sizing: border-box;
         }
@@ -105,46 +104,75 @@ const LetsTalk = () => {
         .wipe-in {
           animation: wipeIn 0.6s forwards;
         }
+          .left-section {
+              justify-content: end;
+          }
+              .right-section {
+              justify-content: start;
+          }
+        .left-section a{
+            font-size: 14px;
+        }
+            
+        .right-section button{
+            font-size: 14px;
+            border-radius: 30px;
+        }
       `}</style>
       <div className="containers">
         {/* Left text section */}
-        <div className="left-section">
-          <p>यहाँ बाएँ तरफ का टेक्स्ट है।</p>
+        <div className="col-12">
+            <h1 style={{fontSize:"140px", fontWeight:"700", lineHeight:"140px"}}>Let's talk.</h1>
         </div>
+        <div className='d-flex w-100 position-relative h-100'>
+            <div className="left-section">
+            <ul>
+                <li className='d-flex'>
+                    <a href="#">Linkdln</a>
+                </li>
+                <li className='d-flex'>
+                    <a href="#">Twitter</a>
+                </li>
+                <li className='d-flex'>
+                    <a href="#">Instagram</a>
+                </li>
+            </ul>
+            </div>
 
-        {/* Center video section */}
-        <div className="center-section">
-          <div className="video-stack">
-            <video
-              ref={topVideoRef}
-              className="top"
-              src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-              autoPlay
-              muted
-              loop
-            />
-            <video
-              ref={middleVideoRef}
-              className="middle"
-              src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-              autoPlay
-              muted
-              loop
-            />
-            <video
-              ref={bottomVideoRef}
-              className="bottom"
-              src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-              autoPlay
-              muted
-              loop
-            />
-          </div>
-        </div>
+            {/* Center video section */}
+            <div className="center-section">
+            <div className="video-stack">
+                <video
+                ref={topVideoRef}
+                className="top"
+                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                autoPlay
+                muted
+                loop
+                />
+                <video
+                ref={middleVideoRef}
+                className="middle"
+                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                autoPlay
+                muted
+                loop
+                />
+                <video
+                ref={bottomVideoRef}
+                className="bottom"
+                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                autoPlay
+                muted
+                loop
+                />
+            </div>
+            </div>
 
-        {/* Right text section */}
-        <div className="right-section">
-          <p>यहाँ दाएँ तरफ का टेक्स्ट है।</p>
+            {/* Right text section */}
+            <div className="right-section">
+            <button className='btn btn-light'>Hire our team</button>
+            </div>
         </div>
       </div>
     </>
