@@ -6,15 +6,7 @@
   margin-bottom: 130px !important;
   /* grid-template-columns: repeat(12, 1fr); */
 }
-/* .video-container .f {
-  grid-column-start: 3;
-}
-.video-container .videos {
-  grid-column: span 4 / span 4;
-}
-.video-container .btns {
-  grid-column: span 3 / span 3;
-} */
+
 .video-container ul {
   list-style: none;
   padding: 0;

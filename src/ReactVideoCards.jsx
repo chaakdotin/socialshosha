@@ -232,11 +232,11 @@ const ReactVideoCards = () => {
                 <div className="cards" ref={addToRefs}>Card 7</div>
                 <div className="cards" ref={addToRefs}>Card 8</div>
                 <div className="cards" ref={addToRefs}>Card 9</div>
-                <div className="cards" ref={addToRefs}>Card 10</div>
+                <div className="cards" ref={addToRefs}><LetsTalk /></div>
             </div>
 
             {/* Extra cards div (if needed) */}
-            <LetsTalk />
+            
         </>
     );
 };
