@@ -37,14 +37,13 @@ const ReactVideoCards = () => {
             onUpdate: self => {
                 const p = self.progress;
                 if (p <= 0.01) { cards[0].style.transform = "none"; return; } let xVal, yVal, rotVal; if (self.direction > 0) { //
-
                     xVal = -20 * Math.sin(Math.PI * p);
                     yVal = -20 * Math.sin(Math.PI * p);
                     rotVal = -5 * Math.sin(Math.PI * p);
                 } else { // scrolling up
-                    xVal = 10 * Math.sin(Math.PI * p);
-                    yVal = -10 * Math.sin(Math.PI * p);
-                    rotVal = 5 * Math.sin(Math.PI * p);
+                    // xVal = 10 * Math.sin(Math.PI * p);
+                    // yVal = -10 * Math.sin(Math.PI * p);
+                    // rotVal = 5 * Math.sin(Math.PI * p);
                 }
                 cards[0].style.transform = `translate(${xVal}vw, ${yVal}vh) rotate(${rotVal}deg)`;
             },
