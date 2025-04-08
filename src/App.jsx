@@ -94,7 +94,6 @@ const App = () => {
       <Header />
       <Routes >
         <Route element={<PageLoadAnimation />}>
-
           <Route path="/" element={<Home />} />
           <Route path="/work" element={<Work />} />
           <Route path="/contact" element={<Contact />} />
