@@ -5,6 +5,10 @@ import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
 import './home.css'
 import LetsTalk from './LetsTalk'
 const ReactVideoCards = () => {
+    const topVideoRefs = useRef(null);
+    const middleVideoRefs = useRef(null);
+    const bottomVideoRefs= useRef(null);
+
     // Use a ref to hold an array of card elements.
     const cardsRef = useRef([]);
     cardsRef.current = []; // reset on each render
@@ -15,7 +19,40 @@ const ReactVideoCards = () => {
             cardsRef.current.push(el);
         }
     };
+    useEffect(() => {
+        const rotateVideos = () => {
+        // Select the three video elements
+            const topVideos= document.querySelector('.video-stacks .tops');
+            const middleVideos = document.querySelector('.video-stacks .middles');
+            const bottomVideos = document.querySelector('.video-stacks .bottoms');
 
+            // Apply wipe-out animation to the top video
+            topVideos.classList.add('wipe-outs');
+
+            // After 600ms, reassign the classes to change positions
+            setTimeout(() => {
+                // The top video moves to the bottom position with a wipe-in effect
+                topVideos.classList.remove('wipe-outs', 'tops');
+                topVideos.classList.add('bottoms', 'wipe-ins');
+
+                // Middle video shifts up to become the top video
+                middleVideos.classList.remove('middles');
+                middleVideos.classList.add('tops');
+
+                // Bottom video becomes the middle video
+                bottomVideos.classList.remove('bottoms');
+                bottomVideos.classList.add('middles');
+
+                // Remove the wipe-in effect after it finishes
+                setTimeout(() => {
+                    topVideos.classList.remove('wipe-ins');
+                }, 600);
+            }, 600);
+        };
+
+        const intervalIds = setInterval(rotateVideos, 2000);
+        return () => clearInterval(intervalIds);
+    }, []);
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         const cards = cardsRef.current;
@@ -89,7 +126,6 @@ const ReactVideoCards = () => {
 
     return (
         <>
-            {/* Inline CSS styles – you can move these to a separate file as needed */}
             <style>
                 {
 
@@ -190,16 +226,12 @@ const ReactVideoCards = () => {
                 `
                 }
             </style>
-
-            {/* Background video */}
             <div className="background-video">
                 <video autoPlay loop muted>
                     <source src={BackgroudVideo} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
-
-            {/* Cards container */}
             <div className="cards-container">
                 <div className="cards" ref={addToRefs}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 1684 419" style={{ position: 'absolute', bottom: '0', padding: `15px` }}>
@@ -271,6 +303,44 @@ const ReactVideoCards = () => {
                             <p className="p-small u--fw-med">February-May, 2025</p>
                             <span className="code eyebrow">&lt;/date&gt;</span>
                         </div>
+                    </div>
+                    <div className='w-100 h-100 d-flex justify-content-end align-center position-relative'>
+                        <div className='w-100 pt-5 mt-4 position-absolute ' style={{left:"1vw"}}>
+                           <div className='d-flex flex-column gap-0'>
+                           <span className="m-0 pt-3 fw-bold" style={{fontSize:"60px", lineHeight:"30px",}}>Bringing</span>
+                           <span className="m-0 pt-3 fw-bold" style={{fontSize:"60px",}}>Ideas to Life.</span>
+                           </div>
+                        </div>
+                        <div className="right-video-section">
+                            <div className="video-stacks">
+                                <video
+                                ref={topVideoRefs}
+                                className="tops"
+                                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                autoPlay
+                                muted
+                                loop
+                                />
+                                <video
+                                ref={middleVideoRefs}
+                                className="middles"
+                                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                autoPlay
+                                muted
+                                loop
+                                />
+                                <video
+                                ref={bottomVideoRefs}
+                                className="bottoms"
+                                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                autoPlay
+                                muted
+                                loop
+                                />
+                            </div>
+                        </div>
+
+
                     </div>
                     <div className='w-100 position-absolute bottom-0' style={{ fontFamily:"TWK Everett, Arial, sans-serif!important", backgroundColor:"#fff"}}>
                         <nav className="nav">

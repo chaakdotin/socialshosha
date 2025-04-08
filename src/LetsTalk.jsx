@@ -126,7 +126,7 @@ const LetsTalk = () => {
         </div>
         <div className='d-flex w-100 position-relative h-100'>
             <div className="left-section">
-            <ul>
+              <ul>
                 <li className='d-flex'>
                     <a href="#">Linkdln</a>
                 </li>
@@ -136,42 +136,42 @@ const LetsTalk = () => {
                 <li className='d-flex'>
                     <a href="#">Instagram</a>
                 </li>
-            </ul>
+              </ul>
             </div>
 
             {/* Center video section */}
             <div className="center-section">
-            <div className="video-stack">
-                <video
-                ref={topVideoRef}
-                className="top"
-                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                autoPlay
-                muted
-                loop
-                />
-                <video
-                ref={middleVideoRef}
-                className="middle"
-                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                autoPlay
-                muted
-                loop
-                />
-                <video
-                ref={bottomVideoRef}
-                className="bottom"
-                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                autoPlay
-                muted
-                loop
-                />
-            </div>
+              <div className="video-stack">
+                  <video
+                  ref={topVideoRef}
+                  className="top"
+                  src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  />
+                  <video
+                  ref={middleVideoRef}
+                  className="middle"
+                  src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  />
+                  <video
+                  ref={bottomVideoRef}
+                  className="bottom"
+                  src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  />
+              </div>
             </div>
 
             {/* Right text section */}
             <div className="right-section">
-            <button className='btn btn-light'>Hire our team</button>
+              <button className='btn btn-light'>Hire our team</button>
             </div>
         </div>
       </div>
