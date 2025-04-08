@@ -5,17 +5,17 @@ import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
 import './home.css'
 import LetsTalk from './LetsTalk'
 const ReactVideoCards = () => {
-    const topVideoRefs = useRef(null);
-    const middleVideoRefs = useRef(null);
-    const bottomVideoRefs= useRef(null);
 
+    const revealSectionRef = useRef(null);
+    const plainCardRef = useRef(null);
+    const revealCardRef = useRef(null);
     // Use a ref to hold an array of card elements.
-    const containersRef = useRef([]);
+    const cardContainersRef = useRef([]);
 
     // Callback to add each container to our ref array.
     const addToRefs = (el) => {
-        if (el && !containersRef.current.includes(el)) {
-        containersRef.current.push(el);
+        if (el && !cardContainersRef.current.includes(el)) {
+        cardContainersRef.current.push(el);
         }
     };
     useEffect(() => {
@@ -53,57 +53,82 @@ const ReactVideoCards = () => {
         return () => clearInterval(intervalIds);
     }, []);
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-    
-        // Loop over each container and create a ScrollTrigger instance
-        containersRef.current.forEach((container, index) => {
+        // ---------- Layered Cards Animation ----------
+        // Create a ScrollTrigger for each layered card container.
+        cardContainersRef.current.forEach((container, index) => {
           ScrollTrigger.create({
             trigger: container,
-            start: "top bottom",  // When the top of the container hits the bottom of the viewport
-            end: "bottom top",    // When the bottom of the container reaches the top of the viewport
-            scrub: 0.1,           // Optional smoothing effect for the animation
-    
+            start: "top center",
+            end: "bottom center",
             onUpdate: () => {
-              // Get container's position
               const rect = container.getBoundingClientRect();
               const containerCenter = rect.top + rect.height / 2;
-    
-              // Compute progress based on the container's center position
               let progress = 0;
+              // For the first card use a special calculation:
               if (index === 0) {
-                // Special logic for the first container:
-                // Animation begins once the center crosses the top of the viewport.
                 if (containerCenter < 0) {
                   progress = Math.min(-containerCenter / (window.innerHeight / 2), 1);
-                } else {
-                  progress = 0;
                 }
               } else {
-                // For the rest of the containers.
                 progress = (window.innerHeight - containerCenter) / window.innerHeight;
                 progress = Math.min(Math.max(progress, 0), 1);
               }
-    
-              // Calculate transformation values (translation in %, rotation in degrees)
-              const maxTranslate = -5;
-              const maxRotate = -1;
+              const maxTranslate = -5; // in percent
+              const maxRotate = -1;    // in degrees
               const currentTranslateX = progress * maxTranslate;
               const currentTranslateY = progress * maxTranslate;
               const currentRotate = progress * maxRotate;
-    
-              // Update transformation using GSAP's set method
               gsap.set(container, {
-                transform: `translate(${currentTranslateX}%, ${currentTranslateY}%) rotate(${currentRotate}deg)`
+                xPercent: currentTranslateX,
+                yPercent: currentTranslateY,
+                rotation: currentRotate
               });
             }
           });
         });
     
-        // Cleanup: kill all ScrollTriggers when the component unmounts
-        return () => {
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
+        // ---------- Reveal Section (Curtain Reveal) Animation ----------
+        // totalDistance is 50vh expressed in pixels.
+        const totalDistance = window.innerHeight * 0.5;
+        // Create a ScrollTrigger for the reveal section. Note that we scale the progress so that
+        // when baseProgress reaches 1.8 the full animation is complete.
+        ScrollTrigger.create({
+          trigger: revealSectionRef.current,
+          start: "top top",
+          end: () => "+=" + window.innerHeight * 0.9, // scroll distance so baseProgress goes up to 1.8
+          scrub: true,
+          onUpdate: (self) => {
+            // Calculate baseProgress similar to the original code:
+            let baseProgress = self.progress * 1.8;
+            if (baseProgress < 1) {
+              // Phase 1: Plain card translates upward gradually.
+              gsap.set(plainCardRef.current, {
+                y: -baseProgress * totalDistance,
+                rotation: 0,
+                xPercent: 0
+              });
+              gsap.set(revealCardRef.current, { opacity: 0 });
+            } else {
+              // Beyond phase 1, show the reveal card.
+              gsap.set(revealCardRef.current, { opacity: 1 });
+              if (baseProgress < 1.5) {
+                // Keep plain card fully translated with no tilt yet.
+                gsap.set(plainCardRef.current, { y: -totalDistance, rotation: 0, xPercent: 0 });
+              } else {
+                // Phase 2: Gradually add tilt (rotation and translateX) from baseProgress 1.5 to 1.8.
+                let tiltProgress = (baseProgress - 1.5) / (1.8 - 1.5);
+                tiltProgress = Math.min(tiltProgress, 1);
+                gsap.set(plainCardRef.current, {
+                  y: -totalDistance,
+                  rotation: -tiltProgress * 5,
+                  xPercent: -tiltProgress * 5
+                });
+              }
+            }
+          }
+        });
       }, []);
+    
 
     return (
         <>
@@ -240,8 +265,8 @@ const ReactVideoCards = () => {
                 </video>
             </div>
             <div className="cards-container" ref={addToRefs}>
-            <div className="cards card-back"></div>
-            <div className="cards card-middle"></div>
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
                 <div className="cards card-front" >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 1684 419" style={{ position: 'absolute', bottom: '0', padding: `15px` }}>
                         <path d="M1684 215.276v90.04H0v-90.04z"></path>
@@ -264,8 +289,8 @@ const ReactVideoCards = () => {
                 </div>
             </div>
             <div className="cards-container" ref={addToRefs}>
-            <div className="cards card-back"></div>
-            <div className="cards card-middle"></div>
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
                 <div className="cards card-front">
                     <div className='nav-inner w-100 position-absolute top-0'>
                         <div className='nav-inner__left'>
@@ -327,7 +352,7 @@ const ReactVideoCards = () => {
                         <div className="right-video-section">
                             <div className="video-stacks">
                                 <video
-                                ref={topVideoRefs}
+                                
                                 className="tops"
                                 src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
                                 autoPlay
@@ -335,7 +360,7 @@ const ReactVideoCards = () => {
                                 loop
                                 />
                                 <video
-                                ref={middleVideoRefs}
+
                                 className="middles"
                                 src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
                                 autoPlay
@@ -343,7 +368,6 @@ const ReactVideoCards = () => {
                                 loop
                                 />
                                 <video
-                                ref={bottomVideoRefs}
                                 className="bottoms"
                                 src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
                                 autoPlay
@@ -448,13 +472,17 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
-            <div className="cards-container" ref={addToRefs}>
-                <div className="cards card-back"></div>
-                <div className="cards card-middle"></div>
-                <div className="cards card-front" ><LetsTalk /></div>
-            </div>
 
             {/* Extra cards div (if needed) */}
+            {/* ---------- Reveal Section (Curtain Reveal) ---------- */}
+            <div className="reveal-section" ref={revealSectionRef}>
+                <div className="plain-card" ref={plainCardRef}>
+                    <LetsTalk />
+                </div>
+            </div>
+            <div className="reveal-card" ref={revealCardRef}>
+                Revealed Card
+            </div>
 
         </>
     );
