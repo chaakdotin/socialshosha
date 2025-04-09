@@ -17,6 +17,7 @@ export default function Blog() {
         { id: '2a1dc6c1-5e8b-c81d-d164-4dd092e348bb1', imgUrl: 'https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3.png' },
         { id: '2a1dc6c1-5e8b-c81d-d164-4dd092e348bb2', imgUrl: 'https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3.png' },
     ];
+
     return (
         <>
             <div className="container-2 w-100">
@@ -112,24 +113,20 @@ export default function Blog() {
                                                         />
                                                     </a>
                                                 </div>
-
                                                 <img
                                                     alt=""
                                                     loading="lazy"
                                                     style={{
-                                                    transform:
-                                                        "translate3d(0px, 8em, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-                                                    opacity: 0,
-                                                    transformStyle: "preserve-3d"
+                                                        transform: "translate3d(0px, 8em, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                                                        opacity: 0,
+                                                        transformStyle: "preserve-3d"
                                                     }}
                                                     src="https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3.png"
                                                     sizes="(max-width: 991px) 100vw, 25vw"
                                                     srcSet="https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3-p-500.png 500w, https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3-p-800.png 800w, https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3-p-1080.png 1080w, https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3-p-1600.png 1600w, https://cdn.prod.website-files.com/64117da520cdfb7ab62144a5/67441912e113661ceef10d84_Tech%20Thumb_3.png 1920w"
                                                     className="image-5"
                                                 />
-
                                             </div>
-
                                         ))}
                                     </div>
                                 </div>
