@@ -111,6 +111,7 @@ const LetsTalk = () => {
               justify-content: start;
           }
         .left-section a{
+          color:#000!important;
             font-size: 14px;
         }
             
