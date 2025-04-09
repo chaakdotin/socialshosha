@@ -88,10 +88,11 @@
     z-index: 3;
     object-fit: contain;
     width: 28%;
-    height: 28em;
+    height: 6em;
     display: block;
     position: absolute;
     inset: 17% 0% 0% auto;
+    transition: transform 0.3s ease-out;
 }
 .left-2 {
     grid-column-gap: 0em;
@@ -251,6 +252,13 @@
     transform-origin: 0%;
     background-color: #121212;
     height: 1px;
+}
+.project:hover .image-5 {
+    transform: translate3d(0px, 0em, 0px)!important; /* State when hovered */
+    opacity: 1!important;
+}
+.project:hover {
+    opacity: 0.5;
 }
 @media screen and (min-width: 1280px) {
     .section-4 {
