@@ -4,6 +4,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
 import './home.css'
 import LetsTalk from './LetsTalk'
+import Footer from './Footer'
 const ReactVideoCards = () => {
 
     const revealSectionRef = useRef(null);
@@ -481,7 +482,7 @@ const ReactVideoCards = () => {
                 </div>
             </div>
             <div className="reveal-card" ref={revealCardRef}>
-                Revealed Card
+                <Footer />
             </div>
 
         </>

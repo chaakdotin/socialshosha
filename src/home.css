@@ -433,9 +433,9 @@
     background: #e74c3c; /* Distinct red */
     z-index: 1;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
-    font-size: 2em;
+    font-size: 14px;
     color: #fff;
     opacity: 0;
   }

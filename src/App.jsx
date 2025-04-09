@@ -91,13 +91,15 @@ const App = () => {
   })
   return (
     <Router>
-      <Header />
+      
       <Routes >
         <Route element={<PageLoadAnimation />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/services" element={<Services />} />
+          <Route element={<Header />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/services" element={<Services />} />
+          </Route>
         </Route>
       </Routes>
     </Router>
