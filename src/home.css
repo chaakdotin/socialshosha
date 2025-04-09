@@ -413,7 +413,7 @@
     position: sticky;
     bottom: 0;
     height: 200vh;
-    background: #1abc9c; /* Teal */
+    background: #ffffff; /* Teal */
     z-index: 2;
     display: flex;
     align-items: center;
