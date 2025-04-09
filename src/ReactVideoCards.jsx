@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
 import './home.css'
+import Blog from './Blog'
 import LetsTalk from './LetsTalk'
 import Footer from './Footer'
 const ReactVideoCards = () => {
@@ -90,13 +91,13 @@ const ReactVideoCards = () => {
     
         // ---------- Reveal Section (Curtain Reveal) Animation ----------
         // totalDistance is 50vh expressed in pixels.
-        const totalDistance = window.innerHeight * 0.5;
+        const totalDistance = window.innerHeight * .7;
         // Create a ScrollTrigger for the reveal section. Note that we scale the progress so that
         // when baseProgress reaches 1.8 the full animation is complete.
         ScrollTrigger.create({
           trigger: revealSectionRef.current,
           start: "top top",
-          end: () => "+=" + window.innerHeight * 0.9, // scroll distance so baseProgress goes up to 1.8
+          end: () => "+=" + window.innerHeight * 2, // scroll distance so baseProgress goes up to 1.8
           scrub: true,
           onUpdate: (self) => {
             // Calculate baseProgress similar to the original code:
@@ -478,6 +479,7 @@ const ReactVideoCards = () => {
             {/* ---------- Reveal Section (Curtain Reveal) ---------- */}
             <div className="reveal-section" ref={revealSectionRef}>
                 <div className="plain-card" ref={plainCardRef}>
+                    <Blog />
                     <LetsTalk />
                 </div>
             </div>

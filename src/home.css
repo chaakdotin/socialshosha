@@ -405,19 +405,20 @@
 /* ---------- Reveal Section (Curtain Reveal Effect) ---------- */
 .reveal-section {
     position: relative;
-    height: 200vh;
+    height: 300vh;
   }
   
   /* Plain card acting as the curtain */
   .plain-card {
     position: sticky;
     bottom: 0;
-    height: 200vh;
+    height: 300vh;
     background: #ffffff; /* Teal */
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     font-size: 3em;
     color: #000;
     transition: transform 0.3s ease;
