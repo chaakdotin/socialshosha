@@ -22,8 +22,6 @@ export default function Footer() {
                                         <a href="tel:442030020224">44 (0)20 30020224</a>
                                     </p>
                                 </div>
-                                <ul className="footer-col__list">
-                                </ul>
                             </div>
                         </div>
 
@@ -65,7 +63,7 @@ export default function Footer() {
                                             </span>
                                         </a>
                                     </div>
-                                    <ul className="footer-col__list"></ul>
+                                    <ul className="footer-col__list p-0"></ul>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +81,7 @@ export default function Footer() {
                             </div>
                             <div className="footer-col__wrapper">
                                 <div className="footer-col__inner">
-                                    <ul className="footer-col__list">
+                                    <ul className="footer-col__list p-0">
                                         <li className="footer-col__list-item p5">
                                             <a href="https://www.youtube.com/THELINEanimation" rel="noopener noreferrer"
                                                 target="_blank" className="link footer-col__link">
