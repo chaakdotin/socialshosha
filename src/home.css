@@ -430,7 +430,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #e74c3c; /* Distinct red */
+    background: #000000; /* Distinct red */
     z-index: 1;
     display: flex;
     align-items: end;
