@@ -51,8 +51,8 @@ const PageWrapper = ({ children }) => (
 
 const App = () => {
   const lenis = new Lenis({
-    lerp: 0.1, // Add slight smoothing for better ScrollTrigger compatibility
-    duration: 1, // Adjust duration for minimal smoothing
+    // lerp: 0.1, // Add slight smoothing for better ScrollTrigger compatibility
+    // duration: 1, // Adjust duration for minimal smoothing
     smooth: true, // Enable smooth scrolling
     wheelMultiplier: 0.2,
   });
