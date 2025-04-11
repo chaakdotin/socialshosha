@@ -195,8 +195,8 @@ const ReactVideoCards = () => {
                         z-index: 2;
                         background: #D0D2D1;
                         transform: rotate(-1deg);
-                        border-top: 3px solid #000;
-                        border-style: dotted;
+                        outline:dashed;
+                        outline-offset:-8px;  
                     }
                     .card-front {
                         z-index: 3;
