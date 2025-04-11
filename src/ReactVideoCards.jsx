@@ -227,7 +227,7 @@ const ReactVideoCards = () => {
             </style>
             <div className="background-video">
                 <video autoPlay loop muted>
-                    <source src={BackgroudVideo} type="video/mp4" />
+                    <source src="https://videos.pexels.com/video-files/3039168/3039168-uhd_2560_1440_25fps.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

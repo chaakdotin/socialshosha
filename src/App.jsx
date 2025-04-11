@@ -50,7 +50,12 @@ const PageWrapper = ({ children }) => (
 
 
 const App = () => {
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
+  window.addEventListener('wheel', (e) => {
+    e.preventDefault(); // Prevent default scroll
+    const scrollSpeed = 0.3; // Lower value = harder scroll
+    window.scrollBy(0, e.deltaY * scrollSpeed); // Reduce scroll distance
+  }, { passive: false });
   useEffect(() => {
     const update = (time, deltaTime, frame) => {
       lenis.raf(time * 1000)
