@@ -54,7 +54,7 @@ const App = () => {
     lerp: 0.1, // Add slight smoothing for better ScrollTrigger compatibility
     duration: 1, // Adjust duration for minimal smoothing
     smooth: true, // Enable smooth scrolling
-    wheelMultiplier: 0.5,
+    wheelMultiplier: 0.2,
   });
   
   // Sync Lenis with GSAP's ticker for better performance
