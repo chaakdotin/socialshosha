@@ -186,8 +186,10 @@ const ReactVideoCards = () => {
                     }
                     .card-back {
                         z-index: 1;
-                        background: rgba(255, 255, 255, 1);
+                        background: #F7F8F7;
                         transform: rotate(-2deg);
+                        outline:dashed;
+                        outline-offset:-14px;
                     }
 
                     /* The middle layer with a lighter tilt */
