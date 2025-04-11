@@ -50,49 +50,24 @@ const PageWrapper = ({ children }) => (
 
 
 const App = () => {
+  const lenis = new Lenis({
+    lerp: 0.1, // Add slight smoothing for better ScrollTrigger compatibility
+    duration: 1, // Adjust duration for minimal smoothing
+    smooth: true, // Enable smooth scrolling
+    wheelMultiplier: 0.5,
+  });
+  
+  // Sync Lenis with GSAP's ticker for better performance
+  lenis.on('scroll', () => ScrollTrigger.update());
+  
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
   gsap.registerPlugin(ScrollTrigger);
-  window.addEventListener('wheel', (e) => {
-    e.preventDefault(); // Prevent default scroll
-    const scrollSpeed = 0.3; // Lower value = harder scroll
-    window.scrollBy(0, e.deltaY * scrollSpeed); // Reduce scroll distance
-  }, { passive: false });
-  useEffect(() => {
-    const update = (time, deltaTime, frame) => {
-      lenis.raf(time * 1000)
-    }
+  // Initialize a new Lenis instance for smooth scrollin
     
-    const resize = (e) => {
-      ScrollTrigger.refresh()
-    }
-    
-    const lenis = new Lenis({
-      duration: .7,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      infinite: false,
-    })
-    
-    lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-      ScrollTrigger.update()
-    });
-    
-    gsap.ticker.add(update)
-    
-    // ScrollTrigger.scrollerProxy(document.body, {
-    //   scrollTop(value) {
-    //     if (arguments.length) {
-    //       lenis.scroll = value
-    //     }
-    //     return lenis.scroll
-    //   },
-    //   getBoundingClientRect() {
-    //     return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-    //   }
-    // })
-    
-    // ScrollTrigger.defaults({ scroller: document.body })
-    
-    window.addEventListener('resize', resize)
-  })
   return (
     <Router>
       
