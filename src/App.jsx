@@ -67,25 +67,24 @@ const App = () => {
     })
     
     lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-      // console.log({ scroll, limit, velocity, direction, progress })
       ScrollTrigger.update()
     });
     
     gsap.ticker.add(update)
     
-    ScrollTrigger.scrollerProxy(document.body, {
-      scrollTop(value) {
-        if (arguments.length) {
-          lenis.scroll = value
-        }
-        return lenis.scroll
-      },
-      getBoundingClientRect() {
-        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-      }
-    })
+    // ScrollTrigger.scrollerProxy(document.body, {
+    //   scrollTop(value) {
+    //     if (arguments.length) {
+    //       lenis.scroll = value
+    //     }
+    //     return lenis.scroll
+    //   },
+    //   getBoundingClientRect() {
+    //     return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    //   }
+    // })
     
-    ScrollTrigger.defaults({ scroller: document.body })
+    // ScrollTrigger.defaults({ scroller: document.body })
     
     window.addEventListener('resize', resize)
   })

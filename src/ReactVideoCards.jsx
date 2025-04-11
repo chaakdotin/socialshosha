@@ -17,13 +17,13 @@ const ReactVideoCards = () => {
     // Callback to add each container to our ref array.
     const addToRefs = (el) => {
         if (el && !cardContainersRef.current.includes(el)) {
-        cardContainersRef.current.push(el);
+            cardContainersRef.current.push(el);
         }
     };
     useEffect(() => {
         const rotateVideos = () => {
-        // Select the three video elements
-            const topVideos= document.querySelector('.video-stacks .tops');
+            // Select the three video elements
+            const topVideos = document.querySelector('.video-stacks .tops');
             const middleVideos = document.querySelector('.video-stacks .middles');
             const bottomVideos = document.querySelector('.video-stacks .bottoms');
 
@@ -58,86 +58,87 @@ const ReactVideoCards = () => {
         // ---------- Layered Cards Animation ----------
         // Create a ScrollTrigger for each layered card container.
         cardContainersRef.current.forEach((container, index) => {
-          ScrollTrigger.create({
-            trigger: container,
-            start: "top center",
-            end: "bottom center",
-            onUpdate: () => {
-              const rect = container.getBoundingClientRect();
-              const containerCenter = rect.top + rect.height / 2;
-              let progress = 0;
-              // For the first card use a special calculation:
-              if (index === 0) {
-                if (containerCenter < 0) {
-                  progress = Math.min(-containerCenter / (window.innerHeight / 2), 1);
+            ScrollTrigger.create({
+                trigger: container,
+                start: "top center",
+                end: "bottom center",
+                onUpdate: () => {
+                    const rect = container.getBoundingClientRect();
+                    const containerCenter = rect.top + rect.height / 2;
+                    let progress = 0;
+                    // For the first card use a special calculation:
+                    if (index === 0) {
+                        if (containerCenter < 0) {
+                            progress = Math.min(-containerCenter / (window.innerHeight / 2), 1);
+                        }
+                    } else {
+                        progress = (window.innerHeight - containerCenter) / window.innerHeight;
+                        progress = Math.min(Math.max(progress, 0), 1);
+                    }
+                    const maxTranslate = -5; // in percent
+                    const maxRotate = -1;    // in degrees
+                    const currentTranslateX = progress * maxTranslate;
+                    const currentTranslateY = progress * maxTranslate;
+                    const currentRotate = progress * maxRotate;
+                    gsap.set(container, {
+                        xPercent: currentTranslateX,
+                        yPercent: currentTranslateY,
+                        rotation: currentRotate
+                    });
                 }
-              } else {
-                progress = (window.innerHeight - containerCenter) / window.innerHeight;
-                progress = Math.min(Math.max(progress, 0), 1);
-              }
-              const maxTranslate = -5; // in percent
-              const maxRotate = -1;    // in degrees
-              const currentTranslateX = progress * maxTranslate;
-              const currentTranslateY = progress * maxTranslate;
-              const currentRotate = progress * maxRotate;
-              gsap.set(container, {
-                xPercent: currentTranslateX,
-                yPercent: currentTranslateY,
-                rotation: currentRotate
-              });
-            }
-          });
+            });
         });
-    
+
         // ---------- Reveal Section (Curtain Reveal) Animation ----------
         // totalDistance is 50vh expressed in pixels.
         const totalDistance = window.innerHeight * .7;
         // Create a ScrollTrigger for the reveal section. Note that we scale the progress so that
         // when baseProgress reaches 1.8 the full animation is complete.
         ScrollTrigger.create({
-          trigger: revealSectionRef.current,
-          start: "top top",
-          end: () => "+=" + window.innerHeight * 2, // scroll distance so baseProgress goes up to 1.8
-          scrub: true,
-          onUpdate: (self) => {
-            // Calculate baseProgress similar to the original code:
-            let baseProgress = self.progress * 1.8;
-            if (baseProgress < 1) {
-              // Phase 1: Plain card translates upward gradually.
-              gsap.set(plainCardRef.current, {
-                y: -baseProgress * totalDistance,
-                rotation: 0,
-                xPercent: 0
-              });
-              gsap.set(revealCardRef.current, { opacity: 0 });
-            } else {
-              // Beyond phase 1, show the reveal card.
-              gsap.set(revealCardRef.current, { opacity: 1 });
-              if (baseProgress < 1.5) {
-                // Keep plain card fully translated with no tilt yet.
-                gsap.set(plainCardRef.current, { y: -totalDistance, rotation: 0, xPercent: 0 });
-              } else {
-                // Phase 2: Gradually add tilt (rotation and translateX) from baseProgress 1.5 to 1.8.
-                let tiltProgress = (baseProgress - 1.5) / (1.8 - 1.5);
-                tiltProgress = Math.min(tiltProgress, 1);
-                gsap.set(plainCardRef.current, {
-                  y: -totalDistance,
-                  rotation: -tiltProgress * 5,
-                  xPercent: -tiltProgress * 5
-                });
-              }
+            trigger: revealSectionRef.current,
+            start: "top top",
+            end: () => "+=" + window.innerHeight * 2, // scroll distance so baseProgress goes up to 1.8
+            scrub: true,
+            onUpdate: (self) => {
+                // Calculate baseProgress similar to the original code:
+                let baseProgress = self.progress * 1.8;
+                if (baseProgress < 1) {
+                    // Phase 1: Plain card translates upward gradually.
+                    gsap.set(plainCardRef.current, {
+                        y: -baseProgress * totalDistance,
+                        rotation: 0,
+                        xPercent: 0
+                    });
+                    gsap.set(revealCardRef.current, { opacity: 0 });
+                } else {
+                    // Beyond phase 1, show the reveal card.
+                    gsap.set(revealCardRef.current, { opacity: 1 });
+                    if (baseProgress < 1.5) {
+                        // Keep plain card fully translated with no tilt yet.
+                        gsap.set(plainCardRef.current, { y: -totalDistance, rotation: 0, xPercent: 0 });
+                    } else {
+                        // Phase 2: Gradually add tilt (rotation and translateX) from baseProgress 1.5 to 1.8.
+                        let tiltProgress = (baseProgress - 1.5) / (1.8 - 1.5);
+                        tiltProgress = Math.min(tiltProgress, 1);
+                        gsap.set(plainCardRef.current, {
+                            y: -totalDistance,
+                            rotation: -tiltProgress * 5,
+                            xPercent: -tiltProgress * 5
+                        });
+                    }
+                }
             }
-          }
         });
-      }, []);
-    
+    }, []);
 
     return (
         <>
             <style>
                 {
-
-                    ` body,
+                    
+                    ` 
+                    @import 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap';
+                    body,
                     html {
                         margin: 0;
                         padding: 0;
@@ -185,14 +186,14 @@ const ReactVideoCards = () => {
                     }
                     .card-back {
                         z-index: 1;
-                        background: rgba(0, 0, 0, 0.1);
+                        background: rgba(255, 255, 255, 0.1);
                         transform: rotate(-2deg);
                     }
 
                     /* The middle layer with a lighter tilt */
                     .card-middle {
                         z-index: 2;
-                        background: rgba(0, 0, 0, 0.05);
+                        background: rgba(255, 255, 255, 0.05);
                         transform: rotate(-1deg);
                     }
                     .card-front {
@@ -201,9 +202,9 @@ const ReactVideoCards = () => {
                         align-items: center;
                         justify-content: center;
                         font-size: 3em;
-                        color: #fff;
+                        color: #000;
                         will-change: transform;
-                        background: rgba(0, 0, 0, 0.5);
+                        background: rgba(255, 255, 255, 1);
                     }
                     .cardss {
                         width: 100%;
@@ -214,49 +215,9 @@ const ReactVideoCards = () => {
                         font-size: 3em;
                         color: #fff;
                         will-change: transform;
-                        background: rgba(22, 160, 133, 1);
                     }
 
-                    /* Demo background colors for each cards */
-                    .cards-container:nth-child(1) {
-                        background: rgba(255, 255, 255, 0.4);
-                    }
 
-                    .cards-container:nth-child(2) {
-                        background: rgba(52, 152, 219, 0.8);
-                    }
-
-                    .cards-container:nth-child(3) {
-                        background: rgba(155, 89, 182, 0.8);
-                    }
-
-                    .cards-container:nth-child(4) {
-                        background: rgba(230, 126, 34, 0.8);
-                    }
-
-                    .cards-container:nth-child(5) {
-                        background: rgba(231, 76, 60, 0.8);
-                    }
-
-                    .cards-container:nth-child(6) {
-                        background: rgba(241, 196, 15, 0.8);
-                    }
-
-                    .cards-container:nth-child(7) {
-                        background: rgba(46, 204, 113, 0.8);
-                    }
-
-                    .cards-container:nth-child(8) {
-                        background: rgba(52, 73, 94, 0.8);
-                    }
-
-                    .cards-container:nth-child(9) {
-                        background: rgba(22, 160, 133, 0.8);
-                    }
-
-                    .cards-container:nth-child(10) {
-                        background: rgba(39, 174, 96, 1);
-                    }
                 `
                 }
             </style>
@@ -270,26 +231,93 @@ const ReactVideoCards = () => {
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front" >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 1684 419" style={{ position: 'absolute', bottom: '0', padding: `15px` }}>
-                        <path d="M1684 215.276v90.04H0v-90.04z"></path>
-                        <path d="M1483.31 102h95.98v316.592h-95.98z"></path>
-                        <path
-                            d="M1684 328.552v90.04h-200.684v-90.04zM1684 102v90.04h-200.684V102zM1177.93 102h95.98v316.592h-95.98z">
-                        </path>
-                        <path d="M1177.93 102h95.98l186.14 316.592h-95.98z"></path>
-                        <path
-                            d="M1364.07 102h95.98v316.592h-95.98zM1058.68 102h95.98v316.592h-95.98zM852.18 102h95.98v316.592h-95.98z">
-                        </path>
-                        <path d="M1035.41 328.552v90.04H852.177v-90.04zM535.156 102h95.98v316.592h-95.98z"></path>
-                        <path
-                            d="M735.842 328.552v90.04H535.158v-90.04zM735.842 102v90.04H535.158V102zM258.852 102h95.98v316.592h-95.98zM415.908 102h95.98v316.592h-95.98zM69.805 102h95.979v316.592h-95.98z">
-                        </path>
-                        <path
-                            d="M235.586 102v90.04H.001V102zM1640.9 85.809c-8.17 0-15.54-1.825-22.1-5.473-6.43-3.794-11.53-8.902-15.33-15.323-3.65-6.567-5.47-13.937-5.47-22.109s1.82-15.542 5.47-22.109c3.8-6.567 8.9-11.674 15.33-15.323C1625.36 1.824 1632.73 0 1640.9 0c8.18 0 15.47 1.824 21.89 5.473q9.855 5.473 15.33 15.322c3.79 6.567 5.69 13.937 5.69 22.11 0 8.171-1.9 15.541-5.69 22.108q-5.475 9.632-15.33 15.323c-6.42 3.648-13.71 5.473-21.89 5.473m0-9.194q14.235 0 23.43-9.413c6.13-6.421 9.19-14.52 9.19-24.298s-3.06-17.804-9.19-24.079q-9.195-9.63-23.43-9.631c-9.48 0-17.29 3.21-23.42 9.631-6.13 6.275-9.19 14.302-9.19 24.08s3.06 17.876 9.19 24.297c6.13 6.275 13.94 9.413 23.42 9.413m-15.76-56.695h19.27c5.1 0 9.12 1.24 12.04 3.721 2.91 2.481 4.37 5.765 4.37 9.85 0 2.92-.94 5.473-2.84 7.662q-2.85 3.283-7.23 4.378l10.73 19.263h-11.6l-6.79-13.572q-1.965-3.502-5.25-3.502h-2.41v17.074h-10.29zm18.39 19.263c2.04 0 3.65-.438 4.82-1.313 1.31-1.022 1.97-2.408 1.97-4.16 0-1.605-.66-2.845-1.97-3.72-1.17-1.022-2.78-1.533-4.82-1.533h-8.32v10.726z">
-                        </path>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                        width={200}
+                        zoomAndPan="magnify"
+                        viewBox="0 0 810 809.999993"
+                        height={200}
+                        preserveAspectRatio="xMidYMid meet"
+                        version={1.0}
+                        className='svg-animate'
+                    >
+                        <defs>
+                            <clipPath id="6b9cb6e266">
+                                <path
+                                    d="M 605 208 L 803.746094 208 L 803.746094 800.734375 L 605 800.734375 Z M 605 208 "
+                                    clipRule="nonzero"
+                                    className='svg-animate1'
+                                >
+                                </path>
+                            </clipPath>
+                            <clipPath id="d3b152ea3c">
+                                <path
+                                    d="M 6.496094 9.484375 L 803 9.484375 L 803 800.734375 L 6.496094 800.734375 Z M 6.496094 9.484375 "
+                                    clipRule="nonzero"
+                                />
+                            </clipPath>
+                        </defs>
+                        <g clipPath="url(#6b9cb6e266)">
+                            <path
+                                fill="#f43b94"
+                                d="M 802.082031 698.28125 C 762.589844 738.246094 740.699219 760.382812 701.203125 800.347656 L 605.578125 800.347656 C 605.578125 800.347656 605.578125 479.5625 605.578125 479.5625 C 605.578125 421.773438 628.542969 366.335938 669.394531 325.488281 L 782.957031 211.925781 C 790.445312 204.4375 803.269531 209.769531 803.242188 220.355469 L 802.054688 698.3125 Z M 802.082031 698.28125 "
+                                fillOpacity={1}
+                                fillRule="nonzero"
+                            />
+                        </g>
+                        <g clipPath="url(#d3b152ea3c)">
+                            <path
+                                fill="#8a3aff"
+                                d="M 802.082031 107.59375 C 802.054688 53.371094 758.195312 9.484375 703.96875 9.484375 C 703.96875 9.484375 703.800781 9.484375 703.800781 9.484375 C 703.746094 9.484375 703.691406 9.484375 703.609375 9.484375 L 109.0625 9.484375 L 6.996094 111.546875 L 6.996094 205.902344 L 271.738281 205.902344 C 352.222656 205.902344 431.847656 189.648438 505.886719 158.144531 L 520.785156 151.816406 L 605.578125 115.691406 L 621.664062 108.867188 L 633.4375 136.503906 L 605.578125 148.359375 L 570.585938 163.257812 C 500.140625 193.242188 436.128906 236.46875 381.988281 290.609375 L 10.976562 661.636719 C 10.894531 715.003906 10.8125 745.074219 10.753906 798.496094 C 11.445312 799.1875 11.890625 799.65625 12.605469 800.347656 C 66.28125 800.429688 96.183594 800.511719 149.882812 800.59375 L 169.757812 780.722656 L 605.578125 344.941406 L 773.339844 177.1875 C 791.71875 158.808594 802.082031 133.851562 802.082031 107.789062 Z M 802.082031 107.59375 "
+                                fillOpacity={1}
+                                fillRule="nonzero"
+                            />
+                        </g>
                     </svg>
+
                 </div>
             </div>
+            <div className="cards-container " style={{height:"200vh"}} ref={addToRefs}>
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
+                <div className="cards card-front flex-column ">
+                    <div className="d-flex justify-content-between px-4 py-5 w-100">
+                        <div
+                            className="d-flex flex-column"
+                            style={{ width: "60%", fontSize: 90, lineHeight: 1,  }}
+                        >
+                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>The</span>
+                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>solution</span>
+                        </div>
+                        <div
+                            className="d-flex flex-column align-items-end"
+                            style={{ width: "31.2%", height: 133, position: "relative" }}
+                        >
+                            <span
+                            style={{
+                                fontSize: 16,
+                                display: "flex",
+                                position: "absolute",
+                                bottom: 0,
+                                width: "100%",
+                                fontFamily: '"Urbanist", sans-serif',
+                                fontWeight:"500"
+                            }}
+                            >
+                            Confronted with the devastating impact of waste, we knew something had to
+                            change. That’s why we launched our mobile waste processing plants,
+                            delivering an innovative solution that can go wherever it's needed.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className='h-100 w-100 px-3 ' style={{borderRadius:"30px", objectFit:"cover"}}>
+                        <img src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/6738e950d57d477447a62624_main-kv-min-p-1600.webp" alt="" className='w-100' />
+                    </div>
+                </div>
+            </div>
+
             <div className="cards-container" ref={addToRefs}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
@@ -345,43 +373,43 @@ const ReactVideoCards = () => {
                         </div>
                     </div>
                     <div className='w-100 h-100 d-flex justify-content-end align-center position-relative'>
-                        <div className='w-100 pt-5 mt-4 position-absolute ' style={{left:"1vw"}}>
-                           <div className='d-flex flex-column gap-0'>
-                           <span className="m-0 pt-3 fw-bold" style={{fontSize:"60px", lineHeight:"30px",}}>Bringing</span>
-                           <span className="m-0 pt-3 fw-bold" style={{fontSize:"60px",}}>Ideas to Life.</span>
-                           </div>
+                        <div className='w-100 pt-5 mt-4 position-absolute ' style={{ left: "1vw" }}>
+                            <div className='d-flex flex-column gap-0'>
+                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", lineHeight: "30px", }}>Bringing</span>
+                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", }}>Ideas to Life.</span>
+                            </div>
                         </div>
                         <div className="right-video-section">
                             <div className="video-stacks">
                                 <video
-                                
-                                className="tops"
-                                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                                autoPlay
-                                muted
-                                loop
+
+                                    className="tops"
+                                    src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                    autoPlay
+                                    muted
+                                    loop
                                 />
                                 <video
 
-                                className="middles"
-                                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                                autoPlay
-                                muted
-                                loop
+                                    className="middles"
+                                    src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                    autoPlay
+                                    muted
+                                    loop
                                 />
                                 <video
-                                className="bottoms"
-                                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                                autoPlay
-                                muted
-                                loop
+                                    className="bottoms"
+                                    src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                    autoPlay
+                                    muted
+                                    loop
                                 />
                             </div>
                         </div>
 
 
                     </div>
-                    <div className='w-100 position-absolute bottom-0' style={{ fontFamily:"TWK Everett, Arial, sans-serif!important", backgroundColor:"#fff"}}>
+                    <div className='w-100 position-absolute bottom-0' style={{ fontFamily: "TWK Everett, Arial, sans-serif!important", backgroundColor: "#fff" }}>
                         <nav className="nav">
                             <a href="#overview" className="nav-link size--1 w-inline-block w--current">
                                 <div data-magnetic-strength="" className="nav-link__inner" >
@@ -475,7 +503,6 @@ const ReactVideoCards = () => {
                 </div>
             </div>
 
-            {/* Extra cards div (if needed) */}
             {/* ---------- Reveal Section (Curtain Reveal) ---------- */}
             <div className="reveal-section" ref={revealSectionRef}>
                 <div className="plain-card" ref={plainCardRef}>

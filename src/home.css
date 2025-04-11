@@ -70,6 +70,24 @@
     font-style: normal;
     font-display: swap;
   }
+/* .svg-animate path{
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 966.631px;
+    stroke-dashoffset: 766.792px;
+    animation: hello_animation linear 10s infinite;
+    opacity: .5
+}
+
+@keyframes hello_animation {
+    to {
+        stroke-dashoffset: 0;
+    }
+
+    form {
+        stroke-dashoffset: 766.792;
+    }
+} */
 .nav-inner {
     height: 1.50em;
     display: flex;
