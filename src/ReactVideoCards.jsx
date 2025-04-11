@@ -282,7 +282,7 @@ const ReactVideoCards = () => {
 
                 </div>
             </div>
-            <div className="cards-container " style={{height:"200vh"}} ref={addToRefs}>
+            <div className="cards-container " style={{height:"190vh"}} ref={addToRefs}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front flex-column ">
