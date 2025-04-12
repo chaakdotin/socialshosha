@@ -5,7 +5,8 @@ import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
 import './home.css'
 import Blog from './Blog'
 import LetsTalk from './LetsTalk'
-import Visualizer from './Visualizer'
+import Slider from "./Slider"
+import Marquee from './Marquee'
 import Footer from './Footer'
 const ReactVideoCards = () => {
     const revealSectionRef = useRef(null);
@@ -244,8 +245,16 @@ const ReactVideoCards = () => {
             <div className="card-container card-visualizer" style={{ zIndex: 2 }}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
-                <div className="cards card-front align-items-start justify-content-start">
-                    <Visualizer />
+                <div className="cards card-front align-items-start justify-content-start flex-column">
+                    <div className="w-100 d-flex">
+                        <div className="left-sections">
+                            <h2 style={{fontSize: '72px', width: '80%', fontWeight:"500"}}>Who Saapro is for</h2>
+                        </div>
+                        <div className="right-sections">
+                            <Slider />
+                        </div>
+                    </div>
+                    <Marquee />
                 </div>
             </div>
             <div className="card-container" style={{height:"190vh"}}>

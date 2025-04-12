@@ -635,3 +635,98 @@ html {
     color: #fff;
     opacity: 0;
 }
+.left-sections {
+    width: 41.666%; /* 5/12 of total width */
+    padding: 20px 38px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+  }
+  
+  .right-sections {
+    width: 58.333%; /* 7/12 of total width */
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    position: relative;
+  }
+  
+  .rectangle {
+    width: 33.3333%;
+    height: 407.04px;
+    background-color: #e2dbc9;
+    margin: 0 10px;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    color: white;
+    font-size: 18px;
+    flex-shrink: 0;
+    border-radius: 30px;
+  }
+  
+  .controls {
+    position: relative;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  .controls button {
+    color: #ffffff;
+    cursor: pointer;
+    background-color: #48853f;
+    border-radius: .63em;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 22px;
+    padding: 10px 15px;
+    transition: all .4s;
+  }
+  
+  /* Marquee Section */
+  .marquee-section {
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+
+    padding: 20px 0;
+  }
+  
+  .marquee {
+    display: flex;
+    animation: marquee 20s linear infinite;
+  }
+  
+  .circle {
+    width: 360.96px; /* 10vh radius = 20vh diameter */
+    height: 360.96px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 15px;
+    flex-shrink: 0;
+  }
+  
+  .circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
