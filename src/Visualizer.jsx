@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 const DotVisualizer = () => {
@@ -95,6 +95,11 @@ const DotVisualizer = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  const [isOn, setIsOn] = useState(true);
+
+  const handleClick = () => {
+    setIsOn(prev => !prev);
+  };
 
   return (
     <>
@@ -105,17 +110,32 @@ const DotVisualizer = () => {
         height: '70vh',
         position: 'fixed',
         top: '15vh',
-        left: 0,
+        left: "15px",
         opacity: 0.2,
         transition: 'opacity 0.5s ease',
         pointerEvents: 'none',
         zIndex: 0
       }}
-      className='visualizerRef'
+      className='visualizerRef px-3'
     />
     <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between '>
-      <div className=''>
+      <div className='d-flex align-items-center justify-content-between'>
         <h1 style={{fontSize:"115.2px"}}>40.9B tons</h1>
+        <div className='col-4 d-flex position-relative py-2'>
+          <div
+
+            className={`containerss ${isOn ? 'on' : 'off'}`}
+            onClick={handleClick}
+          >
+            <div className="toggle">
+              <div className="detail" />
+              <div className="detail" />
+              <div className="detail" />
+            </div>
+          </div>
+
+        </div>
+
       </div>
       <div className='d-flex flex-column '>
         <span style={{fontSize:"52px"}}>243.9M tons of which</span>

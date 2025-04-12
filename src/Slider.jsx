@@ -44,7 +44,7 @@ const Slider = () => {
     <div>
       <div className="slider" ref={sliderRef}>
         {slides.map((num, index) => (
-          <div key={index} className="col-3 rectangle">
+          <div key={index} className="col-4 rectangle">
             <div>
               0{num}
             </div>
