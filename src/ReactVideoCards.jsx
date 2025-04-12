@@ -243,7 +243,7 @@ const ReactVideoCards = () => {
 
                 </div>
             </div>
-            <div className="card-container card-visualizer" style={{ zIndex: 2 }}>
+            <div className="card-container card-visualizer" style={{ height:"110vh", zIndex: 2 }}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front align-items-start justify-content-start flex-column">
