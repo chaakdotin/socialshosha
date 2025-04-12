@@ -165,25 +165,12 @@ const ReactVideoCards = () => {
               pinSpacing: false, // Avoid extra spacing
               markers: false, // Set to true for debugging
             },
-          });
-        
+        });
           // First animation: Move visualizerRef left by 100px
-          tl.to('.visualizerRef', {
+        tl.to('.visualizerRef', {
             x: '-100px', // Move left
             duration: 1, // Relative duration in timeline
-          });
-          
-          // Second animation: Move card-visualizer up by 600px
-        //   tl.to('.card-visualizer', {
-        //     // y: '-600px', // Move up
-        //     duration: 0.5, // Relative duration in timeline
-        //   });
-        // tl.to('.card-visualizer',{
-        //     x:"-5%",
-        //     y:"-600px",
-        //     rotate:"-1deg",
-        //     duration: 1, // Relative duration in timeline
-        // })
+        });
         // Cleanup on component unmount
         return () => {
           tl.kill(); // Kill the timeline
