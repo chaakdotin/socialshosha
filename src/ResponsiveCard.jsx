@@ -53,7 +53,7 @@ export default function ResponsiveCard() {
                                 </div>
                             </div>
                         </div>
-                        <div class="cell_desc-text-2"><h6 class="h-h6">Sonar Music is a renowned music and sound studio based in Sydney, Australia that houses the nation's most distinguished composers and sound designers. A haven of sonic innovation, Sonar has become synonymous with premium original composition and sound design across Film, TV, Advertising and new media. Our approach is rooted in a deep understanding of the cinematic landscape, allowing us to seamlessly integrate music and sound to enhance the storytelling experience, while bringing a wealth of technical brilliance and artistic finesse to every project.</h6></div>
+                        <div className="cell_desc-text-2"><h6 className="h-h6">Sonar Music is a renowned music and sound studio based in Sydney, Australia that houses the nation's most distinguished composers and sound designers. A haven of sonic innovation, Sonar has become synonymous with premium original composition and sound design across Film, TV, Advertising and new media. Our approach is rooted in a deep understanding of the cinematic landscape, allowing us to seamlessly integrate music and sound to enhance the storytelling experience, while bringing a wealth of technical brilliance and artistic finesse to every project.</h6></div>
                     </div>
                 </div>
             </div>

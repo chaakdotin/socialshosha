@@ -5,9 +5,9 @@ import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
 import './home.css'
 import Blog from './Blog'
 import LetsTalk from './LetsTalk'
+import Visualizer from './Visualizer'
 import Footer from './Footer'
 const ReactVideoCards = () => {
-
     const revealSectionRef = useRef(null);
     const plainCardRef = useRef(null);
     const revealCardRef = useRef(null);
@@ -55,174 +55,141 @@ const ReactVideoCards = () => {
         return () => clearInterval(intervalIds);
     }, []);
     useEffect(() => {
-        // ---------- Layered Cards Animation ----------
-        // Create a ScrollTrigger for each layered card container.
-        cardContainersRef.current.forEach((container, index) => {
-            ScrollTrigger.create({
-                trigger: container,
-                start: "top center",
-                end: "bottom center",
-                onUpdate: () => {
-                    const rect = container.getBoundingClientRect();
+        // Handler function for the scroll event
+        const handleScroll = () => {
+          // ---------- Layered Cards Section Animation ----------
+            const containers = document.querySelectorAll('.card-container');
+            containers.forEach((container, index) => {
+                const rect = container.getBoundingClientRect();
+                
+                // Check if this container has "no-tilt" class.
+                const disableTilt = container.classList.contains('no-tilt');
+                if (index === 0) {
                     const containerCenter = rect.top + rect.height / 2;
                     let progress = 0;
-                    // For the first card use a special calculation:
-                    if (index === 0) {
-                        if (containerCenter < 0) {
-                            progress = Math.min(-containerCenter / (window.innerHeight / 2), 1);
-                        }
-                    } else {
-                        progress = (window.innerHeight - containerCenter) / window.innerHeight;
-                        progress = Math.min(Math.max(progress, 0), 1);
+                    if (containerCenter < 0) {
+                        progress = Math.min(-containerCenter / (window.innerHeight / 2), 1);
                     }
-                    const maxTranslate = -5; // in percent
-                    const maxRotate = -1;    // in degrees
-                    const currentTranslateX = progress * maxTranslate;
+                    // Read customizable parameters from CSS variables.
+                    const computedStyles = getComputedStyle(container);
+                    const maxTranslate = parseFloat(computedStyles.getPropertyValue('--card-max-translate')) || -5;
+                    const maxRotate = parseFloat(computedStyles.getPropertyValue('--card-max-rotate')) || -1;
+                    
+                    // If tilt is disabled via "no-tilt", always set rotation and horizontal translation to 0.
+                    const currentTranslateX = progress * (disableTilt ? 0 : maxTranslate);
                     const currentTranslateY = progress * maxTranslate;
-                    const currentRotate = progress * maxRotate;
-                    gsap.set(container, {
-                        xPercent: currentTranslateX,
-                        yPercent: currentTranslateY,
-                        rotation: currentRotate
-                    });
+                    const currentRotate = progress * (disableTilt ? 0 : maxRotate);
+                    
+                    container.style.transform = `translate(${currentTranslateX}%, ${currentTranslateY}%) rotate(${currentRotate}deg)`;
+                } else {
+                    if (rect.top > 0 || disableTilt) {
+                        // When the card's upper border is below the viewport top OR tilt is disabled:
+                        const containerCenter = rect.top + rect.height / 2;
+                        let verticalProgress = (window.innerHeight - containerCenter) / window.innerHeight;
+                        verticalProgress = Math.min(Math.max(verticalProgress, 0), 1);
+                        const currentTranslateY = verticalProgress * (-5);
+                        container.style.transform = `translate(0%, ${currentTranslateY}%) rotate(0deg)`;
+                    } else {
+                        // When rect.top <= 0 and tilt is enabled:
+                        const computedStyles = getComputedStyle(container);
+                        const thresholdFraction = parseFloat(computedStyles.getPropertyValue('--tilt-threshold')) || 0.3;
+                        const threshold = window.innerHeight * thresholdFraction;
+                        let tiltProgress = (-rect.top) / threshold;
+                        tiltProgress = Math.min(tiltProgress, 1);
+                        // Apply quadratic easing for smooth tilt.
+                        tiltProgress = Math.pow(tiltProgress, 2);
+                        const containerCenter = rect.top + rect.height / 2;
+                        let verticalProgress = (window.innerHeight - containerCenter) / window.innerHeight;
+                        verticalProgress = Math.min(Math.max(verticalProgress, 0), 1);
+                        const currentTranslateY = verticalProgress * (-5);
+                        const currentRotate = tiltProgress * (-1);
+                        const currentTranslateX = tiltProgress * (-5);
+                        container.style.transform = `translate(${currentTranslateX}%, ${currentTranslateY}%) rotate(${currentRotate}deg)`;
+                    }
                 }
             });
-        });
 
-        // ---------- Reveal Section (Curtain Reveal) Animation ----------
-        // totalDistance is 50vh expressed in pixels.
-        const totalDistance = window.innerHeight * .7;
-        // Create a ScrollTrigger for the reveal section. Note that we scale the progress so that
-        // when baseProgress reaches 1.8 the full animation is complete.
-        ScrollTrigger.create({
-            trigger: revealSectionRef.current,
-            start: "top top",
-            end: () => "+=" + window.innerHeight * 2, // scroll distance so baseProgress goes up to 1.8
-            scrub: true,
-            onUpdate: (self) => {
-                // Calculate baseProgress similar to the original code:
-                let baseProgress = self.progress * 1.8;
+                    
+            /* ---------- Reveal Section (Curtain Reveal) Animation ---------- */
+            const revealSection = document.querySelector('.reveal-section');
+            const plainCard = document.querySelector('.plain-card');
+            const revealCard = document.querySelector('.reveal-card');
+            if (revealSection && plainCard && revealCard) {
+                // Total upward translation distance (in pixels), computed from CSS variable.
+                const totalDistance = (window.innerHeight * parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-total-distance'))) / 100;
+                const sectionTop = revealSection.offsetTop;
+                let scrollOffset = window.scrollY - sectionTop;
+                let baseProgress = scrollOffset / totalDistance;
+                if (baseProgress < 0) baseProgress = 0;
+                
+                // Tilt thresholds for reveal section, customizable via CSS variables.
+                const tiltStart = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-tilt-start')) || 1.5;
+                const tiltEnd = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-tilt-end')) || 1.8;
+                const fullTilt = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-full-tilt')) || 5;
                 if (baseProgress < 1) {
-                    // Phase 1: Plain card translates upward gradually.
-                    gsap.set(plainCardRef.current, {
-                        y: -baseProgress * totalDistance,
-                        rotation: 0,
-                        xPercent: 0
-                    });
-                    gsap.set(revealCardRef.current, { opacity: 0 });
+                    plainCard.style.transform = `translateY(-${baseProgress * totalDistance}px)`;
+                    revealCard.style.opacity = 0;
                 } else {
-                    // Beyond phase 1, show the reveal card.
-                    gsap.set(revealCardRef.current, { opacity: 1 });
-                    if (baseProgress < 1.5) {
-                        // Keep plain card fully translated with no tilt yet.
-                        gsap.set(plainCardRef.current, { y: -totalDistance, rotation: 0, xPercent: 0 });
+                    // Instantly reveal the card once upward translation is complete.
+                    revealCard.style.opacity = 1;
+                    if (baseProgress < tiltStart) {
+                        plainCard.style.transform = `translateY(-${totalDistance}px)`;
                     } else {
-                        // Phase 2: Gradually add tilt (rotation and translateX) from baseProgress 1.5 to 1.8.
-                        let tiltProgress = (baseProgress - 1.5) / (1.8 - 1.5);
+                        let tiltProgress = (baseProgress - tiltStart) / (tiltEnd - tiltStart);
                         tiltProgress = Math.min(tiltProgress, 1);
-                        gsap.set(plainCardRef.current, {
-                            y: -totalDistance,
-                            rotation: -tiltProgress * 5,
-                            xPercent: -tiltProgress * 5
-                        });
+                        plainCard.style.transform = `translateY(-${totalDistance}px) rotate(${-tiltProgress * fullTilt}deg) translateX(${-tiltProgress * fullTilt}%)`;
                     }
                 }
             }
-        });
-    }, []);
+        };
+    
+        // Attach the scroll event listener when the component mounts.
+        window.addEventListener("scroll", handleScroll);
+        
+        // Cleanup the event listener on component unmount.
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
 
+    }, []);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        // Create GSAP timeline with ScrollTrigger
+        const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: '.card-visualizer',
+              start: '-27px top', // Start when top of element is 27px from viewport top
+              end: '+=500', // Scroll distance for the animation
+              scrub: true, // Smoothly scrub animation with scroll
+              pin: true, // Pin the card-visualizer during animation
+              pinSpacing: false, // Avoid extra spacing
+              markers: false, // Set to true for debugging
+            },
+          });
+        
+          // First animation: Move visualizerRef left by 100px
+          tl.to('.visualizerRef', {
+            x: '-100px', // Move left
+            duration: 1, // Relative duration in timeline
+          });
+        
+          // Second animation: Move card-visualizer up by 600px
+          tl.to('.card-visualizer', {
+            y: '-600px', // Move up
+            duration: 0.5, // Relative duration in timeline
+          });
+        // Cleanup on component unmount
+        return () => {
+          tl.kill(); // Kill the timeline
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Kill all ScrollTriggers
+        };
+      }, []);
     return (
         <>
             <style>
                 {
                     
-                    ` 
-                    @import 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap';
-                    body,
-                    html {
-                        margin: 0;
-                        padding: 0;
-                        overflow-x: hidden;
-                        font-family: sans-serif;
-                        background: transparent;
-                    }
-
-                    .background-video {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100vh;
-                        z-index: -1;
-                        overflow: hidden;
-                    }
-
-                    .background-video video {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-
-                    .cards-container {
-                        position: relative;
-                        width: 100%;
-                        height: 100vh;
-                        margin-bottom: 25vh; /* Only space at the bottom; no extra top spacing */
-                        transform-origin: top left;
-                    }  
-                    .cards-container:nth-child(1) { z-index: 1; }
-                    .cards-container:nth-child(2) { z-index: 2; }
-                    .cards-container:nth-child(3) { z-index: 3; }
-                    .cards-container:nth-child(4) { z-index: 4; }
-                    .cards-container:nth-child(5) { z-index: 5; }
-
-                    .cards {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        transform-origin: top left;
-                    }
-                    .card-back {
-                        z-index: 1;
-                        background: #F7F8F7;
-                        transform: rotate(-2deg);
-                        outline:dashed;
-                        outline-offset:-14px;
-                    }
-
-                    /* The middle layer with a lighter tilt */
-                    .card-middle {
-                        z-index: 2;
-                        background: #D0D2D1;
-                        transform: rotate(-1deg);
-                        outline:dashed;
-                        outline-offset:-14px;  
-                    }
-                    .card-front {
-                        z-index: 3;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 3em;
-                        color: #000;
-                        will-change: transform;
-                        background: rgba(255, 255, 255, 1);
-                    }
-                    .cardss {
-                        width: 100%;
-                        height: 100vh;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 3em;
-                        color: #fff;
-                        will-change: transform;
-                    }
-
-
-                `
+                    ``
                 }
             </style>
             <div className="background-video">
@@ -231,7 +198,7 @@ const ReactVideoCards = () => {
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div className="cards-container" ref={addToRefs}>
+            <div className="card-container">
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front" >
@@ -282,12 +249,14 @@ const ReactVideoCards = () => {
 
                 </div>
             </div>
-            <div className="cards-container " ref={addToRefs}>
+            <div className="card-container card-visualizer no-tilt" style={{ zIndex: 2 }}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
-                <div className="cards card-front flex-column "></div>
+                <div className="cards card-front align-items-start justify-content-start">
+                    <Visualizer />
+                </div>
             </div>
-            <div className="cards-container " style={{height:"190vh"}} ref={addToRefs}>
+            <div className="card-container " style={{height:"190vh"}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front flex-column ">
@@ -327,7 +296,7 @@ const ReactVideoCards = () => {
                 </div>
             </div>
 
-            <div className="cards-container" ref={addToRefs}>
+            <div className="card-container ">
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front">

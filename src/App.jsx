@@ -1,6 +1,6 @@
 import './App.css'
 
-import React, {useLayoutEffect, useEffect,useState, useRef } from "react";
+import React, {lazy} from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,13 +11,11 @@ import {gsap,ScrollTrigger} from "gsap/all";
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import Header from './Header'
-import Home from './ReactVideoCards'
-import Work from './Work'
-import Contact from './Contact'
-import Services from './Services'
+const Home = lazy(() => import('./ReactVideoCards'));
+const Work = lazy(() => import('./Work'));
+const Contact = lazy(() => import('./Contact'));
+const Services = lazy(() => import('./Services'));
 import PageLoadAnimation from './PageLoadAnimation'
-
-
 
 const App = () => {
   const lenis = new Lenis({

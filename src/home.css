@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap';
+
 :root {
     --size-unit: 16;
     --size-container-ideal: 1440;
@@ -9,6 +11,7 @@
     --duration-default: 0.525s;
     --animation-default: var(--duration-default) var(--cubic-default);
 }
+
 :root {
 
     --color--light: #f7f7f7;
@@ -55,38 +58,42 @@
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-  }
-  @font-face {
+}
+
+@font-face {
     font-family: 'TWK Everett';
     src: url('https://cdn.prod.website-files.com/67acdc4f394bcf4f3e3669b6/67acdc4f394bcf4f3e3669c1_TWKEverett-Medium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
-  }
-  @font-face {
+}
+
+@font-face {
     font-family: 'TWK Everett Mono';
-    src: url('https://cdn.prod.website-files.com/67acdc4f394bcf4f3e3669b6/67acdc4f394bcf4f3e3669c2_TWKEverettMono-Regular.otf') format('opentype');
+    src:
+        url('https://cdn.prod.website-files.com/67acdc4f394bcf4f3e3669b6/67acdc4f394bcf4f3e3669c2_TWKEverettMono-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-  }
+}
+
 /* .svg-animate path{
-    fill: none;
-    stroke: #fff;
-    stroke-dasharray: 966.631px;
-    stroke-dashoffset: 766.792px;
-    animation: hello_animation linear 10s infinite;
-    opacity: .5
+fill: none;
+stroke: #fff;
+stroke-dasharray: 966.631px;
+stroke-dashoffset: 766.792px;
+animation: hello_animation linear 10s infinite;
+opacity: .5
 }
 
 @keyframes hello_animation {
-    to {
-        stroke-dashoffset: 0;
-    }
+to {
+stroke-dashoffset: 0;
+}
 
-    form {
-        stroke-dashoffset: 766.792;
-    }
+form {
+stroke-dashoffset: 766.792;
+}
 } */
 .nav-inner {
     height: 1.50em;
@@ -105,17 +112,22 @@
     display: flex;
     width: calc(100em - 23.5em);
 }
+
 .nav-inner__logo {
     width: 3em;
     color: #000 !important;
 }
+
 .w-inline-block {
     max-width: 100%;
     display: inline-block;
 }
-.nav-inner__left, .navs {
+
+.nav-inner__left,
+.navs {
     transition: transform var(--animation-default);
 }
+
 .svg {
     justify-content: center;
     align-items: center;
@@ -124,6 +136,7 @@
     display: flex;
     overflow: visible !important;
 }
+
 .nav-inner__right {
     grid-column-gap: .2em;
     grid-row-gap: .2em;
@@ -135,27 +148,31 @@
     transition: color .2s, background-color .2s;
     display: flex;
 }
+
 .code.eyebrow {
     color: var(--color--blue-500);
 }
+
 .eyebrow {
     font-family: TWK Everett Mono, Arial, sans-serif;
     font-size: 14px;
     line-height: 1;
 }
+
 .u--fw-med {
     font-weight: 500;
 }
+
 .p-small {
     letter-spacing: .01em;
     margin-bottom: 0;
     font-size: 15px;
     line-height: 1.25;
-    font-family: TWK Everett, Arial, sans-serif!important;
+    font-family: TWK Everett, Arial, sans-serif !important;
 }
 
 .navs {
-   
+
     z-index: 99;
     justify-content: space-between;
     align-items: stretch;
@@ -166,41 +183,52 @@
     left: 0;
     right: 0;
 }
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .nav-link:nth-of-type(1):hover, .nav-link:nth-of-type(1).w--current {
+
+    .nav-link:nth-of-type(1):hover,
+    .nav-link:nth-of-type(1).w--current {
         background: var(--color--blue-700);
     }
 }
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .nav-link:hover .p-medium {
         transform: translate(0px, -95%);
     }
 }
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .nav-link .p-medium {
         text-shadow: 0px 1em currentColor;
         transition: transform 0.45s cubic-bezier(0.15, 0.5, 0.05, 1);
     }
 }
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     [data-arrow-button]:hover .button-icon__wrap.is--duplicate {
         transform: translate(0%, 0px);
     }
 }
+
 .nav-link.size--1 {
     width: 14%;
 }
+
 .nav-link.size--2 {
     width: 10%;
 }
-.nav-link.size--3{
+
+.nav-link.size--3 {
     width: 10%;
 }
+
 .nav-link.size--4 {
     width: 12%;
 }
+
 .nav-link {
-    height: 8vh!important;
+    height: 8vh !important;
     border: 2px solid var(--color--blue-900);
     background-color: var(--color--light);
     justify-content: center;
@@ -209,20 +237,23 @@
     margin-right: -2px;
     transition: background-color .3s;
     display: flex;
-    color:#000!important;
+    color: #000 !important;
 }
+
 .w-inline-block {
     max-width: 100%;
     display: inline-block;
 }
+
 .nav-link__inner {
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     display: flex;
-    font-family: TWK Everett, Arial, sans-serif!important;
+    font-family: TWK Everett, Arial, sans-serif !important;
 }
+
 .nav-link__text-wrap {
     justify-content: center;
     align-items: center;
@@ -232,23 +263,28 @@
     display: flex;
     overflow: hidden;
 }
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .nav-link .p-medium {
         text-shadow: 0px 1em currentColor;
         transition: transform 0.45s cubic-bezier(0.15, 0.5, 0.05, 1);
     }
 }
+
 .p-medium.u--fw-med {
     letter-spacing: -.05em;
 }
+
 .u--fw-med {
     font-weight: 500;
 }
+
 .p-medium {
     letter-spacing: -.02em;
     font-size: 14px;
     line-height: 1.2;
 }
+
 .nav-cta {
     z-index: 2;
     border-bottom: 2px solid var(--color--blue-900);
@@ -261,15 +297,16 @@
     padding-top: 2px;
     padding-left: 2px;
     padding-right: 2px;
-    display: flex
-;
+    display: flex;
     position: relative;
     overflow: hidden;
 }
+
 .button-icon__wrap.is--nav.is--duplicate {
     border-left-style: solid;
     flex: none;
 }
+
 .button-icon__wrap.is--duplicate {
     position: absolute;
     top: 2px;
@@ -277,9 +314,11 @@
     left: 0;
     transform: translate(-100%);
 }
+
 .button-icon__wrap.is--nav {
     border-left-style: none;
 }
+
 .button-icon__wrap {
     aspect-ratio: 1;
     border-left: 2px solid var(--color--blue-900);
@@ -288,46 +327,46 @@
     justify-content: center;
     align-items: center;
     transition: transform .525s cubic-bezier(.525, 0, 0, 1);
-    display: flex
-;
+    display: flex;
     position: relative;
     overflow: hidden;
 }
+
 .button-icon {
     justify-content: center;
     align-items: center;
     width: 1.375em;
     transition: transform .525s cubic-bezier(.525, 0, 0, 1);
-    display: flex
-;
+    display: flex;
     transform: rotate(-45deg);
 }
+
 .button-text__wrap {
     flex: 1;
     justify-content: center;
     align-items: center;
     transition: transform .525s cubic-bezier(.525, 0, 0, 1);
-    display: flex
-;
+    display: flex;
 }
+
 .text-wrap__innner {
     justify-content: center;
     align-items: center;
     padding-bottom: .15em;
     padding-left: .25em;
     padding-right: .25em;
-    display: flex
-;
+    display: flex;
     overflow: clip;
 }
-
 
 .button-icon__wrap.is--nav.is--main {
     flex: none;
 }
+
 .button-icon__wrap.is--nav {
     border-left-style: none;
 }
+
 .button-icon__wrap {
     aspect-ratio: 1;
     border-left: 2px solid var(--color--blue-900);
@@ -336,8 +375,7 @@
     justify-content: center;
     align-items: center;
     transition: transform .525s cubic-bezier(.525, 0, 0, 1);
-    display: flex
-;
+    display: flex;
     position: relative;
     overflow: hidden;
 }
@@ -347,22 +385,24 @@
     align-items: center;
     width: 1.375em;
     transition: transform .525s cubic-bezier(.525, 0, 0, 1);
-    display: flex
-;
+    display: flex;
     transform: rotate(-45deg);
 }
+
 .right-video-section {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .video-stacks {
     position: relative;
     width: 100%;
-    top:-150px;
+    top: -150px;
     left: -100px;
-  }
+}
+
 .video-stacks video {
     position: absolute;
     width: 100%;
@@ -371,7 +411,8 @@
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.6s ease, opacity 0.6s ease;
-  }
+}
+
 .tops {
     transform: translate(-100px, -100px);
     z-index: 3;
@@ -419,19 +460,154 @@
     animation: wipeIns 0.6s forwards;
 }
 
+:root {
+    /* Default parameters for layered cards animation */
+    --card-max-translate: -5;
+    /* in percent */
+    --card-max-rotate: -1;
+    /* in degrees */
+    /* Default tilt threshold for smooth tilt animation of subsequent cards */
+    --tilt-threshold: 0.3;
+    /* fraction of viewport height (30% of viewport height) */
+
+    /* Parameters for reveal section animation */
+    --reveal-total-distance: 50;
+    /* upward translation in vh units */
+    --reveal-tilt-start: 1.5;
+    /* baseProgress at which tilt starts */
+    --reveal-tilt-end: 1.8;
+    /* baseProgress when full tilt is achieved */
+    --reveal-full-tilt: 5;
+    /* full tilt angle in deg / shift in percent */
+}
+
+/* ---------- Layered Cards Section ---------- */
+.card-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 25vh;
+    /* Bottom gap */
+    transform-origin: top left;
+    /* Aap har card-container par alag custom properties bhi set kar sakte hain */
+    /* Example: style="--card-max-translate: -8; --card-max-rotate: -2;" */
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: sans-serif;
+    background: transparent;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 25vh;
+    /* Only space at the bottom; no extra top spacing */
+    transform-origin: top left;
+}
+
+
+.card-container:nth-child(1) {
+    z-index: 1;
+}
+
+.card-container:nth-child(2) {
+    z-index: 2;
+}
+
+.card-container:nth-child(3) {
+    z-index: 3;
+}
+
+.card-container:nth-child(4) {
+    z-index: 4;
+}
+
+.card-container:nth-child(5) {
+    z-index: 5;
+}
+
+.cards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: top left;
+}
+
+.card-back {
+    z-index: 1;
+    background: #F7F8F7;
+    transform: rotate(-2deg);
+    outline: dashed;
+    outline-offset: -14px;
+}
+
+/* The middle layer with a lighter tilt */
+.card-middle {
+    z-index: 2;
+    background: #D0D2D1;
+    transform: rotate(-1deg);
+    outline: dashed;
+    outline-offset: -14px;
+}
+
+.card-front {
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: #000;
+    will-change: transform;
+    background: rgba(255, 255, 255, 1);
+}
+
+.cardss {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: #fff;
+    will-change: transform;
+}
 
 /* ---------- Reveal Section (Curtain Reveal Effect) ---------- */
 .reveal-section {
     position: relative;
-    height: 300vh;
-  }
-  
-  /* Plain card acting as the curtain */
-  .plain-card {
+    height: 200vh;
+}
+
+/* Plain card acting as the curtain */
+.plain-card {
     position: sticky;
     bottom: 0;
-    height: 300vh;
-    background: #ffffff; /* Teal */
+    height: 200vh;
+    background: #ffffff;
+    /* Teal */
     z-index: 2;
     display: flex;
     align-items: center;
@@ -440,16 +616,17 @@
     font-size: 3em;
     color: #000;
     transition: transform 0.3s ease;
-  }
-  
-  /* Reveal card fixed at bottom; height 100vh */
-  .reveal-card {
+}
+
+/* Reveal card fixed at bottom; height 100vh */
+.reveal-card {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #000000; /* Distinct red */
+    background: #000000;
+    /* Distinct red */
     z-index: 1;
     display: flex;
     align-items: end;
@@ -457,4 +634,4 @@
     font-size: 14px;
     color: #fff;
     opacity: 0;
-  }
+}

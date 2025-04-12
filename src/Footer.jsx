@@ -182,16 +182,16 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className='d-flex justify-content-between'>
-                    <div class="footer__newsletter">
-                        <div class="newsletter">
+                    <div className="footer__newsletter">
+                        <div className="newsletter">
                             <form action="">
-                                <div class="form-input">
-                                    <div class="form-input__el-wrapper">
-                                        <input class="form-input__el h3 fw470" type="email" name="email" required="" value="" placeholder="Newsletter" />
+                                <div className="form-input">
+                                    <div className="form-input__el-wrapper">
+                                        <input className="form-input__el h3 fw470" type="email" name="email" required=""  placeholder="Newsletter" />
                                     </div>
                                 </div>
-                                <button type="submit" aria-label="Submit newsletter subscription form" class="newsletter__btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 19" class="newsletter__svg">
+                                <button type="submit" aria-label="Submit newsletter subscription form" className="newsletter__btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 19" className="newsletter__svg">
                                         <path
                                             d="m10.392 16.88 7.232-7.264-7.264-7.232 1.696-1.76 8.992 8.992-8.96 8.992zM.568 8.304h18.4v2.656H.568z">
                                         </path>
@@ -200,18 +200,18 @@ export default function Footer() {
                             </form>
                         </div>
                     </div>
-                    <div class="footer__bottom p4 ttu fw4470 slash-light">
-                        <p class="footer__copyrights p-0 m-0">
+                    <div className="footer__bottom p4 ttu fw4470 slash-light">
+                        <p className="footer__copyrights p-0 m-0">
                             © <span>THE LINE ANIMATION STUDIO</span> 2025
                         </p>
-                        <i class="footer__copyrights-slash">&nbsp;/&nbsp;</i>
-                        <button class="footer__credits p4 ttu fw4470">
+                        <i className="footer__copyrights-slash">&nbsp;/&nbsp;</i>
+                        <button className="footer__credits p4 ttu fw4470">
                             Site Credits
                         </button>
                         <i>&nbsp;/&nbsp;</i>
-                        <a href="/privacy" class="">Privacy</a>
+                        <a href="/privacy" className="">Privacy</a>
                         <i>&nbsp;/&nbsp;</i>
-                        <button aria-label="Scroll to the top of the page" class="p4 ttu back-to-top fw4470">Up</button>
+                        <button aria-label="Scroll to the top of the page" className="p4 ttu back-to-top fw4470">Up</button>
                     </div>
                 </div>
             </div>
