@@ -1,149 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cyclic Stacked Videos with Centered Section & Side Text</title>
-  <style>
-    /* पूरे पेज के लिए बेसिक सेटअप */
-    body {
-      margin: 0;
-      position: relative;
-      overflow: hidden;
-      height: 100vh;
-      font-family: sans-serif;
-    }
-    /* Left text section - स्क्रीन के बाएँ 25% में, vertical center में */
-    .left-text {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 25%;
-      transform: translateY(-50%);
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
-      background: #eee;
-    }
-    /* Right text section - स्क्रीन के दाएँ 25% में, vertical center में */
-    .right-text {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      width: 25%;
-      transform: translateY(-50%);
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
-      background: #eee;
-    }
-    /* Center video section - 50% चौड़ाई में, बिल्कुल center में */
-    .video-section {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 50%;
-      transform: translate(-50%, -50%);
-    }
-    /* वीडियो स्टैक कंटेनर */
-    .video-stack {
-      position: relative;
-      width: 100%;
-    }
-    /* वीडियो का बेसिक स्टाइल */
-    .video-stack video {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: transform 0.6s ease, opacity 0.6s ease;
-    }
-    /* पोजीशन क्लासेस - वीडियो को अलग-अलग offset देने के लिए */
-    .top {
-      transform: translate(200px, -200px);
-      z-index: 3;
-    }
-    .middle {
-      transform: translate(100px, -100px);
-      z-index: 2;
-    }
-    .bottom {
-      transform: translate(0, 0);
-      z-index: 1;
-    }
-    /* wipe out animation: टॉप वीडियो दाईं ओर शिफ्ट होकर fade-out होगी */
-    @keyframes wipeOut {
-      from { transform: translate(200px, -200px); opacity: 1; }
-      to   { transform: translate(300px, -300px); opacity: 0; }
-    }
-    .wipe-out {
-      animation: wipeOut 0.6s forwards;
-    }
-    /* wipe in animation: नई वीडियो lower left से आकर fade-in होगी */
-    @keyframes wipeIn {
-      from { transform: translate(-0px, 0px); opacity: 0; }
-      to   { transform: translate(0, 0); opacity: 1; }
-    }
-    .wipe-in {
-      animation: wipeIn 0.6s forwards;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Dots Visualizer</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh; /* Extended height for scrolling */
+            background-color: #262626; /* Dark gray background */
+            overflow-x: hidden;
+        }
+
+        .visualizer {
+            width: 100vw;
+            height: 70vh;
+            position: fixed;
+            top: 15vh;
+            left: 0;
+            opacity: 0.2; /* Low initial opacity */
+            transition: opacity 0.5s ease;
+        }
+
+        .column {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #d3d3d3; /* Default dot color: light grey */
+            border-radius: 50%;
+            margin: 9.5px 0; /* 25px center-to-center */
+            opacity: 1;
+            transition: opacity 0.2s ease, background-color 0.3s ease;
+        }
+
+        .dot.hidden {
+            opacity: 0;
+        }
+
+        .dot.highlight {
+            background-color: #ffd60a; /* Highlight color */
+        }
+
+        .text-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10; /* Text above dots */
+        }
+
+        .switch-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 20; /* Switch above everything */
+        }
+
+        /* Custom switch styling */
+        .custom-switch .form-check-input {
+            width: 2.5em;
+            height: 1.5em;
+            cursor: pointer;
+        }
+
+        .custom-switch .form-check-input:checked {
+            background-color: #ffd60a;
+            border-color: #ffd60a;
+        }
+    </style>
 </head>
 <body>
-  <!-- Left Text Section -->
-  <div class="left-text">
-    <p>यहाँ बाएँ तरफ का टेक्स्ट है।</p>
-  </div>
-
-  <!-- Center Video Section -->
-  <div class="video-section">
-    <div class="video-stack">
-      <video class="top" src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4" autoplay muted loop></video>
-      <video class="middle" src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4" autoplay muted loop></video>
-      <video class="bottom" src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4" autoplay muted loop></video>
+    <div class="visualizer" id="visualizer">
+        <!-- Bootstrap container for text -->
+        <div class="text-container container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-start fw-bold fs-5 text-d3d3d3" id="text-top">Visualizer</p>
+                    <p class="text-start fw-bold fs-5 text-d3d3d3" id="text-bottom">Scroll to Highlight</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Right Text Section -->
-  <div class="right-text">
-    <p>यहाँ दाएँ तरफ का टेक्स्ट है।</p>
-  </div>
+    <!-- Bootstrap switch -->
+    <div class="switch-container">
+        <div class="form-check form-switch custom-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="colorSwitch">
+            <label class="form-check-label text-white" for="colorSwitch">Color Mode</label>
+        </div>
+    </div>
 
-  <script>
-    function rotateVideos() {
-      // तीन video elements का चयन करें
-      const topVideo = document.querySelector('.video-stack .top');
-      const middleVideo = document.querySelector('.video-stack .middle');
-      const bottomVideo = document.querySelector('.video-stack .bottom');
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Custom color classes for text
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            .text-d3d3d3 { color: #d3d3d3; transition: color 0.3s ease; }
+            .text-ffd60a { color: #ffd60a; }
+        `;
+        document.head.appendChild(styleSheet);
 
-      // टॉप वीडियो पर wipe-out animation लगाएं
-      topVideo.classList.add('wipe-out');
+        const visualizer = document.getElementById('visualizer');
+        const colorSwitch = document.getElementById('colorSwitch');
+        const vw = window.innerWidth;
+        const vh = window.innerHeight * 0.7; // 70vh
+        const dotSpacing = 25; // 25px center-to-center
+        const dotSize = 6; // Dot size
+        const columns = Math.floor(vw / dotSpacing); // Number of columns
+        const dotsPerColumn = Math.floor(vh / dotSpacing); // Total dots per column
+        const staticDots = 6; // 6 static dots
+        const maxAnimatedDots = dotsPerColumn - staticDots; // Max animated dots
 
-      // 600ms बाद क्लासेस reassign करके positions बदलें
-      setTimeout(() => {
-        // टॉप वीडियो wipe-out के बाद bottom position में आकर wipe-in effect के साथ सेट होगी
-        topVideo.classList.remove('wipe-out', 'top');
-        topVideo.classList.add('bottom', 'wipe-in');
+        // Array for column animation phases
+        const phases = [];
+        let i = 0;
+        while (i < columns) {
+            const groupSize = Math.random() < 0.3 ? (Math.random() < 0.5 ? 2 : 3) : 1;
+            const phaseOffset = Math.random() * Math.PI * 2;
+            const speed = 0.0002 + Math.random() * 0.0004;
 
-        // Middle वीडियो ऊपर shift होकर top बन जाती है
-        middleVideo.classList.remove('middle');
-        middleVideo.classList.add('top');
+            for (let j = 0; j < groupSize && i < columns; j++) {
+                phases.push({ offset: phaseOffset, speed });
+                i++;
+            }
+        }
 
-        // Bottom वीडियो middle बन जाती है
-        bottomVideo.classList.remove('bottom');
-        bottomVideo.classList.add('middle');
+        // Create columns and dots
+        for (let i = 0; i < columns; i++) {
+            const column = document.createElement('div');
+            column.className = 'column';
+            column.style.left = `${i * dotSpacing}px`;
 
-        // wipe-in effect खत्म होने के बाद wipe-in class हटा दें
-        setTimeout(() => {
-          topVideo.classList.remove('wipe-in');
-        }, 600);
-      }, 600);
-    }
+            for (let j = 0; j < dotsPerColumn; j++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (j < staticDots) {
+                    dot.classList.add('static');
+                }
+                column.appendChild(dot);
+            }
 
-    // हर 2 सेकंड में वीडियो rotate करें
-    setInterval(rotateVideos, 2000);
-  </script>
+            visualizer.appendChild(column);
+        }
+
+        // Animation for dot visibility
+        const columnsElements = document.querySelectorAll('.column');
+        function animateDots() {
+            columnsElements.forEach((column, colIndex) => {
+                const phase = Date.now() * phases[colIndex].speed + phases[colIndex].offset;
+                const visibleAnimatedDots = Math.floor(
+                    (Math.sin(phase) + 1) / 2 * maxAnimatedDots
+                );
+
+                const dots = column.querySelectorAll('.dot');
+                dots.forEach((dot, dotIndex) => {
+                    if (dotIndex < staticDots) {
+                        dot.classList.remove('hidden');
+                    } else if (dotIndex < staticDots + visibleAnimatedDots) {
+                        dot.classList.remove('hidden');
+                    } else {
+                        dot.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        // Function for smooth bottom-to-top color flow
+        function triggerColorFlow() {
+            const duration = 2000; // 2 seconds for the flow
+            const startTime = Date.now();
+
+            function colorAnimation() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1); // 0 to 1
+                const rowsToHighlight = Math.floor(progress * dotsPerColumn);
+
+                columnsElements.forEach(column => {
+                    const dots = column.querySelectorAll('.dot');
+                    dots.forEach((dot, dotIndex) => {
+                        if (dotIndex < rowsToHighlight) {
+                            dot.classList.add('highlight');
+                        } else {
+                            dot.classList.remove('highlight');
+                        }
+                    });
+                });
+
+                // Highlight text at the end
+                const textTop = document.getElementById('text-top');
+                const textBottom = document.getElementById('text-bottom');
+                if (rowsToHighlight >= dotsPerColumn - 2) {
+                    textTop.classList.remove('text-d3d3d3');
+                    textTop.classList.add('text-ffd60a');
+                    textBottom.classList.remove('text-d3d3d3');
+                    textBottom.classList.add('text-ffd60a');
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(colorAnimation);
+                }
+            }
+
+            requestAnimationFrame(colorAnimation);
+        }
+
+        // Main animation loop
+        function animate() {
+            animateDots();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Switch event listener
+        colorSwitch.addEventListener('change', () => {
+            const isChecked = colorSwitch.checked;
+            const textTop = document.getElementById('text-top');
+            const textBottom = document.getElementById('text-bottom');
+
+            if (isChecked) {
+                // Full opacity
+                visualizer.style.opacity = 1;
+
+                // Set all dots to highlight color
+                columnsElements.forEach(column => {
+                    const dots = column.querySelectorAll('.dot');
+                    dots.forEach(dot => {
+                        dot.style.backgroundColor = '#ffd60a';
+                    });
+                });
+
+                // Reset text color to match dots
+                textTop.classList.remove('text-d3d3d3');
+                textTop.classList.add('text-ffd60a');
+                textBottom.classList.remove('text-d3d3d3');
+                textBottom.classList.add('text-ffd60a');
+
+                // Trigger smooth color flow
+                triggerColorFlow();
+            } else {
+                // Revert to default
+                visualizer.style.opacity = 0.2; // Reset to initial opacity
+                columnsElements.forEach(column => {
+                    const dots = column.querySelectorAll('.dot');
+                    dots.forEach(dot => {
+                        dot.style.backgroundColor = '#d3d3d3';
+                        dot.classList.remove('highlight');
+                    });
+                });
+
+                // Revert text color
+                textTop.classList.add('text-d3d3d3');
+                textTop.classList.remove('text-ffd60a');
+                textBottom.classList.add('text-d3d3d3');
+                textBottom.classList.remove('text-ffd60a');
+            }
+        });
+
+        // Scroll-based opacity and color change (when switch is off)
+        window.addEventListener('scroll', () => {
+            if (!colorSwitch.checked) {
+                const scrollY = window.scrollY;
+                const maxScroll = document.body.scrollHeight - window.innerHeight;
+                const scrollFraction = scrollY / maxScroll;
+
+                // Phase 1: Increase opacity (0% to 33%)
+                const opacityThreshold = 0.33;
+                if (scrollFraction <= opacityThreshold) {
+                    const opacityProgress = scrollFraction / opacityThreshold;
+                    visualizer.style.opacity = 0.2 + (0.8 * opacityProgress);
+                } else {
+                    visualizer.style.opacity = 1;
+                }
+
+                // Phase 2: Color change (33% to 100%)
+                const colorThreshold = 0.33;
+                const colorFraction = Math.max(0, (scrollFraction - colorThreshold) / (1 - colorThreshold));
+                const rowsToHighlight = Math.floor(colorFraction * dotsPerColumn);
+
+                columnsElements.forEach(column => {
+                    const dots = column.querySelectorAll('.dot');
+                    dots.forEach((dot, dotIndex) => {
+                        if (dotIndex < rowsToHighlight) {
+                            dot.classList.add('highlight');
+                        } else {
+                            dot.classList.remove('highlight');
+                        }
+                    });
+                });
+
+                // Highlight text
+                const textHighlightThreshold = dotsPerColumn - 2;
+                const textTop = document.getElementById('text-top');
+                const textBottom = document.getElementById('text-bottom');
+                if (rowsToHighlight >= textHighlightThreshold) {
+                    textTop.classList.remove('text-d3d3d3');
+                    textTop.classList.add('text-ffd60a');
+                    textBottom.classList.remove('text-d3d3d3');
+                    textBottom.classList.add('text-ffd60a');
+                } else {
+                    textTop.classList.add('text-d3d3d3');
+                    textTop.classList.remove('text-ffd60a');
+                    textBottom.classList.add('text-d3d3d3');
+                    textBottom.classList.remove('text-ffd60a');
+                }
+            }
+        });
+    </script>
 </body>
 </html>

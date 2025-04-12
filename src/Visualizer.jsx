@@ -5,7 +5,7 @@ const DotVisualizer = () => {
   const visualizerRef = useRef(null);
   const columnsRef = useRef([]);
   const phasesRef = useRef([]);
-
+  
   useEffect(() => {
     const visualizer = visualizerRef.current;
     const vw = window.innerWidth;
@@ -95,11 +95,42 @@ const DotVisualizer = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const [isOn, setIsOn] = useState(true);
 
+  const [isOn, setIsOn] = useState(false);
+  
   const handleClick = () => {
     setIsOn(prev => !prev);
+    const isChecked = isOn;
+    const textTop = document.getElementById('text-top');
+    const textBottom = document.getElementById('text-bottom');
+    const visualizer =  document.querySelector('.visualizerRef');
+    const columnsElements = document.querySelectorAll('.column');
+    if (isChecked) {
+        // Full opacity
+        visualizer.style.opacity = 0.2;
+        columnsElements.forEach(column => {
+            const dots = column.querySelectorAll('.dot');
+            dots.forEach(dot => dot.classList.remove('highlight'));
+        });
+        textTop.classList.remove('highlight');
+        textBottom.classList.remove('highlight');
+
+        // Trigger smooth color flow
+
+      } else {
+        // Full opacity, all highlighted
+        visualizer.style.opacity = 1;
+        setTimeout(()=>{
+            columnsElements.forEach(column => {
+            const dots = column.querySelectorAll('.dot');
+            dots.forEach(dot => dot.classList.add('highlight'));
+        });
+        textTop.classList.add('highlight');
+        textBottom.classList.add('highlight');
+        }, 2000)
+    }
   };
+  
 
   return (
     <>
@@ -119,11 +150,10 @@ const DotVisualizer = () => {
       className='visualizerRef px-3'
     />
     <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between '>
-      <div className='d-flex align-items-center justify-content-between'>
-        <h1 style={{fontSize:"115.2px"}}>40.9B tons</h1>
+      <div className='d-flex align-items-center justify-content-between '>
+        <h1 style={{fontSize:"115.2px"}} id="text-top" className='text-element'>40.9B tons</h1>
         <div className='col-4 d-flex position-relative py-2'>
           <div
-
             className={`containerss ${isOn ? 'on' : 'off'}`}
             onClick={handleClick}
           >
@@ -137,7 +167,7 @@ const DotVisualizer = () => {
         </div>
 
       </div>
-      <div className='d-flex flex-column '>
+      <div className='d-flex flex-column text-element' id="text-bottom">
         <span style={{fontSize:"52px"}}>243.9M tons of which</span>
         <span style={{fontSize:"14px"}}>are produced in United Arab Emirates</span>
       </div>

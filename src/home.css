@@ -735,8 +735,7 @@ html {
   }
 
 
-.containerss 
-{
+.containerss {
     position: absolute;
     left: 0;
     right: 0;
@@ -823,3 +822,12 @@ html {
 .detail:nth-child(2) {
     right: 10%;
 }
+.text-d3d3d3 { color: #d3d3d3; transition: color 0.3s ease; }
+            .text-ffd60a { color: #ffd60a; }
+
+            .dot.highlight {
+                background-color: #ffd60a!important; /* Highlight color for toggle effect */
+            }
+            .text-element.highlight {
+                color: #ffd60a; /* Highlight color for toggle effect */
+            }
