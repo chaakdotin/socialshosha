@@ -152,31 +152,29 @@ const ReactVideoCards = () => {
         };
 
     }, []);
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        // Create GSAP timeline with ScrollTrigger
-        const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: '.card-visualizer',
-              start: '-27px top', // Start when top of element is 27px from viewport top
-              end: '+=500', // Scroll distance for the animation
-              scrub: true, // Smoothly scrub animation with scroll
-              pin: true, // Pin the card-visualizer during animation
-              pinSpacing: false, // Avoid extra spacing
-              markers: false, // Set to true for debugging
-            },
-        });
-          // First animation: Move visualizerRef left by 100px
-        tl.to('.visualizerRef', {
-            x: '-100px', // Move left
-            duration: 1, // Relative duration in timeline
-        });
-        // Cleanup on component unmount
-        return () => {
-          tl.kill(); // Kill the timeline
-          ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Kill all ScrollTriggers
-        };
-    }, []);
+    // useEffect(() => {
+    //     gsap.registerPlugin(ScrollTrigger);
+    //     const tl = gsap.timeline({
+    //         scrollTrigger: {
+    //           trigger: '.card-visualizer',
+    //           start: '-27px top', // Start when top of element is 27px from viewport top
+    //           end: 'bottom bottom', // Scroll distance for the animation
+    //           scrub: true, // Smoothly scrub animation with scroll
+    //           pin: true, // Pin the card-visualizer during animation
+    //           markers: true, // Set to true for debugging
+    //         },
+    //     });
+    //       // First animation: Move visualizerRef left by 100px
+    //     tl.to('.visualizerRef', {
+    //         x: '-100px', // Move left
+    //         duration: 1, // Relative duration in timeline
+    //     });
+    //     // Cleanup on component unmount
+    //     return () => {
+    //       tl.kill(); // Kill the timeline
+    //       ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Kill all ScrollTriggers
+    //     };
+    // }, []);
 
     return (
         <>
@@ -250,7 +248,7 @@ const ReactVideoCards = () => {
                     <Visualizer />
                 </div>
             </div>
-            <div className="card-container " style={{height:"190vh"}}>
+            <div className="card-container" style={{height:"190vh"}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front flex-column ">
@@ -290,7 +288,7 @@ const ReactVideoCards = () => {
                 </div>
             </div>
 
-            <div className="card-container ">
+            <div className="card-container">
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front">
@@ -474,7 +472,7 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
-
+            
             {/* ---------- Reveal Section (Curtain Reveal) ---------- */}
             <div className="reveal-section" ref={revealSectionRef}>
                 <div className="plain-card" ref={plainCardRef}>
