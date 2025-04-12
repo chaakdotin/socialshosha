@@ -178,18 +178,19 @@ const ReactVideoCards = () => {
         //     // y: '-600px', // Move up
         //     duration: 0.5, // Relative duration in timeline
         //   });
-        tl.to('.card-visualizer',{
-            x:"-5%",
-            y:"-600px",
-            rotate:"-1deg",
-            duration: 1, // Relative duration in timeline
-        })
+        // tl.to('.card-visualizer',{
+        //     x:"-5%",
+        //     y:"-600px",
+        //     rotate:"-1deg",
+        //     duration: 1, // Relative duration in timeline
+        // })
         // Cleanup on component unmount
         return () => {
           tl.kill(); // Kill the timeline
           ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Kill all ScrollTriggers
         };
-      }, []);
+    }, []);
+
     return (
         <>
             <style>
