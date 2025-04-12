@@ -44,15 +44,15 @@ const Slider = () => {
     <div>
       <div className="slider" ref={sliderRef}>
         {slides.map((num, index) => (
-          <div key={index} className="rectangle">
+          <div key={index} className="col-3 rectangle">
             <div>
               0{num}
             </div>
             <div className='d-flex flex-column'>
-              <div  style={{fontSize:"40px",lineHeight:"1"}}>
+              <div  style={{fontSize:"30px",lineHeight:"1"}}>
                 <span>Governments & Municipalities</span>
               </div>
-              <div className='py-2' style={{fontSize:"14px"}}>
+              <div className='py-3' style={{fontSize:"13px"}}>
                 <span>Saapro can help cities handle growing waste management needs efficiently.</span>
               </div>
             </div>

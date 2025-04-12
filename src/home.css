@@ -636,7 +636,7 @@ html {
     opacity: 0;
 }
 .left-sections {
-    width: 41.666%; /* 5/12 of total width */
+    font-family: "Urbanist", sans-serif;
     padding: 20px 38px;
     display: flex;
     align-items: start;
@@ -644,7 +644,7 @@ html {
   }
   
   .right-sections {
-    width: 58.333%; /* 7/12 of total width */
+    font-family: "Urbanist", sans-serif;
     padding: 20px;
     position: relative;
     overflow: hidden;
@@ -656,7 +656,6 @@ html {
   }
   
   .rectangle {
-    width: 33.3333%;
     height: 407.04px;
     background-color: #e2dbc9;
     margin: 0 10px;
@@ -665,7 +664,7 @@ html {
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    color: white;
+    color: black;
     font-size: 18px;
     flex-shrink: 0;
     border-radius: 30px;

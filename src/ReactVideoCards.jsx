@@ -7,6 +7,7 @@ import Blog from './Blog'
 import LetsTalk from './LetsTalk'
 import Slider from "./Slider"
 import Marquee from './Marquee'
+import Visualizer from './Visualizer'
 import Footer from './Footer'
 const ReactVideoCards = () => {
     const revealSectionRef = useRef(null);
@@ -246,11 +247,18 @@ const ReactVideoCards = () => {
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front align-items-start justify-content-start flex-column">
+                    <Visualizer />
+                </div>
+            </div>
+            <div className="card-container card-visualizer" style={{ zIndex: 2 }}>
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
+                <div className="cards card-front align-items-start justify-content-start flex-column">
                     <div className="w-100 d-flex">
-                        <div className="left-sections">
-                            <h2 style={{fontSize: '72px', width: '80%', fontWeight:"500"}}>Who Saapro is for</h2>
+                        <div className="left-sections col-4">
+                            <h2 style={{fontSize: '72px', width: '90%', fontWeight:"500", letterSpacing:1}}>Who Saapro is for</h2>
                         </div>
-                        <div className="right-sections">
+                        <div className="right-sections col-8">
                             <Slider />
                         </div>
                     </div>
