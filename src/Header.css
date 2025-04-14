@@ -10,7 +10,7 @@
   position: relative;
 }
 .dot--red {
-  color: #ff391e !important;
+  color: #4A2E00 !important;
 }
 @media (min-width: 1024px) {
   .dot--15 {
@@ -51,7 +51,7 @@
 }
 .nav-item__link.active,
 .nav-item__link.active {
-  color: #ff391e !important;
+  color: #4A2E00 !important;
 }
 .jduihihf{
   padding: 25px 25px;
