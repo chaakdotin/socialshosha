@@ -534,8 +534,8 @@ html {
     flex-flow: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 98.5vw;
-    height: 98.5vh;
+    width: 100%;
+    height: 100%;
 
     display: flex;
     position: relative;
