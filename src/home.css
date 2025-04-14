@@ -559,7 +559,7 @@ html {
     padding-bottom: 2em;
     padding-left: 2em;
     display: flex;
-    bottom: 0;
+    bottom: 5px;
     left: 0;
 }
 
