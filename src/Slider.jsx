@@ -59,9 +59,11 @@ const Slider = () => {
           </div>
         ))}
       </div>
-      <div className="controls d-none">
-        <button onClick={() => moveSlider('left')}>Left</button>
-        <button onClick={() => moveSlider('right')}>Right</button>
+      <div className='w-100'>
+        <div className="controls ">
+          <button onClick={() => moveSlider('left')}>Left</button>
+          <button onClick={() => moveSlider('right')}>Right</button>
+        </div>
       </div>
     </div>
   );

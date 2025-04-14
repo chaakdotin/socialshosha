@@ -121,12 +121,12 @@ const DotVisualizer = () => {
         // Full opacity, all highlighted
         visualizer.style.opacity = 1;
         setTimeout(()=>{
-            columnsElements.forEach(column => {
+          columnsElements.forEach(column => {
             const dots = column.querySelectorAll('.dot');
             dots.forEach(dot => dot.classList.add('highlight'));
-        });
-        textTop.classList.add('highlight');
-        textBottom.classList.add('highlight');
+          });
+          textTop.classList.add('highlight');
+          textBottom.classList.add('highlight');
         }, 2000)
     }
   };
