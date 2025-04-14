@@ -195,7 +195,7 @@ const ReactVideoCards = () => {
             <div className="card-container">
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
-                <div className="cards card-front" >
+                <div className="cards card-front" style={{backgroundImage: "linear-gradient(215deg, #2f5183, #886266, #c67445, #ff8700)"}}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         xmlnsXlink="http://www.w3.org/1999/xlink"

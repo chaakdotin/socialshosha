@@ -492,6 +492,7 @@ stroke-dashoffset: 766.792;
     /* Aap har card-container par alag custom properties bhi set kar sakte hain */
     /* Example: style="--card-max-translate: -8; --card-max-rotate: -2;" */
 }
+
 body,
 html {
     margin: 0;
@@ -594,9 +595,11 @@ html {
     color: #fff;
     will-change: transform;
 }
-.card-visualizer .card-front{
-    background-color: #262626!important;
+
+.card-visualizer .card-front {
+    background-color: #262626 !important;
 }
+
 /* ---------- Reveal Section (Curtain Reveal Effect) ---------- */
 .reveal-section {
     position: relative;
@@ -637,28 +640,29 @@ html {
     color: #fff;
     opacity: 0;
 }
+
 .left-sections {
     font-family: "Urbanist", sans-serif;
     padding: 20px 38px;
     display: flex;
     align-items: start;
     justify-content: start;
-  }
-  
-  .right-sections {
+}
+
+.right-sections {
     font-family: "Urbanist", sans-serif;
     padding: 20px;
     position: relative;
     overflow: hidden;
-  }
-  
-  .slider {
+}
+
+.slider {
     display: flex;
     position: relative;
     gap: 20px;
-  }
-  
-  .rectangle {
+}
+
+.rectangle {
 
     height: 500px;
     background-color: #e2dbc9;
@@ -672,16 +676,16 @@ html {
     font-size: 18px;
     flex-shrink: 0;
     border-radius: 30px;
-  }
-  
-  .controls {
+}
+
+.controls {
     padding-top: 20px;
     padding-left: 20px;
     display: flex;
     gap: 10px;
-  }
-  
-  .controls button {
+}
+
+.controls button {
     color: #000;
     cursor: pointer;
     background-color: #e2dbc9;
@@ -690,46 +694,48 @@ html {
     transition: all .4s;
     font-size: 14px;
     font-weight: 400;
-    border:none;
-  }
-  
-  /* Marquee Section */
-  .marquee-section {
+    border: none;
+}
+
+/* Marquee Section */
+.marquee-section {
     width: 100%;
     margin: 20px auto;
     overflow: hidden;
 
     padding: 20px 0;
-  }
-  
-  .marquee {
+}
+
+.marquee {
     display: flex;
     animation: marquee 20s linear infinite;
-  }
-  
-  .circle {
-    width: 360.96px; /* 10vh radius = 20vh diameter */
+}
+
+.circle {
+    width: 360.96px;
+    /* 10vh radius = 20vh diameter */
     height: 360.96px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 15px;
     flex-shrink: 0;
-  }
-  
-  .circle img {
+}
+
+.circle img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  @keyframes marquee {
+}
+
+@keyframes marquee {
     0% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
+
     100% {
-      transform: translateX(-50%);
+        transform: translateX(-50%);
     }
-  }
+}
 
 
 .containerss {
@@ -746,66 +752,76 @@ html {
     cursor: pointer;
     transition: box-shadow 0.4s ease;
 }
+
 .containerss.on {
-    box-shadow: 
-    -2px -2px 4px 4px rgba(7, 7, 7, 0.5),
-    -8px 0 4px 4px rgba(7, 7, 7, 0.5),
-    -8px 0 3px 1px rgba(0, 255, 0, 0.2),
-    4px 0 4px 4px rgba(7, 7, 7, 1),
-    -3px 5px 3px 0 rgb(79 81 79),
-    8px 3px 2px 0 rgb(79 81 79),
-    inset 0 0 3px 1px rgba(0, 255, 0, 0.5),
-    inset 0 0 24px 0 rgba(0, 255, 0, 0.5);
+    box-shadow:
+        -2px -2px 4px 4px rgba(7, 7, 7, 0.5),
+        -8px 0 4px 4px rgba(7, 7, 7, 0.5),
+        -8px 0 3px 1px rgba(0, 255, 0, 0.2),
+        4px 0 4px 4px rgba(7, 7, 7, 1),
+        -3px 5px 3px 0 rgb(79 81 79),
+        8px 3px 2px 0 rgb(79 81 79),
+        inset 0 0 3px 1px rgba(0, 255, 0, 0.5),
+        inset 0 0 24px 0 rgba(0, 255, 0, 0.5);
 }
+
 .containerss.off {
-    box-shadow: 
-    -2px -2px 4px 4px rgba(7, 7, 7, 0.5),
-    -8px 0 4px 4px rgba(7, 7, 7, 0.5),
-    8px 0 3px 1px rgba(255, 0, 0, 0.2),
-    4px 0 4px 4px rgba(7, 7, 7, 1),
-    -3px 5px 3px 0 rgb(79 81 79),
-    8px 3px 2px 0 rgb(79 81 79),
-    inset 0 0 3px 1px rgba(255, 0, 0, 0.5),
-    inset 0 0 14px 0 rgba(255, 0, 0, 0.5);
+    box-shadow:
+        -2px -2px 4px 4px rgba(7, 7, 7, 0.5),
+        -8px 0 4px 4px rgba(7, 7, 7, 0.5),
+        8px 0 3px 1px rgba(255, 0, 0, 0.2),
+        4px 0 4px 4px rgba(7, 7, 7, 1),
+        -3px 5px 3px 0 rgb(79 81 79),
+        8px 3px 2px 0 rgb(79 81 79),
+        inset 0 0 3px 1px rgba(255, 0, 0, 0.5),
+        inset 0 0 14px 0 rgba(255, 0, 0, 0.5);
 }
+
 .toggle {
     width: 60%;
     height: 100%;
-    background:linear-gradient(35deg, rgb(16 15 16) 0%, rgb(32 31 32) 100%);
+    background: linear-gradient(35deg, rgb(16 15 16) 0%, rgb(32 31 32) 100%);
     border-radius: 100px;
     position: absolute;
     transition: all 0.4s ease-in;
 }
-.on .toggle{
+
+.on .toggle {
     right: 0;
-    box-shadow: 
-    0px 8px 8px 0 rgba(0, 0, 0, 0.4),
-    inset 0px -3px 3px 0 rgba(0, 0, 0, 1),
-    inset 0 3px 2px 0 rgba(79, 81, 79, 0.5),
-    inset -2px 0px 3px 0 rgba(0, 0, 0, 1),/* rgba(255, 0, 0, 0.5) accent - dark when on */
-    inset 2px 0px 3px 0 rgba(0, 255, 0, 0.5),/* rgba(0, 255, 0, 0.1) accent - dark when off */
-    inset 0 0 0 0 rgba(0,0,0,0);
+    box-shadow:
+        0px 8px 8px 0 rgba(0, 0, 0, 0.4),
+        inset 0px -3px 3px 0 rgba(0, 0, 0, 1),
+        inset 0 3px 2px 0 rgba(79, 81, 79, 0.5),
+        inset -2px 0px 3px 0 rgba(0, 0, 0, 1),
+        /* rgba(255, 0, 0, 0.5) accent - dark when on */
+        inset 2px 0px 3px 0 rgba(0, 255, 0, 0.5),
+        /* rgba(0, 255, 0, 0.1) accent - dark when off */
+        inset 0 0 0 0 rgba(0, 0, 0, 0);
 }
-.off .toggle{
+
+.off .toggle {
     right: 40%;
-    box-shadow: 
-    0px 8px 8px 0 rgba(0, 0, 0, 0.4),
-    inset 0px -3px 3px 0 rgba(0, 0, 0, 1),
-    inset 0 3px 2px 0 rgba(79, 81, 79, 0.5),
-    inset -2px 0px 3px 0 rgba(255, 0, 0, 0.5),/* rgba(255, 0, 0, 0.5) accent - dark when on */
-    inset 2px 0px 3px 0 rgba(0, 0, 0, 1),/* rgba(0, 255, 0, 0.1) accent - dark when off */
-    inset 0 0 0 0 rgba(0,0,0,0);
+    box-shadow:
+        0px 8px 8px 0 rgba(0, 0, 0, 0.4),
+        inset 0px -3px 3px 0 rgba(0, 0, 0, 1),
+        inset 0 3px 2px 0 rgba(79, 81, 79, 0.5),
+        inset -2px 0px 3px 0 rgba(255, 0, 0, 0.5),
+        /* rgba(255, 0, 0, 0.5) accent - dark when on */
+        inset 2px 0px 3px 0 rgba(0, 0, 0, 1),
+        /* rgba(0, 255, 0, 0.1) accent - dark when off */
+        inset 0 0 0 0 rgba(0, 0, 0, 0);
 }
+
 .detail {
     height: 30%;
     width: 4px;
     border-radius: 10px;
     box-shadow: -1px 1px 2px 0 rgba(0, 0, 0, 1),
-    inset 1px -1px 2px 0 rgba(0, 0, 0, 1),
-    inset -1px -1px 2px 0 rgba(0, 0, 0, 1),
-    inset 0px -2px 2px 0 rgba(0, 0, 0, 1),
-    inset 0px 2px 2px 0 rgb(79 81 79),
-    inset 1px -1px 4px 0 rgb(79 81 79);
+        inset 1px -1px 2px 0 rgba(0, 0, 0, 1),
+        inset -1px -1px 2px 0 rgba(0, 0, 0, 1),
+        inset 0px -2px 2px 0 rgba(0, 0, 0, 1),
+        inset 0px 2px 2px 0 rgb(79 81 79),
+        inset 1px -1px 4px 0 rgb(79 81 79);
     position: absolute;
     left: 0;
     right: 0;
@@ -813,18 +829,30 @@ html {
     top: 0;
     margin: auto;
 }
+
 .detail:nth-child(1) {
     left: 10%;
 }
+
 .detail:nth-child(2) {
     right: 10%;
 }
-.text-d3d3d3 { color: #d3d3d3; transition: color 0.3s ease; }
-            .text-ffd60a { color: #ffd60a; }
 
-            .dot.highlight {
-                background-color: #ffd60a!important; /* Highlight color for toggle effect */
-            }
-            .text-element.highlight {
-                color: #ffd60a; /* Highlight color for toggle effect */
-            }
+.text-d3d3d3 {
+    color: #d3d3d3;
+    transition: color 0.3s ease;
+}
+
+.text-ffd60a {
+    color: #ffd60a;
+}
+
+.dot.highlight {
+    background-color: #ffd60a !important;
+    /* Highlight color for toggle effect */
+}
+
+.text-element.highlight {
+    color: #ffd60a;
+    /* Highlight color for toggle effect */
+}
