@@ -518,8 +518,11 @@ html {
     object-fit: cover;
 }
 .card-front .color-box{
-    
-    background-image: linear-gradient(#918a7e, #918a7e);
+    background: hsla(120, 6%, 90%, 1);
+    background: linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#E4E7E4", endColorstr="#0A1647", GradientType=1);
     border-radius: 1.56em;
     flex-flow: column;
     justify-content: space-between;
