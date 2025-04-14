@@ -11,7 +11,7 @@ export default function Header() {
                     <img src="https://socialshosha.chaak.in/110.png" alt="" />
                 </div>
                 <div>
-                    <ul className="d-flex nav__list">
+                    <ul className="d-flex nav__list pt-3">
                         <li className="nav-item p4 ttu slash-light">
                             <NavLink to="/" className="router-link-active router-link-exact-active link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
