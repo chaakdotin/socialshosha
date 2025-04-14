@@ -15,13 +15,26 @@ const ReactVideoCards = () => {
     const revealCardRef = useRef(null);
     // Use a ref to hold an array of card elements.
     const cardContainersRef = useRef([]);
-
     // Callback to add each container to our ref array.
     const addToRefs = (el) => {
         if (el && !cardContainersRef.current.includes(el)) {
             cardContainersRef.current.push(el);
         }
     };
+    
+
+    useEffect(() => {
+        // Array of script sources
+        
+        // Cleanup: Remove all scripts on unmount
+        return () => {
+            // scripts.forEach((script) => {
+            //     if (document.body.contains(script)) {
+            //         // document.body.removeChild(script);
+            //     }
+            // });
+        };
+    }, []);
     useEffect(() => {
         const rotateVideos = () => {
             // Select the three video elements
@@ -154,32 +167,11 @@ const ReactVideoCards = () => {
         };
 
     }, []);
-    // useEffect(() => {
-    //     gsap.registerPlugin(ScrollTrigger);
-    //     const tl = gsap.timeline({
-    //         scrollTrigger: {
-    //           trigger: '.card-visualizer',
-    //           start: '-27px top', // Start when top of element is 27px from viewport top
-    //           end: 'bottom bottom', // Scroll distance for the animation
-    //           scrub: true, // Smoothly scrub animation with scroll
-    //           pin: true, // Pin the card-visualizer during animation
-    //           markers: true, // Set to true for debugging
-    //         },
-    //     });
-    //       // First animation: Move visualizerRef left by 100px
-    //     tl.to('.visualizerRef', {
-    //         x: '-100px', // Move left
-    //         duration: 1, // Relative duration in timeline
-    //     });
-    //     // Cleanup on component unmount
-    //     return () => {
-    //       tl.kill(); // Kill the timeline
-    //       ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Kill all ScrollTriggers
-    //     };
-    // }, []);
+
 
     return (
         <>
+            
             <style>
                 {
                     
@@ -195,35 +187,15 @@ const ReactVideoCards = () => {
             <div className="card-container">
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
-                <div className="cards card-front" style={{backgroundImage: "linear-gradient(215deg, #2f5183, #886266, #c67445, #ff8700)"}}>
+                <div className="cards card-front" >
                 
                     <div >
-                    <div className='color-box'></div>
+                        <div className='color-box' id="myCanvasContainer" >
+
+                        </div>
                         <div className='bg-images'>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className="card-container card-visualizer" style={{ height:"110vh", zIndex: 2 }}>
-                <div className="cards card-back"></div>
-                <div className="cards card-middle"></div>
-                <div className="cards card-front align-items-start justify-content-start flex-column">
-                    <Visualizer />
-                </div>
-            </div>
-            <div className="card-container " style={{ zIndex: 2 }}>
-                <div className="cards card-back"></div>
-                <div className="cards card-middle"></div>
-                <div className="cards card-front align-items-start justify-content-start flex-column">
-                    <div className="w-100 d-flex">
-                        <div className="left-sections col-4">
-                            <h2 style={{fontSize: '72px', width: '90%', fontWeight:"500", letterSpacing:1}}>Who Saapro is for</h2>
-                        </div>
-                        <div className="right-sections col-8">
-                            <Slider />
-                        </div>
-                    </div>
-                    <Marquee />
                 </div>
             </div>
             <div className="card-container" style={{height:"190vh"}}>
@@ -265,6 +237,29 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
+            <div className="card-container card-visualizer" style={{height:"110vh",  zIndex: 2 }}>
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
+                <div className="cards card-front align-items-start justify-content-start flex-column">
+                    <Visualizer />
+                </div>
+            </div>
+            <div className="card-container " style={{ zIndex: 2 }}>
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
+                <div className="cards card-front align-items-start justify-content-start flex-column">
+                    <div className="w-100 d-flex">
+                        <div className="left-sections col-4">
+                            <h2 style={{fontSize: '72px', width: '90%', fontWeight:"500", letterSpacing:1}}>Who Saapro is for</h2>
+                        </div>
+                        <div className="right-sections col-8">
+                            <Slider />
+                        </div>
+                    </div>
+                    <Marquee />
+                </div>
+            </div>
+           
 
             <div className="card-container">
                 <div className="cards card-back"></div>
@@ -332,7 +327,7 @@ const ReactVideoCards = () => {
                                 <video
 
                                     className="tops"
-                                    src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                    src="/videos/3433789-hd_1920_1080_25fps.mp4"
                                     autoPlay
                                     muted
                                     loop
@@ -340,14 +335,14 @@ const ReactVideoCards = () => {
                                 <video
 
                                     className="middles"
-                                    src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                    src="/videos/3433789-hd_1920_1080_25fps.mp4"
                                     autoPlay
                                     muted
                                     loop
                                 />
                                 <video
                                     className="bottoms"
-                                    src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                                    src="/videos/3433789-hd_1920_1080_25fps.mp4"
                                     autoPlay
                                     muted
                                     loop

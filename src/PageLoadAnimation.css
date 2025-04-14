@@ -10,7 +10,7 @@
   }
   .bar {
     flex: 1;
-    background-color: #00BCD4; /* Glowing color – change as desired */
+    background-color: #EBCD8D; /* Glowing color – change as desired */
     animation: drop 1.2s forwards;
   }
   /* Add a slight delay for each bar to create the staggered effect */

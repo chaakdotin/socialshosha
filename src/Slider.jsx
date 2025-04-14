@@ -61,8 +61,8 @@ const Slider = () => {
       </div>
       <div className='w-100'>
         <div className="controls">
-          <button onClick={() => moveSlider('left')} style={{padding:"8px 15px"}}><i class="fa-solid fa-arrow-left"></i></button>
-          <button onClick={() => moveSlider('right')} style={{padding:"8px 10px 8px 40px"}} className='d-flex align-items-center justify-content-end'><i class="fa-solid fa-arrow-right"></i></button>
+          <button onClick={() => moveSlider('left')} style={{padding:"8px 15px"}}><i className="fa-solid fa-arrow-left"></i></button>
+          <button onClick={() => moveSlider('right')} style={{padding:"8px 10px 8px 40px"}} className='d-flex align-items-center justify-content-end'><i className="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>

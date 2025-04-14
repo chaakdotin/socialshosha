@@ -487,10 +487,7 @@ stroke-dashoffset: 766.792;
     width: 100%;
     height: 100vh;
     margin-bottom: 25vh;
-    /* Bottom gap */
     transform-origin: top left;
-    /* Aap har card-container par alag custom properties bhi set kar sakte hain */
-    /* Example: style="--card-max-translate: -8; --card-max-rotate: -2;" */
 }
 
 body,
@@ -517,22 +514,27 @@ html {
     height: 100%;
     object-fit: cover;
 }
-.card-front .color-box{
-    background: hsla(120, 6%, 90%, 1);
-    background: linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#E4E7E4", endColorstr="#0A1647", GradientType=1);
-    border-radius: 1.56em;
+
+.column {
+    display: flex;
+    align-content: center;
+    flex-direction: column-reverse;
+}
+
+.card-front .color-box {
+    background: -webkit-linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%);
+    background: -moz-linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%);
+    background: linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%);
+
+    /* filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ffffff", endColorstr="#ebcd8d", GradientType=2 ); */
+    border-radius: 30px;
     flex-flow: column;
     justify-content: space-between;
     align-items: flex-start;
     width: 98.5vw;
     height: 98.5vh;
-    padding-top: 1em;
-    padding-left: 1em;
-    display: flex
-;
+
+    display: flex;
     position: relative;
     overflow: hidden;
 }
@@ -541,22 +543,28 @@ html {
     z-index: 8;
     grid-column-gap: 1.4em;
     grid-row-gap: 1.4em;
-    background-image: url("https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673513966afb1176ec50a649_bg-for-links.svg");
+    background-image: url("/svg/1111.svg");
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: flex-start;
     align-items: flex-end;
-    width:14.37vw;
+    width: 14.37vw;
     position: absolute;
     inset: auto auto -.81em -.81em;
-    height:14.2vh;
+    height: 21.2vh;
     padding-bottom: 2em;
     padding-left: 2em;
     display: flex;
     bottom: 0;
     left: 0;
 }
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .card-container {
     position: relative;
     width: 100%;
@@ -736,27 +744,33 @@ html {
     border: none;
 
 }
-.controls button .fa-arrow-left{
+
+.controls button .fa-arrow-left {
     position: relative;
     transition: all 0.4s ease-in;
     left: 0px;
 }
-.controls button .fa-arrow-right{
+
+.controls button .fa-arrow-right {
     position: relative;
     transition: all 0.4s ease-in;
     right: 5px;
 }
+
 .controls button:hover {
     background-color: #c9c2b2;
 }
+
 .controls button:hover .fa-arrow-left {
     position: relative;
     left: -5px;
 }
+
 .controls button:hover .fa-arrow-right {
     position: relative;
     right: 0px;
 }
+
 /* Marquee Section */
 .marquee-section {
     width: 100%;
@@ -908,11 +922,78 @@ html {
 }
 
 .dot.highlight {
-    background-color: #ffd60a !important;
+    background-color: #EBCD8D !important;
     /* Highlight color for toggle effect */
 }
 
 .text-element.highlight {
-    color: #ffd60a;
+    color: #EBCD8D;
+    opacity: 0.1;
+    font-family: "BDO Grotesk", Verdana, sans-serif;
+    font-weight: 500;
+    line-height: 90%;
     /* Highlight color for toggle effect */
+}
+
+@font-face {
+    font-family: 'BDO Grotesk Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk Regular'), url('/fonts/BDOGrotesk-Regular-BF648a656fd543a.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'BDO Grotesk Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk Regular'), url('/fonts/BDOGrotesk-VF-BF648a657078401.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'BDO Grotesk Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk Light'), url('/fonts/BDOGrotesk-Light-BF648a656f91fcb.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'BDO Grotesk Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk Medium'), url('/fonts/BDOGrotesk-Medium-BF648a656fc86b8.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'BDO Grotesk DemiBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk DemiBold'), url('/fonts/BDOGrotesk-DemiBold-BF648a656f9c460.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'BDO Grotesk Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk Bold'), url('/fonts/BDOGrotesk-Bold-BF648a656f8559f.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'BDO Grotesk ExtraBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk ExtraBold'), url('/fonts/BDOGrotesk-ExtraBold-BF648a656f91fd9.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'BDO Grotesk Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('BDO Grotesk Black'), url('/fonts/BDOGrotesk-Black-BF648a656f81fe9.woff') format('woff');
 }

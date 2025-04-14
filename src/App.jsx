@@ -38,7 +38,6 @@ const App = () => {
     
   return (
     <Router>
-      
       <Routes >
         <Route element={<PageLoadAnimation />}>
           <Route element={<Header />}>

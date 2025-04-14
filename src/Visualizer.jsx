@@ -12,7 +12,7 @@ const DotVisualizer = () => {
     const vh = window.innerHeight * 0.7;
     const dotSpacing = 25;
     const dotSize = 6;
-    const columns = Math.floor(vw / dotSpacing);
+    const columns =  Math.floor(vw / dotSpacing);
     const dotsPerColumn = Math.floor(vh / dotSpacing);
     const staticDots = 6;
     const maxAnimatedDots = dotsPerColumn - staticDots;
@@ -33,12 +33,6 @@ const DotVisualizer = () => {
     for (let i = 0; i < columns; i++) {
       const column = document.createElement('div');
       column.className = 'column';
-      column.style.position = 'absolute';
-      column.style.bottom = '0';
-      column.style.left = `${i * dotSpacing}px`;
-      column.style.display = 'flex';
-      column.style.flexDirection = 'column-reverse';
-      column.style.alignItems = 'center';
 
       for (let j = 0; j < dotsPerColumn; j++) {
         const dot = document.createElement('div');
@@ -79,18 +73,14 @@ const DotVisualizer = () => {
       const scrollY = window.scrollY;
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const scrollFraction = scrollY / maxScroll;
-
       if (scrollFraction <= 0.33) {
         const opacityProgress = scrollFraction / 0.33;
-        visualizer.style.opacity = 0.2 + (0.8 * opacityProgress);
+        visualizer.style.opacity = 0.1 + (0.8 * opacityProgress);
       } else {
         visualizer.style.opacity = 1;
       }
-
     };
-
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -107,52 +97,42 @@ const DotVisualizer = () => {
     const columnsElements = document.querySelectorAll('.column');
     if (isChecked) {
         // Full opacity
-        visualizer.style.opacity = 0.2;
-        columnsElements.forEach(column => {
-            const dots = column.querySelectorAll('.dot');
-            dots.forEach(dot => dot.classList.remove('highlight'));
-        });
-        textTop.classList.remove('highlight');
-        textBottom.classList.remove('highlight');
-
+        textTop.style.opacity = 0.1;
+        textBottom.style.opacity = 0.1;
+        visualizer.style.opacity = 0.1;
         // Trigger smooth color flow
-
       } else {
         // Full opacity, all highlighted
         visualizer.style.opacity = 1;
-        setTimeout(()=>{
-          columnsElements.forEach(column => {
-            const dots = column.querySelectorAll('.dot');
-            dots.forEach(dot => dot.classList.add('highlight'));
-          });
-          textTop.classList.add('highlight');
-          textBottom.classList.add('highlight');
-        }, 2000)
+        textTop.style.opacity = 1;
+        textBottom.style.opacity = 1;
+
     }
   };
   
 
   return (
     <>
-      <div
-      ref={visualizerRef}
-      style={{
-        width: '100vw',
-        height: '70vh',
-        position: 'fixed',
-        top: '15vh',
-        left: "15px",
-        opacity: 0.2,
-        transition: 'opacity 0.5s ease',
-        pointerEvents: 'none',
-        zIndex: 0
-      }}
-      className='visualizerRef px-3'
-    />
-    <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between '>
+      <div className='position-relative'>
+        <div
+          ref={visualizerRef}
+          style={{
+            position:"absolute",
+            width: '100vw',
+            height: '100vh',
+            opacity: 0.2,
+            paddingBottom:"120px",
+            transition: 'opacity 0.5s ease',
+            pointerEvents: 'none',
+            zIndex: 0
+          }}
+          className='visualizerRef px-3 d-flex align-items-end justify-content-between '
+        />
+      </div>
+    <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between pb-5'>
       <div className='d-flex align-items-center justify-content-between '>
-        <h1 style={{fontSize:"115.2px"}} id="text-top" className='text-element'>40.9B tons</h1>
-        <div className='col-4 d-flex position-relative py-2'>
+        <h1 style={{fontSize:"100px",lineHeight:"85%"}} id="text-top" className='text-element highlight'>Our<br />Mission</h1>
+        <div className='col-4 d-flex align-items-center position-relative py-2'>
           <div
             className={`containerss ${isOn ? 'on' : 'off'}`}
             onClick={handleClick}
@@ -163,13 +143,11 @@ const DotVisualizer = () => {
               <div className="detail" />
             </div>
           </div>
-
         </div>
-
       </div>
-      <div className='d-flex flex-column text-element' id="text-bottom">
-        <span style={{fontSize:"52px"}}>243.9M tons of which</span>
-        <span style={{fontSize:"14px"}}>are produced in United Arab Emirates</span>
+      <div className='d-flex flex-column text-element highlight pb-5' id="text-bottom">
+        <span style={{fontSize:"52px"}}>Transforming Ideas into Digital Success</span>
+        <span style={{fontSize:"14px"}} className='pb-3'>Our mission is to transform ideas into reality through innovative design, strategic marketing, and cutting-edge technology.</span>
       </div>
     </div>
     </>
