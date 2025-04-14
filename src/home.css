@@ -517,7 +517,43 @@ html {
     height: 100%;
     object-fit: cover;
 }
+.card-front .color-box{
+    
+    background-image: linear-gradient(#918a7e, #918a7e);
+    border-radius: 1.56em;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 98.5vw;
+    height: 98.5vh;
+    padding-top: 1em;
+    padding-left: 1em;
+    display: flex
+;
+    position: relative;
+    overflow: hidden;
+}
 
+.card-front .bg-images {
+    z-index: 8;
+    grid-column-gap: 1.4em;
+    grid-row-gap: 1.4em;
+    background-image: url("https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673513966afb1176ec50a649_bg-for-links.svg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width:14.37vw;
+    position: absolute;
+    inset: auto auto -.81em -.81em;
+    height:14.2vh;
+    padding-bottom: 2em;
+    padding-left: 2em;
+    display: flex;
+    bottom: 0;
+    left: 0;
+}
 .card-container {
     position: relative;
     width: 100%;
@@ -695,8 +731,29 @@ html {
     font-size: 14px;
     font-weight: 400;
     border: none;
-}
 
+}
+.controls button .fa-arrow-left{
+    position: relative;
+    transition: all 0.4s ease-in;
+    left: 0px;
+}
+.controls button .fa-arrow-right{
+    position: relative;
+    transition: all 0.4s ease-in;
+    right: 5px;
+}
+.controls button:hover {
+    background-color: #c9c2b2;
+}
+.controls button:hover .fa-arrow-left {
+    position: relative;
+    left: -5px;
+}
+.controls button:hover .fa-arrow-right {
+    position: relative;
+    right: 0px;
+}
 /* Marquee Section */
 .marquee-section {
     width: 100%;
