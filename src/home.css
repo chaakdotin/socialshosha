@@ -523,9 +523,11 @@ html {
 }
 
 .card-front .color-box {
-    background: -webkit-linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%);
+    background: #ffffff;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 205, 141, 1) 100%);
+    /* background: -webkit-linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%);
     background: -moz-linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%);
-    background: linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%);
+    background: linear-gradient(135deg, rgb(255, 255, 255) 30%, rgb(235, 205, 141) 100%); */
 
     /* filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ffffff", endColorstr="#ebcd8d", GradientType=2 ); */
     border-radius: 30px;

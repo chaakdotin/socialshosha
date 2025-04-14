@@ -178,7 +178,9 @@ const ReactVideoCards = () => {
                 <div className="cards card-front" >
                 
                     <div>
-                        <div className='color-box'></div>
+                        <div className='px-3 py-3' style={{width:"100vw", height:"100vh"}}>
+                            <div className='color-box'></div>
+                        </div>
                         <div className='bg-images'>
                         </div>
                     </div>
