@@ -45,7 +45,6 @@ const SequentialLetterColorChange = () => {
                 start: "top 60%",
                 end: "+=500",
                 scrub: true,
-                markers: true,
             }
         });
     }, []);
