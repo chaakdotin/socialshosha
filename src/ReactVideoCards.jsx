@@ -9,6 +9,7 @@ import Slider from "./Slider"
 import Marquee from './Marquee'
 import Visualizer from './Visualizer'
 import AutoTypingCode from './AutoTypingCode';
+import SequentialLetterColorChange from './SequentialLetterColorChange';
 import Footer from './Footer'
 
 const ReactVideoCards = () => {
@@ -189,11 +190,11 @@ const ReactVideoCards = () => {
             <div className="card-container">
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
-                <div className="cards card-front" >
-                    <div className='col-6'>
-                        
+                <div className="cards card-front" style={{background: "linear-gradient(135deg, #1a0d00, #4a2e00, #2e1d00)"}}>
+                    <div className='col-8 d-flex justify-content-center align-items-start h-100 pt-5'>
+                        <SequentialLetterColorChange />
                     </div>
-                    <div className='col-4 d-flex justify-content-center align-items-start'>
+                    <div className='col-4 d-flex justify-content-center align-items-start h-100' >
                         <AutoTypingCode />
                     </div>
                 </div>

@@ -170,9 +170,11 @@ console.log(num * 100);`
                     white-space: pre;
                     font-size: 16px;
                     position: relative;
+                    top:25vh;
                     overflow: hidden;
                     max-width: 500px;
                     backdrop-filter: blur(5px);
+                    font-family: "Courier New", Courier, monospace!important;
                 }
 
                     #code-container::before {

@@ -481,7 +481,7 @@ stroke-dashoffset: 766.792;
     /* full tilt angle in deg / shift in percent */
 }
 .no-tilt{
-    transform: translate(0%, 0%) rotate(1deg)!important;
+    transform: translate(0%, 0%) rotate(0deg)!important;
 }
 /* ---------- Layered Cards Section ---------- */
 .card-container {
