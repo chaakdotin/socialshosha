@@ -69,21 +69,7 @@ const DotVisualizer = () => {
     animate();
 
     // Scroll opacity & highlight
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const scrollFraction = scrollY / maxScroll;
-      if (scrollFraction <= 0.33) {
-        const opacityProgress = scrollFraction / 0.33;
-        visualizer.style.opacity = 0.1 + (0.8 * opacityProgress);
-      } else {
-        visualizer.style.opacity = 1;
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+
   }, []);
 
   const [isOn, setIsOn] = useState(false);
@@ -120,7 +106,7 @@ const DotVisualizer = () => {
             position:"absolute",
             width: '100vw',
             height: '100vh',
-            opacity: 0.2,
+            opacity: 0.1,
             paddingBottom:"120px",
             transition: 'opacity 0.5s ease',
             pointerEvents: 'none',

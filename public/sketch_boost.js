@@ -26,11 +26,11 @@ var fontCount = 9;
 var culmLength = [];
 var coreBase;
 var baseAnimA = 60;
-var animA = 60; ////// INTRO
+var animA = 60;     ////// INTRO
 var baseAnimB = 0;
-var animB = animA; ////// STAY
+var animB = animA;     ////// STAY
 var baseAnimC = 60;
-var animC = animB + 60; ////// OUTRO
+var animC = animB + 60;     ////// OUTRO
 var maxDelay = -20;
 
 var stageAdirect = 2;
@@ -71,7 +71,7 @@ let enableOrbit = true;
 var saveMode = 0;
 var recording = false;
 
-var cwidth, cheight;
+var cwidth, cheight
 var recMessageOn = false;
 var frate = 30;
 var recordedFrames = 0;
@@ -79,22 +79,27 @@ var numFrames = 300;
 
 var thisDensity = 1;
 var selFont = 0;
-function preload() {
-  tFont[0] = loadFont("/boost_resources/Milligram-Medium.ttf");
-  tFontData[0] = loadBytes("/boost_resources/Milligram-Medium.ttf");
+
+function preload(){
+  tFont[0] = loadFont("/public/boost_resources/Milligram-Medium.ttf");
+
+  tFontData[0] = loadBytes("/public/boost_resources/Milligram-Medium.ttf");
+
+
   tFontFactor[0] = 0.73;
   tFontFactor[1] = 0.75;
-  tFontFactor[2] = 0.7;
-  tFontFactor[3] = 0.675;
+  tFontFactor[2] = 0.7; 
+  tFontFactor[3] = 0.675; 
   tFontFactor[4] = 0.7;
   tFontFactor[5] = 0.82;
   tFontFactor[6] = 0.75;
   tFontFactor[7] = 0.95;
   tFontFactor[8] = 0.5;
 }
-function setup() {
-  let canvass = createCanvas(windowWidth, windowHeight, WEBGL);
-  canvass.parent("canvas");
+
+function setup(){
+  createCanvas(windowWidth, windowHeight, WEBGL);
+
   thisDensity = pixelDensity();
 
   cwidth = width;
@@ -104,19 +109,20 @@ function setup() {
 
   myFont[0] = opentype.parse(tFontData[0].bytes.buffer);
 
-  (wWindowMin = width / 8), (wWindowMax = width);
+  wWindowMin = width/8,
+  wWindowMax = width;
   wWindow = map(scaler, 0, 1, wWindowMin, wWindowMax);
 
-  textColor = color("#ffffff");
-  strokeColor = color("#000000");
-  bkgdColor = color("#000000");
-  sideSolidColor = color("#f26666");
+  textColor = color('#ffffff');
+  strokeColor = color('#000000');
+  bkgdColor = color('#000000');
+  sideSolidColor = color('#f26666');
 
-  colorSet[0] = color("#ffffff");
-  colorSet[1] = color("#4e7cd9");
-  colorSet[2] = color("#02733e");
-  colorSet[3] = color("#f23030");
-  colorSet[4] = color("#f26666");
+  colorSet[0] = color('#ffffff');
+  colorSet[1] = color('#4e7cd9');
+  colorSet[2] = color('#02733e');
+  colorSet[3] = color('#f23030');
+  colorSet[4] = color('#f26666');
 
   frameRate(frate);
   curveDetail(res);
@@ -128,12 +134,13 @@ function setup() {
   document.getElementById("textArea").value = starterText;
   setText();
 
-  const uiElement = select("#widget"); // replace with your HTML element's ID or class
-  uiElement.mouseOver(() => (enableOrbit = false));
-  uiElement.mouseOut(() => (enableOrbit = true));
+  const uiElement = select('#widget'); // replace with your HTML element's ID or class
+  uiElement.mouseOver(() => enableOrbit = false);
+  uiElement.mouseOut(() => enableOrbit = true);
 }
-function draw() {
-  if (extrudeType == 0) {
+
+function draw(){
+  if(extrudeType == 0){
     ortho();
   } else {
     perspective();
@@ -141,16 +148,16 @@ function draw() {
 
   background(bkgdColor);
 
-  if (enableOrbit && orbitOnToggle) {
+  if(enableOrbit && orbitOnToggle){
     orbitControl();
   }
 
   push();
-  // noFill();
-  // stroke(255, 0, 0);
-  // line(0, -500, 0, 500);
-  // line(-500, 0, 500,0);
-  coreBase.run();
+    // noFill();
+    // stroke(255, 0, 0);
+    // line(0, -500, 0, 500);
+    // line(-500, 0, 500,0);
+    coreBase.run();
   pop();
 
   // fill(0,0,255);
@@ -161,39 +168,39 @@ function draw() {
   runRecording();
 }
 
-function mousePressed() {
-  if (mouseCenterOnToggle && enableOrbit) {
-    mouseCenter.set(mouseX - width / 2, mouseY - height / 2);
+function mousePressed(){
+  if(mouseCenterOnToggle && enableOrbit){
+    mouseCenter.set(mouseX - width/2, mouseY - height/2);
 
     coreBase.liveReset();
     coreBase.tickerReset();
   }
 }
 
-function quadLerp(p0, p1, p2, t) {
-  return (1 - t) * (1 - t) * p0 + 2 * ((1 - t) * t * p1) + t * t * p2;
+function quadLerp(p0, p1, p2, t){
+  return ((1-t)*(1-t)) * p0 + 2 * ((1-t) * t * p1) + t * t * p2;
 }
 
-function windowResized() {
+function windowResized(){
   resizeForPreview();
 }
 
-function resizeForPreview() {
+function resizeForPreview(){
   var tempWidth, tempHeight;
 
-  if (saveMode == 0) {
+  if(saveMode == 0){
     resizeCanvas(windowWidth, windowHeight, WEBGL);
-  } else if (saveMode == 1) {
-    if (windowWidth > (windowHeight * 9) / 16) {
+  } else if(saveMode == 1){
+    if(windowWidth > windowHeight * 9/16){
       tempHeight = windowHeight;
-      tempWidth = (windowHeight * 9) / 16;
+      tempWidth = windowHeight * 9/16;
     } else {
       tempWidth = windowWidth;
-      tempHeight = (windowWidth * 16) / 9;
+      tempHeight = windowWidth * 16/9;
     }
     resizeCanvas(tempWidth, tempHeight, WEBGL);
-  } else if (saveMode == 2) {
-    if (windowWidth < windowHeight) {
+  } else if(saveMode == 2){
+    if(windowWidth < windowHeight){
       tempWidth = windowWidth;
       tempHeight = windowWidth;
     } else {
@@ -206,24 +213,25 @@ function resizeForPreview() {
   cwidth = width;
   cheight = height;
 
-  (wWindowMin = width / 8), (wWindowMax = width);
+  wWindowMin = width/8,
+  wWindowMax = width;
   wWindow = map(scaler, 0, 1, wWindowMin, wWindowMax);
 
   setText();
 }
 
-function resizeForSave() {
-  if (saveMode == 0) {
+function resizeForSave(){
+  if(saveMode == 0){
     resizeCanvas(windowWidth, windowHeight, WEBGL);
-  } else if (saveMode == 1) {
+  } else if(saveMode == 1){
     resizeCanvas(1080, 1920, WEBGL);
-  } else if (saveMode == 2) {
+  } else if(saveMode == 2){
     resizeCanvas(1080, 1080, WEBGL);
   }
 
-  (wWindowMin = width / 8), (wWindowMax = width);
+  wWindowMin = width/8,
+  wWindowMax = width;
   wWindow = map(scaler, 0, 1, wWindowMin, wWindowMax);
 
   setText();
 }
-

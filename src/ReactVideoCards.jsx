@@ -9,6 +9,7 @@ import Slider from "./Slider"
 import Marquee from './Marquee'
 import Visualizer from './Visualizer'
 import Footer from './Footer'
+
 const ReactVideoCards = () => {
     const revealSectionRef = useRef(null);
     const plainCardRef = useRef(null);
@@ -22,19 +23,6 @@ const ReactVideoCards = () => {
         }
     };
     
-
-    useEffect(() => {
-        // Array of script sources
-        
-        // Cleanup: Remove all scripts on unmount
-        return () => {
-            // scripts.forEach((script) => {
-            //     if (document.body.contains(script)) {
-            //         // document.body.removeChild(script);
-            //     }
-            // });
-        };
-    }, []);
     useEffect(() => {
         const rotateVideos = () => {
             // Select the three video elements
@@ -189,10 +177,8 @@ const ReactVideoCards = () => {
                 <div className="cards card-middle"></div>
                 <div className="cards card-front" >
                 
-                    <div >
-                        <div className='color-box' id="myCanvasContainer" >
-
-                        </div>
+                    <div>
+                        <div className='color-box'></div>
                         <div className='bg-images'>
                         </div>
                     </div>
