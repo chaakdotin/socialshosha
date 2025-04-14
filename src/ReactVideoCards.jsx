@@ -8,6 +8,7 @@ import LetsTalk from './LetsTalk'
 import Slider from "./Slider"
 import Marquee from './Marquee'
 import Visualizer from './Visualizer'
+import AutoTypingCode from './AutoTypingCode';
 import Footer from './Footer'
 
 const ReactVideoCards = () => {
@@ -82,7 +83,6 @@ const ReactVideoCards = () => {
                     const currentTranslateX = progress * (disableTilt ? 0 : maxTranslate);
                     const currentTranslateY = progress * maxTranslate;
                     const currentRotate = progress * (disableTilt ? 0 : maxRotate);
-                    
                     container.style.transform = `translate(${currentTranslateX}%, ${currentTranslateY}%) rotate(${currentRotate}deg)`;
                 } else {
                     if (rect.top > 0 || disableTilt) {
@@ -186,6 +186,19 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
+            <div className="card-container">
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
+                <div className="cards card-front" >
+                    <div className='col-6'>
+                        
+                    </div>
+                    <div className='col-4 d-flex justify-content-center align-items-start'>
+                        <AutoTypingCode />
+                    </div>
+                </div>
+            </div>
+            
             <div className="card-container" style={{height:"190vh"}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
@@ -225,28 +238,14 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
-            <div className="card-container card-visualizer" style={{height:"110vh",  zIndex: 2 }}>
+            <div className="card-container card-visualizer " style={{height:"110vh",  zIndex: 2 }}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
-                <div className="cards card-front align-items-start justify-content-start flex-column">
+                <div className="cards card-front align-items-start justify-content-start flex-column" >
                     <Visualizer />
                 </div>
             </div>
-            <div className="card-container " style={{ zIndex: 2 }}>
-                <div className="cards card-back"></div>
-                <div className="cards card-middle"></div>
-                <div className="cards card-front align-items-start justify-content-start flex-column">
-                    <div className="w-100 d-flex">
-                        <div className="left-sections col-4">
-                            <h2 style={{fontSize: '72px', width: '90%', fontWeight:"500", letterSpacing:1}}>Who Saapro is for</h2>
-                        </div>
-                        <div className="right-sections col-8">
-                            <Slider />
-                        </div>
-                    </div>
-                    <Marquee />
-                </div>
-            </div>
+            
            
 
             <div className="card-container">
@@ -433,7 +432,19 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
-            
+            <div className="card-container no-tilt" style={{height:"110vh", zIndex: 2 }}>
+                <div className="cards card-front align-items-start justify-content-start flex-column" style={{backgroundColor:"transparent"}}>
+                    <div className="w-100 d-flex pb-5">
+                        <div className="left-sections col-4">
+                            <h2 style={{fontSize: '72px', width: '90%', fontWeight:"500", letterSpacing:1}}>Who Saapro is for</h2>
+                        </div>
+                        <div className="right-sections col-8">
+                            <Slider />
+                        </div>
+                    </div>
+                    <Marquee />
+                </div>
+            </div>
             {/* ---------- Reveal Section (Curtain Reveal) ---------- */}
             <div className="reveal-section" ref={revealSectionRef}>
                 <div className="plain-card" ref={plainCardRef}>

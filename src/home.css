@@ -480,7 +480,9 @@ stroke-dashoffset: 766.792;
     --reveal-full-tilt: 5;
     /* full tilt angle in deg / shift in percent */
 }
-
+.no-tilt{
+    transform: translate(0%, 0%) rotate(1deg)!important;
+}
 /* ---------- Layered Cards Section ---------- */
 .card-container {
     position: relative;
@@ -774,10 +776,8 @@ canvas {
 
 /* Marquee Section */
 .marquee-section {
-    width: 100%;
-    margin: 20px auto;
+    margin: 0px auto;
     overflow: hidden;
-
     padding: 20px 0;
 }
 
