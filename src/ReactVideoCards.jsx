@@ -191,10 +191,10 @@ const ReactVideoCards = () => {
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front" style={{background: "linear-gradient(135deg, #1a0d00, #4a2e00, #2e1d00)"}}>
-                    <div className='col-8 d-flex justify-content-center align-items-start h-100 pt-5'>
+                    <div className='col-7 d-flex justify-content-center align-items-start h-100 pt-5'>
                         <SequentialLetterColorChange />
                     </div>
-                    <div className='col-4 d-flex justify-content-center align-items-start h-100' >
+                    <div className='col-5 d-flex justify-content-center align-items-start h-100' >
                         <AutoTypingCode />
                     </div>
                 </div>
