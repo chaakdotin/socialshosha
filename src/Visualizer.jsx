@@ -147,7 +147,7 @@ const DotVisualizer = () => {
       </div>
       <div className='d-flex flex-column text-element highlight pb-5' id="text-bottom">
         <span style={{fontSize:"52px"}}>Transforming Ideas into Digital Success</span>
-        <span style={{fontSize:"14px"}} className='pb-3'>Our mission is to transform ideas into reality through innovative design, strategic marketing, and cutting-edge technology.</span>
+        <span style={{fontSize:"14px"}} className='pb-3 s'>Our mission is to transform ideas into reality through innovative design, strategic marketing, and cutting-edge technology.</span>
       </div>
     </div>
     </>
