@@ -6,12 +6,12 @@ export default function Header() {
   return (
     <>
         <div className="position-fixed index-99 w-100">
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between jduihihf">
                 <div style={{ width: '50px' }}>
                     <img src="https://socialshosha.chaak.in/110.png" alt="" />
                 </div>
                 <div>
-                    <ul className="d-flex nav__list pt-3">
+                    <ul className="d-flex nav__list">
                         <li className="nav-item p4 ttu slash-light">
                             <NavLink to="/" className="router-link-active router-link-exact-active link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
