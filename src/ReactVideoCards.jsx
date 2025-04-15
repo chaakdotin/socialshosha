@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
@@ -18,13 +18,56 @@ const ReactVideoCards = () => {
     const revealCardRef = useRef(null);
     // Use a ref to hold an array of card elements.
     const cardContainersRef = useRef([]);
+    const arrowRef = useRef([]);
     // Callback to add each container to our ref array.
     const addToRefs = (el) => {
         if (el && !cardContainersRef.current.includes(el)) {
             cardContainersRef.current.push(el);
         }
     };
+
+
+    useLayoutEffect(() => {
+        arrowRef.current.forEach((arrow, index) => {
+        gsap.to(arrow, {
+            y: 10,
+            duration: 1.5,
+            ease: "power1.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: index * 0.2, // stagger each arrow animation by 0.3s
+        });
+        });
+    }, []);
+    useEffect(() =>{
+        const icons = document.querySelectorAll(".social-link-icons");
+
+        icons.forEach((icon) => {
+          icon.addEventListener("mouseenter", () => {
+            gsap.to(icon, {
+              duration: 0.5,
+              transform: "translate3d(0px, -36px, 0px)",
+              ease: "power2.out",
+            });
+          });
     
+          icon.addEventListener("mouseleave", () => {
+            gsap.to(icon, {
+              duration: 0.5,
+              transform: "translate3d(0px, 0px, 0px)",
+              ease: "power2.out",
+            });
+          });
+        });
+    
+        // Cleanup to prevent memory leaks
+        return () => {
+          icons.forEach((icon) => {
+            icon.removeEventListener("mouseenter", () => {});
+            icon.removeEventListener("mouseleave", () => {});
+          });
+        };
+      }, []);
     useEffect(() => {
         const rotateVideos = () => {
             // Select the three video elements
@@ -178,11 +221,105 @@ const ReactVideoCards = () => {
                 <div className="cards card-middle"></div>
                 <div className="cards card-front" >
                 
-                    <div>
+                    <div className='position-relative'>
                         <div className='px-3 py-3' style={{width:"100vw", height:"100vh"}}>
-                            <div className='color-box'></div>
+                            <div className='color-box'>
+                                <div className="scroll-down" style={{ textAlign: "center", paddingTop: "50px" }}>
+                                    <p style={{ color: "#000", fontFamily: "sans-serif" }}>scroll down</p>
+                                    <div className="arrows">
+                                        <div
+                                            className="arrow"
+                                            ref={(el) => (arrowRef.current[0] = el)}
+                                            
+                                        ></div>
+                                        <div
+                                            className="arrow"
+                                            ref={(el) => (arrowRef.current[1] = el)}
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
                         <div className='bg-images'>
+                            <a
+                                href="#"
+                                // target="_blank"
+                                className="social-link-wrap w-inline-block"
+                                >
+                                <div
+                                    className="social-link-icons ln"
+                                    style={{
+                                    transform:
+                                        "translate3d(0px, 0em, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                                    transformStyle: "preserve-3d"
+                                    }}
+                                >
+                                    <img
+                                    src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/67364bfdf42bcd92a21468f6_ln.svg"
+                                    loading="lazy"
+                                    alt=""
+                                    className="social-link-icon ln"
+                                    />
+                                    <img
+                                    src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/67364bfdf42bcd92a21468f6_ln.svg"
+                                    loading="lazy"
+                                    alt=""
+                                    className="social-link-icon first ln" />
+                                </div>
+                            </a>
+                            <a
+                                href="#"
+                                // target="_blank"
+                                className="social-link-wrap w-inline-block"
+                                >
+                                <div
+                                    className="social-link-icons ln"
+                                    style={{
+                                    transform:
+                                        "translate3d(0px, 0em, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                                    transformStyle: "preserve-3d"
+                                    }}
+                                >
+                                    <img
+                                    src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a65bf2dd4689bf794108e_phone.svg"
+                                    loading="lazy"
+                                    alt=""
+                                    className="social-link-icon ln"
+                                    />
+                                    <img
+                                    src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a65bf2dd4689bf794108e_phone.svg"
+                                    loading="lazy"
+                                    alt=""
+                                    className="social-link-icon first ln" />
+                                </div>
+                            </a>
+                            <a
+                                href="#"
+                                // target="_blank"
+                                className="social-link-wrap w-inline-block"
+                                >
+                                <div
+                                    className="social-link-icons ln"
+                                    style={{
+                                    transform:
+                                        "translate3d(0px, 0em, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+                                    transformStyle: "preserve-3d"
+                                    }}
+                                >
+                                    <img
+                                    src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a65b253821f64273ae8c7_mail%20(1).svg"
+                                    loading="lazy"
+                                    alt=""
+                                    className="social-link-icon ln"
+                                    />
+                                    <img
+                                    src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/673a65b253821f64273ae8c7_mail%20(1).svg"
+                                    loading="lazy"
+                                    alt=""
+                                    className="social-link-icon first ln" />
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

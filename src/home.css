@@ -544,8 +544,8 @@ html {
 
 .card-front .bg-images {
     z-index: 8;
-    grid-column-gap: 1.4em;
-    grid-row-gap: 1.4em;
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
     background-image: url(/svg/1111.svg);
     background-position: 50%;
     background-repeat: no-repeat;
@@ -554,15 +554,40 @@ html {
     align-items: flex-end;
     width: 14.37vw;
     position: absolute;
-    inset: auto auto -.81em -.81em;
+    inset: auto auto -12.96px -12.96px;
     height: 24.2vh;
-    padding-bottom: 2em;
-    padding-left: 2em;
+    padding-bottom: 25px;
+    padding-left: 35px;
     display: flex;
     bottom: 11px;
     left: 3px;
 }
-
+.social-link-icons.ln {
+    grid-column-gap: 12.8px;
+    grid-row-gap: 12.8px;
+}
+.social-link-icons {
+    grid-column-gap: 10.08px;
+    grid-row-gap: 10.08px;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+}
+.social-link-icon.ln {
+    width: 100%;
+    height: 100%;
+}
+.social-link-wrap {
+    grid-column-gap: .63em;
+    grid-row-gap: .63em;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 22.4px;
+    height: 22.4px;
+    overflow: hidden;
+}
 canvas {
     width: 100% !important;
     height: 100% !important;
@@ -997,4 +1022,28 @@ canvas {
     font-style: normal;
     font-weight: normal;
     src: local('BDO Grotesk Black'), url('/fonts/BDOGrotesk-Black-BF648a656f81fe9.woff') format('woff');
+}
+.scroll-down{
+    position: absolute;
+    bottom:0px;
+    left: 50%;
+    transform: translate(-50%,-0%);
+}
+.scroll-down p {
+    font-size: 16px;
+    line-height: 1;
+    padding: 5px 0px;
+    margin: 0px;
+}
+.scroll-down .arrows{
+    height: 50px;
+    overflow: hidden;
+}
+.scroll-down .arrow{
+    width: 12px;
+    height: 12px;
+    margin:1px auto;
+    border-bottom: 2px solid #2f2e2e;
+    border-right: 2px solid #2f2e2e;
+    transform: rotate(45deg);
 }
