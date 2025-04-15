@@ -8,8 +8,9 @@ import LetsTalk from './LetsTalk'
 import Slider from "./Slider"
 import Marquee from './Marquee'
 import Visualizer from './Visualizer'
-import AutoTypingCode from './AutoTypingCode';
-import SequentialLetterColorChange from './SequentialLetterColorChange';
+import AutoTypingCode from './AutoTypingCode'
+import SequentialLetterColorChange from './SequentialLetterColorChange'
+import ImageMarquee from './ImageMarquee'
 import Footer from './Footer'
 
 const ReactVideoCards = () => {
@@ -612,7 +613,7 @@ const ReactVideoCards = () => {
                 <div className="cards card-front align-items-start justify-content-start flex-column" style={{backgroundColor:"transparent"}}>
                     <div className="w-100 d-flex pb-5">
                         <div className="left-sections col-4">
-                            <h2 style={{fontSize: '72px', width: '90%', fontWeight:"500", letterSpacing:1}}>Who Saapro is for</h2>
+                            <h2 style={{fontSize: '60px', width: '100%', fontWeight:"500", letterSpacing:1, color:"#fff"}}>Scale higher with our expertise.</h2>
                         </div>
                         <div className="right-sections col-8">
                             <Slider />
@@ -624,6 +625,7 @@ const ReactVideoCards = () => {
             {/* ---------- Reveal Section (Curtain Reveal) ---------- */}
             <div className="reveal-section" ref={revealSectionRef}>
                 <div className="plain-card" ref={plainCardRef}>
+                    <ImageMarquee />
                     <Blog />
                     <LetsTalk />
                 </div>

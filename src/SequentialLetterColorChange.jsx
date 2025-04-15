@@ -28,12 +28,13 @@ const SequentialLetterInWordColorChange = () => {
             color: 'rgba(0, 0, 0, 1)', // Golden color
             duration: 1,
             stagger: {
-                each: 0.02,
+                each: 0.5,
             },
             scrollTrigger: {
                 trigger: "#nkdnkllf",
-                start: "top 70%",
+                start: "top 50%",
                 end: "+=500",
+                markers:true,
                 scrub: true,
             }
         });

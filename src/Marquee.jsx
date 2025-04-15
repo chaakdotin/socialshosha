@@ -3,18 +3,18 @@ import React from 'react';
 const Marquee = () => {
   // Array of image URLs (duplicated for seamless marquee)
   const images = [
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
-    'https://images.pexels.com/photos/2386141/pexels-photo-2386141.jpeg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
+    '/img/Profile (1).jpg',
   ];
 
   return (
