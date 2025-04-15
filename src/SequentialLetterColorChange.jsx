@@ -26,7 +26,7 @@ const SequentialLetterInWordColorChange = () => {
 
         gsap.to('.letter', {
             color: 'rgba(0, 0, 0, 1)', // Golden color
-            duration: 1,
+            duration: .5,
             stagger: {
                 each: 0.5,
             },
