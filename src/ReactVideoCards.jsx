@@ -229,7 +229,7 @@ const ReactVideoCards = () => {
                                     <div>
                                         <video src="https://videos.pexels.com/video-files/5752729/5752729-uhd_2560_1440_30fps.mp4" className='object-fit-cover'></video>
                                     </div>
-                                    <span>New Color</span>
+                                    <span>New Color.</span>
                                 </div>
                                 <div className="scroll-down" style={{ textAlign: "center", paddingTop: "50px" }}>
                                     <p style={{ color: "#000", fontFamily: "sans-serif" }}>scroll down</p>
