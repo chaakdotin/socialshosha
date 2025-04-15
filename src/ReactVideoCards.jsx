@@ -224,12 +224,13 @@ const ReactVideoCards = () => {
                     <div className='position-relative'>
                         <div className='px-3 py-3' style={{width:"100vw", height:"100vh"}}>
                             <div className='color-box'>
-                                <div className='col-8 meet_new_color'>
-                                    <span>Meet</span> 
-                                    <div>
+                                <div className='col-12 meet_new_color'>
+                                    <span>Think.</span> 
+                                    <div className='d-flex d-none'>
                                         <video src="https://videos.pexels.com/video-files/5752729/5752729-uhd_2560_1440_30fps.mp4" className='object-fit-cover'></video>
                                     </div>
-                                    <span>New Color.</span>
+                                    <span>Design.</span>
+                                    <span>Deliver.</span>
                                 </div>
                                 <div className="scroll-down" style={{ textAlign: "center", paddingTop: "50px" }}>
                                     <p style={{ color: "#000", fontFamily: "sans-serif" }}>scroll down</p>
