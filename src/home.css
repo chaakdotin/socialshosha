@@ -849,7 +849,6 @@ canvas {
 /* Marquee Section */
 .marquee-section {
     margin: 0px auto;
-    overflow: hidden;
     padding: 0px 0;
 }
 

@@ -18,7 +18,7 @@ const Marquee = () => {
   ];
 
   return (
-    <div className="marquee-section">
+    <div className="marquee-section w-100">
       <div className="marquee">
         {images.map((src, index) => (
           <div key={index} className="circle">
