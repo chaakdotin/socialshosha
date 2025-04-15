@@ -241,7 +241,6 @@ const ReactVideoCards = () => {
                                         <div
                                             className="arrow"
                                             ref={(el) => (arrowRef.current[0] = el)}
-                                            
                                         ></div>
                                         <div
                                             className="arrow"
@@ -249,7 +248,7 @@ const ReactVideoCards = () => {
                                         ></div>
                                     </div>
                                 </div>
-                                <video src="/videos/videoplayback.mp4" muted autoPlay playsInline className='bg-video opacity-25'></video>
+                                <video src="/videos/videoplayback.mp4" muted autoPlay playsInline className='bg-video'></video>
                             </div>
                         </div>
                         
