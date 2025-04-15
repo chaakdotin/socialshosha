@@ -249,7 +249,7 @@ const ReactVideoCards = () => {
                                         ></div>
                                     </div>
                                 </div>
-                                <video src="/videos/videoplayback.mp4" muted autoPlay playsInline className='bg-video'></video>
+                                <video src="/videos/videoplayback.mp4" muted autoPlay playsInline className='bg-video opacity-25'></video>
                             </div>
                         </div>
                         
