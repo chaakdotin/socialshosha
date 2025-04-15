@@ -540,6 +540,22 @@ html {
     position: relative;
     overflow: hidden;
 }
+.card-front .color-box .new-div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-front .bg-video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    object-fit: cover;
+}
 .meet_new_color{
     font-family:"Urbanist", sans-serif;
     display: flex;
