@@ -546,7 +546,7 @@ html {
     z-index: 8;
     grid-column-gap: 1.4em;
     grid-row-gap: 1.4em;
-    background-image: url("/svg/1111.svg");
+    background-image: url(/svg/1111.svg);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -555,12 +555,12 @@ html {
     width: 14.37vw;
     position: absolute;
     inset: auto auto -.81em -.81em;
-    height: 21.2vh;
+    height: 24.2vh;
     padding-bottom: 2em;
     padding-left: 2em;
     display: flex;
-    bottom: 5px;
-    left: 0;
+    bottom: 11px;
+    left: 3px;
 }
 
 canvas {

@@ -19,10 +19,11 @@ import PageLoadAnimation from './PageLoadAnimation'
 
 const App = () => {
   const lenis = new Lenis({
-    // lerp: 0.1, // Add slight smoothing for better ScrollTrigger compatibility
-    // duration: 1, // Adjust duration for minimal smoothing
-    smooth: true, // Enable smooth scrolling
-    wheelMultiplier: 0.2,
+    lerp: 0.1,
+    wheelMultiplier: 0.3,
+    gestureOrientation: "vertical",
+    normalizeWheel: false,
+    smoothTouch: false
   });
   
   // Sync Lenis with GSAP's ticker for better performance
