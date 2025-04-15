@@ -50,7 +50,7 @@ function AutoTypingCode() {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      handleParticles();
+      // handleParticles();
       requestAnimationFrame(animate);
     };
 
@@ -162,89 +162,65 @@ console.log(num * 100);`
         <style>
             {`
                 #code-container {
-                    background-color: rgba(30, 30, 30, 0.9);
-                    color: #ffd700;
+                    background-color: #f3f3f3;
+                    color: #000000;
                     padding: 25px;
-                    border-radius: 12px;
-                    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+                    border-radius: 8px;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
                     white-space: pre;
                     font-size: 16px;
                     position: relative;
                     overflow: hidden;
                     max-width: 500px;
-                    backdrop-filter: blur(5px);
-                    font-family: "Courier New", Courier, monospace!important;
+                    border: 1px solid #d4d4d4;
                 }
-
-                    #code-container::before {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        left: -100%;
-                        width: 100%;
-                        height: 100%;
-                        background: linear-gradient(
-                            90deg,
-                            transparent,
-                            rgba(255, 215, 0, 0.3),
-                            transparent
-                        );
-                        animation: shine 3s infinite;
-                    }
-
-                    @keyframes shine {
-                    0% {
-                        left: -100%;
-                    }
-                    50% {
-                        left: 100%;
-                    }
-                    100% {
-                        left: 100%;
-                    }
-                    }
-
-                    .cursors {
+                #code-container::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(
+                        90deg,
+                        transparent,
+                        rgba(0, 0, 0, 0.05),
+                        transparent
+                    );
+                    animation: shine 3s infinite;
+                }
+                @keyframes shine {
+                    0% { left: -100%; }
+                    50% { left: 100%; }
+                    100% { left: 100%; }
+                }
+                .cursors {
                     display: inline-block;
                     width: 8px;
                     height: 18px;
-                    background-color: #ffd700;
+                    background-color: #000000;
                     animation: blink 0.7s infinite;
                     vertical-align: middle;
-                    }
-
-                    @keyframes blink {
-                    0%,
-                    100% {
-                        opacity: 1;
-                    }
-                    50% {
-                        opacity: 0;
-                    }
-                    }
-
-                    .keyword {
-                    color: #ff6f00;
-                    }
-                    .string {
-                    color: #f4e4bc;
-                    }
-                    .function {
-                    color: #ffaa00;
-                    }
-                    .comment {
-                    color: #8b7d6b;
-                    }
-                    .number {
-                    color: #ffcc66;
-                    }
-
-                    canvas {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    z-index: -1;
-                    }
+                }
+                @keyframes blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0; }
+                }
+                .keyword { color: #0000ff; } /* VS Code Light blue for keywords */
+                .string { color: #a31515; } /* VS Code Light red for strings */
+                .function { color: #795e26; } /* VS Code Light brown for functions */
+                .comment { color: #008000; } /* VS Code Light green for comments */
+                .number { color: #098658; } /* VS Code Light teal for numbers */
+                .variable { color: #001080; } /* VS Code Light dark blue for variables */
+                .operator { color: #000000; } /* VS Code Light black for operators */
+                .class { color: #267f99; } /* VS Code Light teal-blue for class names */
+                canvas {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  z-index: -1;
+                  display:none;
+                }
             `}
         </style>
         <div>
