@@ -228,7 +228,7 @@ const ReactVideoCards = () => {
                                 <div className='col-12 new-div'>
                                     <div className='col-12 meet_new_color'>
                                         <span>Think.</span> 
-                                        <div className='d-flex d-none'>
+                                        <div className='d-flex'>
                                             <video src="https://videos.pexels.com/video-files/5752729/5752729-uhd_2560_1440_30fps.mp4" className='object-fit-cover'></video>
                                         </div>
                                         <span>Design.</span>
@@ -248,7 +248,33 @@ const ReactVideoCards = () => {
                                         ></div>
                                     </div>
                                 </div>
-                                <video src="/videos/videoplayback.mp4" muted autoPlay playsInline className='bg-video'></video>
+                                <video src="/videos/videoplayback.mp4" muted autoPlay playsInline className='bg-video d-none'></video>
+                                <div className="gradient-bg d-none">
+                                    <svg
+                                        width="100%"
+                                        height="100%"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        preserveAspectRatio="none"
+                                    >
+                                        <defs>
+                                            <linearGradient id="animated-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <animateTransform
+                                                    attributeName="gradientTransform"
+                                                    attributeType="XML"
+                                                    type="rotate"
+                                                    from="0 0.5 0.5"
+                                                    to="360 0.5 0.5"
+                                                    dur="2s"
+                                                    repeatCount="indefinite"
+                                                />
+                                                <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" />
+                                                <stop offset="100%" stopColor="rgba(235, 205, 141, 1)" />
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="100%" height="100%" fill="url(#animated-gradient)" />
+                                    </svg>
+                                </div>
+
                             </div>
                         </div>
                         
