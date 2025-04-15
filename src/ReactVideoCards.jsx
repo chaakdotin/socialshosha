@@ -361,18 +361,7 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
-            <div className="card-container">
-                <div className="cards card-back"></div>
-                <div className="cards card-middle"></div>
-                <div className="cards card-front" style={{background: "linear-gradient(135deg, #1a0d00, #4a2e00, #2e1d00)"}}>
-                    <div className='col-7 d-flex justify-content-center align-items-start h-100 pt-5'>
-                        <SequentialLetterColorChange />
-                    </div>
-                    <div className='col-5 d-flex justify-content-center align-items-start h-100' >
-                        <AutoTypingCode />
-                    </div>
-                </div>
-            </div>
+           
             
             <div className="card-container" style={{height:"190vh"}}>
                 <div className="cards card-back"></div>
@@ -383,8 +372,8 @@ const ReactVideoCards = () => {
                             className="d-flex flex-column"
                             style={{ width: "60%", fontSize: 90, lineHeight: 1,  }}
                         >
-                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>The</span>
-                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>solution</span>
+                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>Who</span>
+                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>We Are</span>
                         </div>
                         <div
                             className="d-flex flex-column align-items-end"
@@ -401,15 +390,26 @@ const ReactVideoCards = () => {
                                 fontWeight:"500"
                             }}
                             >
-                            Confronted with the devastating impact of waste, we knew something had to
-                            change. That’s why we launched our mobile waste processing plants,
-                            delivering an innovative solution that can go wherever it's needed.
+                           We are more than just a creative agency—we are storytellers, innovators, and digital architects. With a passion for design and technology, we transform ideas into immersive brand experiences that captivate audiences and drive real results.
                             </span>
                         </div>
                     </div>
 
                     <div className='h-100 w-100 px-3 ' style={{borderRadius:"30px", objectFit:"cover"}}>
-                        <img src="https://cdn.prod.website-files.com/6733a9fa15c9b31fb9dd058e/6738e950d57d477447a62624_main-kv-min-p-1600.webp" alt="" className='w-100' />
+                        <img src="/img/SSSSSS.jpg" alt="" className='w-100' />
+                    </div>
+                </div>
+            </div>
+            <div className="card-container">
+                <div className="cards card-back"></div>
+                <div className="cards card-middle"></div>
+                {/*  style={{background: "linear-gradient(135deg, #1a0d00, #4a2e00, #2e1d00)"}} */}
+                <div className="cards card-front">
+                    <div className='col-7 d-flex justify-content-center align-items-center h-100'>
+                        <SequentialLetterColorChange />
+                    </div>
+                    <div className='col-5 d-flex justify-content-center align-items-center h-100' >
+                        <AutoTypingCode />
                     </div>
                 </div>
             </div>

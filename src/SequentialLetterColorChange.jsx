@@ -1,79 +1,58 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from "gsap/all";
+import { style } from 'framer-motion/client';
 
-const SequentialLetterColorChange = () => {
+const SequentialLetterInWordColorChange = () => {
     gsap.registerPlugin(ScrollTrigger);
     const textRef = useRef(null);
-    const textContent = 'The global environmental situation is becoming increasingly alarming. Waste management challenges and pollution levels are reaching critical thresholds, and the need for sustainable solutios has never been more urgent.';
 
-    // Split the text into individual span elements with inline styles.
-    const letterElements = textContent.split('').map((char, index) => {
-        // If it's a space, return a span with &nbsp; but no animation styles
-        if (char === ' ') {
-            return (
-                <span key={index} style={{ display: 'inline-block' }}>
-                    &nbsp;
+    const textContent = `We believe in fearless creativity and purposeful design. Every idea we craft is backed by strategy, emotion, and innovation—turning concepts into experiences that resonate. We don't just follow trends; we challenge them. With a mindset wired for originality, we create bold, meaningful, and memorable digital journeys that truly stand out.`;
+    // Split into words and then letters inside each word
+    const wordElements = textContent.split(' ').map((word, wordIndex) => (
+        <span key={wordIndex} style={{ display: 'inline-block', marginRight: '6px' }}>
+            {word.split('').map((char, charIndex) => (
+                <span
+                    key={`${wordIndex}-${charIndex}`}
+                    className="letter"
+                    style={{ transition: 'color 0.5s ease', display: 'inline-block' }}>
+                    {char}
                 </span>
-            );
-        }
-    
-        // For all other characters, apply animation styles
-        return (
-            <span
-                key={index}
-                className="letter"
-                style={{ transition: 'color 0.5s ease', display: 'inline-block' }}
-            >
-                {char}
-            </span>
-        );
-    });
+            ))}
+        </span>
+    ));
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-    
-        gsap.set('.letter', { color: '#000000' }); // Ensure initial color is black
-    
+        gsap.set('.letter', { color: '#bfbfbf' }); // Initial color black
+
         gsap.to('.letter', {
-            color: '#FFD700', // Golden color
+            color: 'rgba(235, 205, 141, 1)', // Golden color
             duration: 1,
             stagger: {
-                each: 0.05, // time between each letter animating
+                each: 0.02,
             },
             scrollTrigger: {
                 trigger: "#nkdnkllf",
-                start: "top 60%",
+                start: "top 70%",
                 end: "+=500",
                 scrub: true,
             }
         });
     }, []);
 
-    const containerStyle = {
-        margin: 0,
-        fontFamily: 'Arial, sans-serif',
-        minHeight: '100%',
-    };
-
-    const sectionStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-    };
-
-    const headingStyle = {
-        fontSize: '2.5rem',
-        fontWeight: 'bold',
-    };
-
     return (
-        <div style={containerStyle} id="nkdnkllf">
-            <div style={sectionStyle}>
-                <h1 ref={textRef} style={headingStyle}>
-                    {letterElements}
+
+       <>
+
+            <div id="nkdnkllf" style={{ fontFamily: 'Urbanist, sans-serif', padding: '5vh 2vw' }}>
+                <h1
+                    ref={textRef}
+                    style={{ fontSize: '2.2rem', fontWeight: 'bold', lineHeight: 1.5, display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
+                >
+                    {wordElements}
                 </h1>
             </div>
-        </div>
+       </>
     );
 };
 
-export default SequentialLetterColorChange;
+export default SequentialLetterInWordColorChange;
