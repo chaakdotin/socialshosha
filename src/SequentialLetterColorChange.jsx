@@ -34,7 +34,6 @@ const SequentialLetterInWordColorChange = () => {
                 trigger: "#nkdnkllf",
                 start: "top 50%",
                 end: "+=500",
-                markers:true,
                 scrub: true,
             }
         });
