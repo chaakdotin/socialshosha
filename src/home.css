@@ -789,7 +789,7 @@ canvas {
     height: 100vh;
     background: #4A2E00;
     /* Distinct red */
-    z-index: 1;
+    z-index: 0;
     display: flex;
     align-items: end;
     justify-content: center;

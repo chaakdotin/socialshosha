@@ -212,7 +212,7 @@ const ReactVideoCards = () => {
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div className="card-container">
+            <div className="card-container" style={{zIndex: 2}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front" >
@@ -359,7 +359,7 @@ const ReactVideoCards = () => {
             </div>
            
             
-            <div className="card-container" style={{height:"190vh"}}>
+            <div className="card-container" style={{height:"190vh",zIndex: 2}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front flex-column ">
@@ -396,7 +396,7 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
-            <div className="card-container">
+            <div className="card-container" style={{zIndex: 2}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 {/*  style={{background: "linear-gradient(135deg, #1a0d00, #4a2e00, #2e1d00)"}} */}
@@ -405,7 +405,7 @@ const ReactVideoCards = () => {
                     <div className='d-flex align-items-center justify-content-center'>
 
                         <div className='col-7 d-flex flex-column justify-content-center align-items-center h-100'>
-                            <div className='d-flex align-items-center justify-content-center'>
+                            <div className=''>
                                 <span style={{ fontFamily: '"MarkPro", sans-serif',fontWeight:"800"}}>Our Approach</span>
                             </div>
                             <SequentialLetterColorChange />
@@ -427,7 +427,7 @@ const ReactVideoCards = () => {
             
            
 
-            <div className="card-container" style={{height:"120vh"}}>
+            <div className="card-container" style={{height:"120vh",zIndex: 2}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front">
