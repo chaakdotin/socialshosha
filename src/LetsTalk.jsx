@@ -183,7 +183,7 @@ const LetsTalk = () => {
         </div>
         <div className='d-flex w-100 position-relative h-100'>
           <div className="left-section">
-            <ul style={{ textUnderlineOffset: "4px", textDecorationLine: "underline", fontWeight: 500, fontSize: "14px" }}>
+            <ul style={{ textUnderlineOffset: "4px", textDecorationLine: "underline", fontWeight: 500, fontSize: "14px", color:"#949ea9" }}>
               <li className='d-flex'>
                 <a href="#">Linkdln</a>
               </li>
