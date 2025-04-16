@@ -477,8 +477,8 @@ const ReactVideoCards = () => {
                     <div className='w-100 h-100 d-flex justify-content-end align-center position-relative'>
                         <div className='w-100 pt-5 mt-4 position-absolute ' style={{ left: "1vw" }}>
                             <div className='d-flex flex-column gap-0' style={{lineHeight: ".75",  }}>
-                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "180px",fontFamily: "MarkPro, sans-serif", letterSpacing:"-.03em" }}>Bringing</span>
-                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "180px",fontFamily: "MarkPro, sans-serif", letterSpacing:"-.03em"}}>Ideas to Life.</span>
+                                <span className="m-0 pt-3" style={{ fontSize: "180px",fontFamily: "MarkPro",fontWeight:900, letterSpacing:"-.03em" }}>Bringing</span>
+                                <span className="m-0 pt-3" style={{ fontSize: "180px",fontFamily: "MarkPro",fontWeight:900, letterSpacing:"-.03em"}}>Ideas to Life.</span>
                             </div>
                         </div>
                         <div className="d-flex col-6 align-items-center justify-content-center pl-5" >
@@ -488,7 +488,7 @@ const ReactVideoCards = () => {
                                     className="latestWork d-flex flex-column"
                                     data-v-8867a48a=""
                                     style={{ opacity: 1 }}>
-                                    <span className="fs-6" data-v-8867a48a="" style={{fontFamily: "MarkPro, sans-serif", fontWeight:550}}>
+                                    <span className="fs-6" data-v-8867a48a="" style={{fontFamily: "MarkPro", fontWeight:550}}>
                                         Latest work
                                     </span>
                                     <svg
