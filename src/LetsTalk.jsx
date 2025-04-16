@@ -180,7 +180,7 @@ transform: translate(50px);
       <div className="containers">
         {/* Left text section */}
         <div className="col-12">
-          <h1 style={{ fontSize: "140px", fontWeight: "700", lineHeight: "140px" }}>Let's talk.</h1>
+          <h1 style={{ fontSize: "140px", fontWeight: "700", lineHeight: "140px",fontFamily: "MarkPro", }}>Let's talk.</h1>
         </div>
         <div className='d-flex w-100 position-relative h-100'>
           <div className="left-section">
