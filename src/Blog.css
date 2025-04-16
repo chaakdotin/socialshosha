@@ -250,7 +250,7 @@
     transform: translate3d(0px, 0em, 0px)!important; /* State when hovered */
     opacity: 1!important;
 }
-.project:hover  {
+.project:hover .content  {
     /* opacity: 0.5!important; */
 }
 @media screen and (min-width: 1280px) {

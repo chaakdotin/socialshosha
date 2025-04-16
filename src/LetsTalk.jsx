@@ -203,7 +203,7 @@ const LetsTalk = () => {
               <video
                 ref={topVideoRef}
                 className="top"
-                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                src="https://cdn.sanity.io/files/y63jgrcb/production/652489ddcd735831f9c6949b5c2482766dc34cd3.mp4"
                 autoPlay
                 muted
                 loop
@@ -211,7 +211,7 @@ const LetsTalk = () => {
               <video
                 ref={middleVideoRef}
                 className="middle"
-                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                src="https://cdn.sanity.io/files/y63jgrcb/production/4309f2aea60be2e130bdaa42beaa09994e08418b.mp4"
                 autoPlay
                 muted
                 loop
@@ -219,7 +219,7 @@ const LetsTalk = () => {
               <video
                 ref={bottomVideoRef}
                 className="bottom"
-                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                src="https://cdn.sanity.io/files/y63jgrcb/production/96ca05470be18a8644667ba098af34a6a67b3d85.mp4"
                 autoPlay
                 muted
                 loop

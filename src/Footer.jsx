@@ -99,37 +99,31 @@ export default function Footer() {
                                 <div className="footer-col__inner">
                                     <ul className="footer-col__list p-0">
                                         <li className="footer-col__list-item p5">
-                                            <a href="https://www.youtube.com/THELINEanimation" rel="noopener noreferrer"
+                                            <a href="https://www.youtube.com/@SocialShosha" rel="noopener noreferrer"
                                                 target="_blank" className="link footer-col__link">
                                                 <span className="link__label">YouTube</span>
                                             </a>
                                         </li>
                                         <li className="footer-col__list-item p5">
-                                            <a href="https://www.instagram.com/thelineanimation/" rel="noopener noreferrer"
+                                            <a href="https://www.instagram.com/socialshosha/" rel="noopener noreferrer"
                                                 target="_blank" className="link footer-col__link">
                                                 <span className="link__label">Instagram</span>
                                             </a>
                                         </li>
                                         <li className="footer-col__list-item p5">
-                                            <a href="https://www.tiktok.com/@thelineanimation" rel="noopener noreferrer"
-                                                target="_blank" className="link footer-col__link">
-                                                <span className="link__label">TikTok</span>
-                                            </a>
-                                        </li>
-                                        <li className="footer-col__list-item p5">
-                                            <a href="https://x.com/thelinestudio" rel="noopener noreferrer" target="_blank"
+                                            <a href="https://x.com/SocialShosha" rel="noopener noreferrer" target="_blank"
                                                 className="link footer-col__link">
                                                 <span className="link__label">X</span>
                                             </a>
                                         </li>
                                         <li className="footer-col__list-item p5">
-                                            <a href="https://www.facebook.com/thelineanimation" rel="noopener noreferrer"
+                                            <a href="https://www.facebook.com/socialshosha?ref=pages_you_manage" rel="noopener noreferrer"
                                                 target="_blank" className="link footer-col__link">
                                                 <span className="link__label">Facebook</span>
                                             </a>
                                         </li>
                                         <li className="footer-col__list-item p5">
-                                            <a href="https://www.linkedin.com/company/the-line-studio/"
+                                            <a href="https://www.linkedin.com/company/social-shosha/?originalSubdomain=in"
                                                 rel="noopener noreferrer" target="_blank" className="link footer-col__link">
                                                 <span className="link__label">LinkedIn</span>
                                             </a>
