@@ -35,7 +35,7 @@ export default function Blog() {
 
     return (
         <>
-            <div className="container-2 w-100 pt-5">
+            <div className="container-2 w-100 pt-5 pb-5 mb-5">
                 <div className="container-inner">
                     <div className="works_wrapper">
                         <div id="w-node-_2a1dc6c1-5e8b-c81d-d164-4dd092e348b5-344c309f" className="works_cms">

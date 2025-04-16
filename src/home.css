@@ -752,7 +752,7 @@ canvas {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #000000;
+    background: #4A2E00;
     /* Distinct red */
     z-index: 1;
     display: flex;
