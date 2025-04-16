@@ -59,14 +59,14 @@ const LetsTalk = () => {
           box-sizing: border-box;
         }
         .center-section {
-          width: 50%;
+          width: 40%;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         .video-stack {
           position: relative;
-          width: 65%;
+          width: 60%;
           left: -40px;
           top: -100px;
         }
