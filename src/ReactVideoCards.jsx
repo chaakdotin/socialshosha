@@ -30,19 +30,18 @@ const ReactVideoCards = () => {
 
     useLayoutEffect(() => {
         arrowRef.current.forEach((arrow, index) => {
-        gsap.to(arrow, {
-            y: 10,
-            duration: 1.5,
-            ease: "power1.inOut",
-            yoyo: true,
-            repeat: -1,
-            delay: index * 0.2, // stagger each arrow animation by 0.3s
-        });
+            gsap.to(arrow, {
+                y: 10,
+                duration: 1.5,
+                ease: "power1.inOut",
+                yoyo: true,
+                repeat: -1,
+                delay: index * 0.2, // stagger each arrow animation by 0.3s
+            });
         });
     }, []);
     useEffect(() =>{
         const icons = document.querySelectorAll(".social-link-icons");
-
         icons.forEach((icon) => {
           icon.addEventListener("mouseenter", () => {
             gsap.to(icon, {
@@ -75,10 +74,8 @@ const ReactVideoCards = () => {
             const topVideos = document.querySelector('.video-stacks .tops');
             const middleVideos = document.querySelector('.video-stacks .middles');
             const bottomVideos = document.querySelector('.video-stacks .bottoms');
-
             // Apply wipe-out animation to the top video
             topVideos.classList.add('wipe-outs');
-
             // After 600ms, reassign the classes to change positions
             setTimeout(() => {
                 // The top video moves to the bottom position with a wipe-in effect
@@ -190,10 +187,8 @@ const ReactVideoCards = () => {
                 }
             }
         };
-    
         // Attach the scroll event listener when the component mounts.
         window.addEventListener("scroll", handleScroll);
-        
         // Cleanup the event listener on component unmount.
         return () => {
           window.removeEventListener("scroll", handleScroll);

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-
+import {gsap, ScrollTrigger} from "gsap/all";
+import { marker } from 'framer-motion/client'
 const DotVisualizer = () => {
   const visualizerRef = useRef(null);
   const columnsRef = useRef([]);
   const phasesRef = useRef([]);
-  
+  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     const visualizer = visualizerRef.current;
     const vw = window.innerWidth;
@@ -71,7 +71,24 @@ const DotVisualizer = () => {
     // Scroll opacity & highlight
 
   }, []);
-
+  useEffect(() => {
+    const lt = gsap.timeline({
+      scrollTrigger:{
+        trigger: ".hghjkghjgjkg",
+        start:"top 40%",
+        end:"+=300",
+        scrub:true,
+        markers:true
+      }
+    })
+    lt.to('#text-top',{
+      opacity:1,
+    }).to('#text-bottom',{
+      opacity:1,
+    }).to('.visualizerRef',{
+      opacity:1,
+    })
+  }, [])
   const [isOn, setIsOn] = useState(false);
   
   const handleClick = () => {
@@ -115,7 +132,7 @@ const DotVisualizer = () => {
           className='visualizerRef px-3 d-flex align-items-end justify-content-between '
         />
       </div>
-    <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between pb-5'>
+    <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between pb-5 hghjkghjgjkg'>
       <div className='d-flex align-items-center justify-content-between '>
         <h1 style={{fontSize:"100px",lineHeight:"85%"}} id="text-top" className='text-element highlight'>Our<br />Mission</h1>
         <div className='col-4 d-flex align-items-center position-relative py-2'>

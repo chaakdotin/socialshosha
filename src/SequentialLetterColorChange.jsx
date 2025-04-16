@@ -22,8 +22,7 @@ const SequentialLetterInWordColorChange = () => {
     ));
 
     useEffect(() => {
-        gsap.set('.letter', { color: '#bfbfbf' }); // Initial color black
-
+        gsap.set('.letter', { color: '#bfbfbf' });
         gsap.to('.letter', {
             color: 'rgba(0, 0, 0, 1)', // Golden color
             duration: .5,
@@ -40,9 +39,7 @@ const SequentialLetterInWordColorChange = () => {
     }, []);
 
     return (
-
-       <>
-
+        <>
             <div id="nkdnkllf" style={{ fontFamily: '"Urbanist", sans-serif', padding: '5vh 2vw' }}>
                 <h1
                     ref={textRef}
