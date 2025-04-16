@@ -40,11 +40,10 @@ const SequentialLetterInWordColorChange = () => {
 
     return (
         <>
-            <div id="nkdnkllf" style={{ fontFamily: '"Urbanist", sans-serif', padding: '5vh 2vw' }}>
+            <div id="nkdnkllf" style={{ fontFamily: 'MarkPro', padding: '5vh 2vw', width:"100%" }}>
                 <h1
                     ref={textRef}
-                    style={{ fontSize: '2.6rem', fontWeight: 'bold', lineHeight: 1.5, display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
-                >
+                    style={{ fontSize: '2.6rem', fontWeight: 'bold', lineHeight: 1.5, display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }} >
                     {wordElements}
                 </h1>
             </div>

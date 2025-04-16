@@ -401,11 +401,18 @@ const ReactVideoCards = () => {
                 <div className="cards card-middle"></div>
                 {/*  style={{background: "linear-gradient(135deg, #1a0d00, #4a2e00, #2e1d00)"}} */}
                 <div className="cards card-front" style={{position:"relative"}}>
-                    <div className='col-7 d-flex justify-content-center align-items-center h-100'>
-                        <SequentialLetterColorChange />
-                    </div>
-                    <div className='col-5 d-flex justify-content-center align-items-center h-100' >
-                        <AutoTypingCode />
+
+                    <div className='d-flex align-items-center justify-content-center'>
+
+                        <div className='col-7 d-flex flex-column justify-content-center align-items-center h-100'>
+                            <div className='d-flex align-items-center justify-content-center'>
+                                <span style={{ fontFamily: '"MarkPro", sans-serif',fontWeight:"800"}}>Our Approach</span>
+                            </div>
+                            <SequentialLetterColorChange />
+                        </div>
+                        <div className='col-5 d-flex justify-content-center align-items-center h-100' >
+                            <AutoTypingCode />
+                        </div>
                     </div>
                     <video src="/videos/videoplayback.mp4" muted autoPlay playsInline className='bg-video'></video>
                 </div>
