@@ -7,8 +7,8 @@ export default function Header() {
     <>
         <div className="position-fixed index-99 w-100">
             <div className="d-flex justify-content-between jduihihf">
-                <div style={{ width: '500px' }}>
-                    <img src="/img/SS_LOGOOGOOG.png" alt="" className='w-100 h-100' />
+                <div style={{ width: 275, paddingLeft: 10 }}>
+                    <img alt="" className="w-100" src="/img/SS_LOGOOGOOG.png" />
                 </div>
                 <div>
                     <ul className="d-flex nav__list">

@@ -366,14 +366,14 @@ const ReactVideoCards = () => {
                     <div className="d-flex justify-content-between px-4 py-5 w-100">
                         <div
                             className="d-flex flex-column"
-                            style={{ width: "60%", fontSize: 90, lineHeight: 1,  }}
+                            style={{ width: "60%", fontSize: 90, lineHeight: 0.83, letterSpacing: 0.83  }}
                         >
-                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>Who</span>
-                            <span style={{fontFamily: '"Urbanist", sans-serif', fontWeight:"600"}}>We Are</span>
+                            <span style={{fontFamily: '"MarkPro", sans-serif', fontWeight:"900"}}>Who</span>
+                            <span style={{fontFamily: '"MarkPro", sans-serif', fontWeight:"900"}}>We Are</span>
                         </div>
                         <div
                             className="d-flex flex-column align-items-end"
-                            style={{ width: "31.2%", height: 133, position: "relative" }}
+                            style={{ width: "31.2%", position: "relative" }}
                         >
                             <span
                             style={{
@@ -382,7 +382,7 @@ const ReactVideoCards = () => {
                                 position: "absolute",
                                 bottom: 0,
                                 width: "100%",
-                                fontFamily: '"Urbanist", sans-serif',
+                                fontFamily: '"MarkPro", sans-serif',
                                 fontWeight:"500"
                             }}
                             >

@@ -575,14 +575,6 @@ html {
     position: relative;
     overflow: hidden;
 }
-@keyframes moveWhite {
-    0%   { background-position: 30% 30%; }
-    20%  { background-position: 80% 40%; }
-    40%  { background-position: 70% 80%; }
-    60%  { background-position: 20% 70%; }
-    80%  { background-position: 10% 20%; }
-    100% { background-position: 30% 30%; }
-  }
 .card-front .color-box .new-div{
     position: absolute;
     width: 100%;
@@ -715,7 +707,7 @@ canvas {
 
 .card-back {
     z-index: 1;
-    background: #F7F8F7;
+    background: #f7f8f783;
     transform: rotate(-2deg);
     outline: dashed;
     outline-offset: -14px;
@@ -724,12 +716,21 @@ canvas {
 /* The middle layer with a lighter tilt */
 .card-middle {
     z-index: 2;
-    background: #D0D2D1;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(235, 205, 141, 0.5) 50%);
     transform: rotate(-1deg);
     outline: dashed;
     outline-offset: -14px;
+    animation: moveWhite 4s infinite;
 }
 
+@keyframes moveWhite {
+    0%   { background-position: 30% 30%; }
+    20%  { background-position: 80% 40%; }
+    40%  { background-position: 70% 80%; }
+    60%  { background-position: 20% 70%; }
+    80%  { background-position: 10% 20%; }
+    100% { background-position: 30% 30%; }
+  }
 .card-front {
     z-index: 3;
     display: flex;
@@ -1033,7 +1034,7 @@ canvas {
 }
 
 .text-element.highlight {
-    color: #EBCD8D;
+    color: #fff;
     opacity: 0.1;
     font-family: "BDO Grotesk", Verdana, sans-serif;
     font-weight: 500;

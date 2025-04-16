@@ -39,7 +39,7 @@ export default function Blog() {
                 <div className="container-inner">
                     <div className="works_wrapper">
                         <div id="w-node-_2a1dc6c1-5e8b-c81d-d164-4dd092e348b5-344c309f" className="works_cms">
-                            <h1 className="heading-12 okay">Blogs</h1>
+                            <h1 className="heading-12 okay" style={{fontFamily: '"MarkPro", sans-serif', fontWeight:"900"}}>Blogs</h1>
                             <div data-w-id="2a1dc6c1-5e8b-c81d-d164-4dd092e348b8" className="projects_container">
                                 <div fs-cmsfilter-element="list" id="w-node-_2a1dc6c1-5e8b-c81d-d164-4dd092e348b9-344c309f"
                                     className="w-dyn-list">

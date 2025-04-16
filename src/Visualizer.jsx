@@ -133,7 +133,7 @@ const DotVisualizer = () => {
       </div>
     <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between pb-5 hghjkghjgjkg'>
       <div className='d-flex align-items-center justify-content-between '>
-        <h1 style={{fontSize:"100px",lineHeight:"85%"}} id="text-top" className='text-element highlight'>Our<br />Mission</h1>
+        <h1 style={{fontSize:"100px",lineHeight:"85%",fontFamily: '"MarkPro", sans-serif', fontWeight:"900"}} id="text-top" className='text-element highlight'>Our<br />Mission</h1>
         <div className='col-4 d-flex align-items-center position-relative py-2 d-none'>
           <div
             className={`containerss ${isOn ? 'on' : 'off'}`}
@@ -147,7 +147,7 @@ const DotVisualizer = () => {
           </div>
         </div>
       </div>
-      <div className='d-flex flex-column text-element highlight pb-5' id="text-bottom">
+      <div className='d-flex flex-column text-element highlight pb-5' id="text-bottom" style={{fontFamily: '"MarkPro", sans-serif', fontWeight:"900"}}>
         <span style={{fontSize:"52px"}}>Transforming Ideas into Digital Success</span>
         <span style={{fontSize:"14px"}} className='pb-3'>Our mission is to transform ideas into reality through innovative design, strategic marketing, and cutting-edge technology.</span>
       </div>
