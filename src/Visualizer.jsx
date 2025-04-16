@@ -77,8 +77,7 @@ const DotVisualizer = () => {
         trigger: ".hghjkghjgjkg",
         start:"top 40%",
         end:"+=300",
-        scrub:true,
-        markers:true
+        scrub:true
       }
     })
     lt.to('#text-top',{
@@ -135,7 +134,7 @@ const DotVisualizer = () => {
     <div className='w-100 h-100 p-3 d-flex flex-column justify-content-between pb-5 hghjkghjgjkg'>
       <div className='d-flex align-items-center justify-content-between '>
         <h1 style={{fontSize:"100px",lineHeight:"85%"}} id="text-top" className='text-element highlight'>Our<br />Mission</h1>
-        <div className='col-4 d-flex align-items-center position-relative py-2'>
+        <div className='col-4 d-flex align-items-center position-relative py-2 d-none'>
           <div
             className={`containerss ${isOn ? 'on' : 'off'}`}
             onClick={handleClick}
