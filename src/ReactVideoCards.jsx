@@ -477,8 +477,8 @@ const ReactVideoCards = () => {
                     <div className='w-100 h-100 d-flex justify-content-end align-center position-relative'>
                         <div className='w-100 pt-5 mt-4 position-absolute ' style={{ left: "1vw" }}>
                             <div className='d-flex flex-column gap-0'>
-                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", lineHeight: "30px", }}>Bringing</span>
-                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", }}>Ideas to Life.</span>
+                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", lineHeight: "30px", }}>Websites That Wow </span>
+                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", }}>and Work.</span>
                             </div>
                         </div>
                         <div className="right-video-section">
@@ -604,7 +604,7 @@ const ReactVideoCards = () => {
                     </div>
                 </div>
             </div>
-            <div className="card-container no-tilt" style={{height:"110vh", zIndex: 2 }}>
+            <div className="card-container no-tilt" style={{height:"70vh", zIndex: 2 }}>
                 <div className="cards card-front align-items-start justify-content-start flex-column" style={{backgroundColor:"transparent"}}>
                     <div className="w-100 d-flex pb-5">
                         <div className="left-sections col-4">
@@ -614,7 +614,7 @@ const ReactVideoCards = () => {
                             <Slider />
                         </div>
                     </div>
-                    <Marquee />
+                    {/* <Marquee /> */}
                 </div>
             </div>
             {/* ---------- Reveal Section (Curtain Reveal) ---------- */}

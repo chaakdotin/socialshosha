@@ -73,7 +73,7 @@ const DotVisualizer = () => {
   }, []);
   useEffect(() => {
     const lt = gsap.timeline({
-      scrollTrigger:{
+      scrollTrigger: {
         trigger: ".hghjkghjgjkg",
         start:"top 40%",
         end:"+=300",

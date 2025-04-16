@@ -54,7 +54,7 @@ const Slider = () => {
             <div className="rectangle">
               <div>0{index+1}</div>
               <div className="d-flex flex-column">
-                <div style={{ fontSize: '30px', lineHeight: '1' }}>
+                <div style={{ fontSize: '30px', lineHeight: '1', height:"65px" }}>
                   <span>{data.title}</span>
                 </div>
                 <div className="py-3" style={{ fontSize: '13px' }}>

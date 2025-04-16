@@ -2,9 +2,11 @@ import React from 'react';
 
 
 const ImageMarquee = () => {
-  const images = new Array(20).fill(
-    'https://cdn.prod.website-files.com/64081b3f2fda69c80b5566e5/6470a5aaa1ed9ddfeb688754_Dhampur%20Logo%20Asset%203%402x%20-%20Alankrit%20Johri%20(1)-p-500.webp'
-  );
+  const images = [];
+
+  for (let i = 1; i <= 26; i++) {
+    images.push(`/img/brands/${i}.png`);
+  }
 
   return (
     <section className="image-section">
@@ -13,6 +15,7 @@ const ImageMarquee = () => {
           <img key={`row1-${index}`} src={src} alt="img" />
         ))}
       </div>
+      
       <div className="image-row row-2">
         {images.map((src, index) => (
           <img key={`row2-${index}`} src={src} alt="img" />
