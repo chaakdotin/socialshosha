@@ -1,9 +1,27 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import './footer.css'
 export default function Footer() {
+    const [visible, setVisible] = useState(false);
+
+    const toggleVisible = () => {
+        const scrolled = window.scrollY;
+        setVisible(scrolled > 300);
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisible);
+        return () => window.removeEventListener('scroll', toggleVisible);
+    }, []);
     return (
         <>
-            <div className='d-flex flex-column w-100'>
+            <div className='d-flex flex-column w-100 px-2'>
                 <div className='w-100 d-flex'>
                     <div className='col-4'>
                         <div>
@@ -16,10 +34,9 @@ export default function Footer() {
                             <div className="footer-col__inner">
                                 <div className="p1 footer-col__copy footer-col__copy--inline slash-light">
                                     <p>
-                                        <a href="mailto:info@thelineanimation.com&nbsp;">info@thelineanimation.com</a>
+                                        <a href="mailto:info@socialshosha.com">info@socialshosha.com</a>
                                         <br />
-                                        <em>/</em>
-                                        <a href="tel:442030020224">44 (0)20 30020224</a>
+                                        <a href="tel:8872727786">+91 8872727786</a>
                                     </p>
                                 </div>
                             </div>
@@ -54,11 +71,10 @@ export default function Footer() {
                                             className="footer-col__copy-link">
                                             <span className="text-splitter--splitted text-splitter">
                                                 <div className='find_ud'>
-                                                    <div className="footer__address-line">The Line Animation Studio Ltd </div>
-                                                    <div className="footer__address-line">Studio 02</div>
-                                                    <div className="footer__address-line">De Beauvoir Block, 92-96 </div>
-                                                    <div className="footer__address-line">De Beauvoir Road </div>
-                                                    <div className="footer__address-line">London, N1 4EN</div>
+                                                    <div className="footer__address-line">Social Shosha Private Limited </div>
+                                                    <div className="footer__address-line">Second Floor, 23-SCF, SBS</div>
+                                                    <div className="footer__address-line">Nagar, E Block, Market, </div>
+                                                    <div className="footer__address-line">Ludhiana, Punjab 141013 </div>
                                                 </div>
                                             </span>
                                         </a>
@@ -134,7 +150,7 @@ export default function Footer() {
                             </div>
                             <div className="footer-col__wrapper">
                                 <div className="footer-col__inner">
-                                    <ul className="footer-col__list">
+                                    <ul className="footer-col__list p-0">
                                         <li className="footer-col__list-item p5">
                                             <a aria-current="page" href="/"
                                                 className="router-link-active router-link-exact-active link footer-col__link">
@@ -202,16 +218,15 @@ export default function Footer() {
                     </div>
                     <div className="footer__bottom p4 ttu fw4470 slash-light">
                         <p className="footer__copyrights p-0 m-0">
-                            © <span>THE LINE ANIMATION STUDIO</span> 2025
+                            © <span> Social Shosha & CHAAK</span>| 2025
                         </p>
                         <i className="footer__copyrights-slash">&nbsp;/&nbsp;</i>
-                        <button className="footer__credits p4 ttu fw4470">
-                            Site Credits
-                        </button>
-                        <i>&nbsp;/&nbsp;</i>
                         <a href="/privacy" className="">Privacy</a>
-                        <i>&nbsp;/&nbsp;</i>
-                        <button aria-label="Scroll to the top of the page" className="p4 ttu back-to-top fw4470">Up</button>
+                        <i className="footer__copyrights-slash">&nbsp;/&nbsp;</i>
+                        <button 
+                            onClick={scrollToTop}
+                            aria-label="Scroll to the top of the page"
+                            className="px-0 ttu back-to-top fw4470">Up</button>
                     </div>
                 </div>
             </div>

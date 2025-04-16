@@ -67,7 +67,7 @@ const LetsTalk = () => {
         .video-stack {
           position: relative;
           width: 60%;
-          left: -50px;
+          left: 0px;
           top: -100px;
         }
         .video-stack video {
@@ -110,6 +110,7 @@ const LetsTalk = () => {
           }
               .right-section {
               justify-content: start;
+                  margin-left: 70px;
           }
         .left-section a{
           color:#949ea9!important;
@@ -231,9 +232,9 @@ const LetsTalk = () => {
             <a href="#" className='d-flex gap-2 '>
               <button className='hireOurTeamTitle btn btn-light px-4 py-2' style={{ fontWeight: 500, fontSize: "18px", borderColor: "rgb(222 228 234 / 1)",position: 'relative', zIndex: 1,}}>Hire our team</button>
               <div
-                class="hireOurTeamArrow border-1px border-28282E d-grid place-items-center w-43px h-43px rounded-full bg-28282E">
-                <svg class="w-11px h-11px" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 6.5H11M11 6.5L5.93606 1M11 6.5L5.93606 12" stroke="white" stroke-width="2"></path>
+                className="hireOurTeamArrow border-1px border-28282E d-grid place-items-center w-43px h-43px rounded-full bg-28282E">
+                <svg className="w-11px h-11px" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 6.5H11M11 6.5L5.93606 1M11 6.5L5.93606 12" stroke="white" strokeWidth="2"></path>
                 </svg>
               </div>
             </a>
