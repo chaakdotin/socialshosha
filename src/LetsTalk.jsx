@@ -44,138 +44,138 @@ const LetsTalk = () => {
     <>
       <style>{`
         .containers {
-display: flex;
-flex-direction: column;
-height: 100vh;
-width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
 
-}
-.left-section,
-.right-section {
-width: 25%;
-display: flex;
-align-items: center;
-padding: 20px;
-box-sizing: border-box;
-}
-.center-section {
-width: 40%;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.video-stack {
-position: relative;
-width: 60%;
-left: 0px;
-top: -100px;
-}
-.video-stack video {
-position: absolute;
-width: 100%;
-top: 0;
-left: 0;
-border-radius: 12px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-transition: transform 0.6s ease, opacity 0.6s ease;
-}
-.top {
-transform: translate(100px, -100px);
-z-index: 3;
-}
-.middle {
-transform: translate(50px, -50px);
-z-index: 2;
-}
-.bottom {
-transform: translate(0, 0);
-z-index: 1;
-}
-@keyframes wipeOut {
-from { transform: translate(100px, -100px); opacity: 1; }
-to { transform: translate(150px, -150px); opacity: 0; }
-}
-.wipe-out {
-animation: wipeOut 0.6s forwards;
-}
-@keyframes wipeIn {
-from { transform: translate(0px, 0px); opacity: 0; }
-to { transform: translate(0, 0); opacity: 1; }
-}
-.wipe-in {
-animation: wipeIn 0.6s forwards;
-}
-.left-section {
-justify-content: end;
-}
-.right-section {
-justify-content: start;
-margin-left: 70px;
-}
-.left-section a{
-color:#949ea9!important;
-font-size: 14px;
-}
+        }
+        .left-section,
+        .right-section {
+        width: 25%;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        }
+        .center-section {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+        .video-stack {
+        position: relative;
+        width: 60%;
+        left: 0px;
+        top: -100px;
+        }
+        .video-stack video {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+        .top {
+        transform: translate(100px, -100px);
+        z-index: 3;
+        }
+        .middle {
+        transform: translate(50px, -50px);
+        z-index: 2;
+        }
+        .bottom {
+        transform: translate(0, 0);
+        z-index: 1;
+        }
+        @keyframes wipeOut {
+        from { transform: translate(100px, -100px); opacity: 1; }
+        to { transform: translate(150px, -150px); opacity: 0; }
+        }
+        .wipe-out {
+        animation: wipeOut 0.6s forwards;
+        }
+        @keyframes wipeIn {
+        from { transform: translate(0px, 0px); opacity: 0; }
+        to { transform: translate(0, 0); opacity: 1; }
+        }
+        .wipe-in {
+        animation: wipeIn 0.6s forwards;
+        }
+        .left-section {
+        justify-content: end;
+        }
+        .right-section {
+        justify-content: start;
+        margin-left: 70px;
+        }
+        .left-section a{
+        color:#949ea9!important;
+        font-size: 14px;
+        }
 
-.right-section button{
-font-size: 14px;
-border-radius: 30px;
-}
-.border-28282E {
---tw-border-opacity: 1;
-border-color: rgb(40 40 46 / var(--tw-border-opacity));
-}
-.bg-28282E {
---tw-bg-opacity: 1;
-background-color: rgb(40 40 46 / var(--tw-bg-opacity));
-}
-.border-1px {
-border-width: 1px;
-}
+        .right-section button{
+        font-size: 14px;
+        border-radius: 30px;
+        }
+        .border-28282E {
+        --tw-border-opacity: 1;
+        border-color: rgb(40 40 46 / var(--tw-border-opacity));
+        }
+        .bg-28282E {
+        --tw-bg-opacity: 1;
+        background-color: rgb(40 40 46 / var(--tw-bg-opacity));
+        }
+        .border-1px {
+        border-width: 1px;
+        }
 
-.rounded-full {
-border-radius: 9999px;
-}
-.place-items-center {
-place-items: center;
-}
-.w-43px {
-width: 43px;
-}
-.h-43px {
-height: 43px;
-}
-.w-11px {
-width: 11px;
-}
-.h-11px {
-height: 11px;
-}
+        .rounded-full {
+        border-radius: 9999px;
+        }
+        .place-items-center {
+        place-items: center;
+        }
+        .w-43px {
+        width: 43px;
+        }
+        .h-43px {
+        height: 43px;
+        }
+        .w-11px {
+        width: 11px;
+        }
+        .h-11px {
+        height: 11px;
+        }
 
-.dfdf a:hover .hireOurTeamTitle {
-transform: translate(50px);
-animation: a .5s linear;
-}
-.dfdf a:hover .hireOurTeamArrow {
-transform: translate(-170px) scale(1);
-animation: h .5s linear;
-}
-@keyframes h{
-0%{
-transform: translate(0px) scale(0);
-}
-100%{
-transform: translate(-170px) scale(1);
-}
-}
-@keyframes a{
-0%{
-transform: translate(0px);
-}
-100%{
-transform: translate(50px);
-}
-}
+        .dfdf a:hover .hireOurTeamTitle {
+        transform: translate(50px);
+        animation: a .5s linear;
+        }
+        .dfdf a:hover .hireOurTeamArrow {
+        transform: translate(-170px) scale(1);
+        animation: h .5s linear;
+        }
+        @keyframes h{
+        0%{
+        transform: translate(0px) scale(0);
+        }
+        100%{
+        transform: translate(-170px) scale(1);
+        }
+        }
+        @keyframes a{
+        0%{
+        transform: translate(0px);
+        }
+        100%{
+        transform: translate(50px);
+        }
+        }
       `}</style>
       <div className="containers">
         {/* Left text section */}
