@@ -66,8 +66,9 @@ const LetsTalk = () => {
         }
         .video-stack {
           position: relative;
-          width: 70%;
-          left: -100px;
+          width: 65%;
+          left: -40px;
+          top: -100px;
         }
         .video-stack video {
           position: absolute;
@@ -79,11 +80,11 @@ const LetsTalk = () => {
           transition: transform 0.6s ease, opacity 0.6s ease;
         }
         .top {
-          transform: translate(200px, -200px);
+          transform: translate(100px, -100px);
           z-index: 3;
         }
         .middle {
-          transform: translate(100px, -100px);
+          transform: translate(50px, -50px);
           z-index: 2;
         }
         .bottom {
@@ -91,8 +92,8 @@ const LetsTalk = () => {
           z-index: 1;
         }
         @keyframes wipeOut {
-          from { transform: translate(200px, -200px); opacity: 1; }
-          to   { transform: translate(300px, -300px); opacity: 0; }
+          from { transform: translate(100px, -100px); opacity: 1; }
+          to   { transform: translate(150px, -150px); opacity: 0; }
         }
         .wipe-out {
           animation: wipeOut 0.6s forwards;
@@ -111,7 +112,7 @@ const LetsTalk = () => {
               justify-content: start;
           }
         .left-section a{
-          color:#000!important;
+          color:#949ea9!important;
             font-size: 14px;
         }
             
@@ -119,61 +120,125 @@ const LetsTalk = () => {
             font-size: 14px;
             border-radius: 30px;
         }
+        .border-28282E {
+            --tw-border-opacity: 1;
+            border-color: rgb(40 40 46 / var(--tw-border-opacity));
+        }
+        .bg-28282E {
+            --tw-bg-opacity: 1;
+            background-color: rgb(40 40 46 / var(--tw-bg-opacity));
+        }
+            .border-1px {
+    border-width: 1px;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+.place-items-center {
+    place-items: center;
+}
+.w-43px {
+    width: 43px;
+}
+.h-43px {
+    height: 43px;
+}
+    .w-11px {
+    width: 11px;
+}
+.h-11px {
+    height: 11px;
+}
+
+.dfdf a:hover .hireOurTeamTitle {
+    transform: translate(50px);
+     animation: a .5s linear;
+}
+    .dfdf a:hover .hireOurTeamArrow {
+     transform: translate(-170px) scale(1);
+    animation: h .5s linear;
+}
+    @keyframes h{
+      0%{
+        transform: translate(0px) scale(0);
+      }
+        100%{
+        transform: translate(-170px) scale(1);
+        }
+    }
+        @keyframes a{
+      0%{
+        transform: translate(0px);
+      }
+        100%{
+        transform: translate(50px);
+        }
+    }
       `}</style>
       <div className="containers">
         {/* Left text section */}
         <div className="col-12">
-            <h1 style={{fontSize:"140px", fontWeight:"700", lineHeight:"140px"}}>Let's talk.</h1>
+          <h1 style={{ fontSize: "140px", fontWeight: "700", lineHeight: "140px" }}>Let's talk.</h1>
         </div>
         <div className='d-flex w-100 position-relative h-100'>
-            <div className="left-section">
-              <ul>
-                <li className='d-flex'>
-                    <a href="#">Linkdln</a>
-                </li>
-                <li className='d-flex'>
-                    <a href="#">Twitter</a>
-                </li>
-                <li className='d-flex'>
-                    <a href="#">Instagram</a>
-                </li>
-              </ul>
-            </div>
+          <div className="left-section">
+            <ul style={{ textUnderlineOffset: "4px", textDecorationLine: "underline", fontWeight: 700, fontSize: "14px" }}>
+              <li className='d-flex'>
+                <a href="#">Linkdln</a>
+              </li>
+              <li className='d-flex'>
+                <a href="#">Twitter</a>
+              </li>
+              <li className='d-flex'>
+                <a href="#">Instagram</a>
+              </li>
+            </ul>
+          </div>
 
-            {/* Center video section */}
-            <div className="center-section">
-              <div className="video-stack">
-                  <video
-                  ref={topVideoRef}
-                  className="top"
-                  src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  />
-                  <video
-                  ref={middleVideoRef}
-                  className="middle"
-                  src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  />
-                  <video
-                  ref={bottomVideoRef}
-                  className="bottom"
-                  src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  />
+          {/* Center video section */}
+          <div className="center-section">
+            <div className="video-stack">
+              <video
+                ref={topVideoRef}
+                className="top"
+                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                autoPlay
+                muted
+                loop
+              />
+              <video
+                ref={middleVideoRef}
+                className="middle"
+                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                autoPlay
+                muted
+                loop
+              />
+              <video
+                ref={bottomVideoRef}
+                className="bottom"
+                src="https://videos.pexels.com/video-files/31032727/13264078_2560_1440_25fps.mp4"
+                autoPlay
+                muted
+                loop
+              />
+            </div>
+          </div>
+
+          {/* Right text section */}
+          <div className="right-section dfdf">
+            <a href="#" className='d-flex gap-2 '>
+              <button className='hireOurTeamTitle btn btn-light px-4 py-2' style={{ fontWeight: 700, fontSize: "18px", borderColor: "rgb(222 228 234 / 1)",position: 'relative', zIndex: 1,}}>Hire our team</button>
+              <div
+                class="hireOurTeamArrow border-1px border-28282E d-grid place-items-center w-43px h-43px rounded-full bg-28282E">
+                <svg class="w-11px h-11px" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 6.5H11M11 6.5L5.93606 1M11 6.5L5.93606 12" stroke="white" stroke-width="2"></path>
+                </svg>
               </div>
-            </div>
-
-            {/* Right text section */}
-            <div className="right-section">
-              <button className='btn btn-light'>Hire our team</button>
-            </div>
+            </a>
+            
+          </div>
         </div>
       </div>
     </>
