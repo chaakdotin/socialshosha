@@ -4,8 +4,13 @@ import React from 'react';
 const ImageMarquee = () => {
   const images = [];
 
-  for (let i = 1; i <= 26; i++) {
+  for (let i = 1; i <= 13; i++) {
     images.push(`/img/brands/${i}.png`);
+  }
+  const images1 = [];
+
+  for (let i = 13; i <= 26; i++) {
+    images1.push(`/img/brands/${i}.png`);
   }
 
   return (
@@ -17,14 +22,14 @@ const ImageMarquee = () => {
       </div>
 
       <div className="image-row row-2">
-        {images.map((src, index) => (
+        {images1.map((src, index) => (
           <img key={`row2-${index}`} src={src} alt="img" />
         ))}
       </div>
 
       <style>{`
         .image-section {
-          height: 30vh;
+          height: 35vh;
           overflow: hidden;
           display: flex;
           flex-direction: column;
