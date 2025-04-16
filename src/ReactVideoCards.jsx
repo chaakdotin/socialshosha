@@ -424,7 +424,7 @@ const ReactVideoCards = () => {
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front">
-                    <div className='nav-inner w-100 position-absolute top-0'>
+                    <div className='nav-inner w-100 position-absolute top-0 d-none'>
                         <div className='nav-inner__left'>
                             <a aria-label="back to top" href="/" aria-current="page" className="nav-inner__logo w-inline-block">
                                 <svg
@@ -486,7 +486,7 @@ const ReactVideoCards = () => {
                                 <video
 
                                     className="tops"
-                                    src="/videos/3433789-hd_1920_1080_25fps.mp4"
+                                    src="https://chaak.in/assets/OrganimoX CHAAK 1.mp4"
                                     autoPlay
                                     muted
                                     loop
@@ -494,14 +494,14 @@ const ReactVideoCards = () => {
                                 <video
 
                                     className="middles"
-                                    src="/videos/3433789-hd_1920_1080_25fps.mp4"
+                                    src="https://chaak.in/assets/2.mp4"
                                     autoPlay
                                     muted
                                     loop
                                 />
                                 <video
                                     className="bottoms"
-                                    src="/videos/3433789-hd_1920_1080_25fps.mp4"
+                                    src="https://chaak.in/assets/3.mp4"
                                     autoPlay
                                     muted
                                     loop
@@ -511,7 +511,7 @@ const ReactVideoCards = () => {
 
 
                     </div>
-                    <div className='w-100 position-absolute bottom-0' style={{ fontFamily: "TWK Everett, Arial, sans-serif!important", backgroundColor: "#fff" }}>
+                    <div className='w-100 position-absolute bottom-0 d-none' style={{ fontFamily: "TWK Everett, Arial, sans-serif!important", backgroundColor: "#fff" }}>
                         <nav className="nav">
                             <a href="#overview" className="nav-link size--1 w-inline-block w--current">
                                 <div data-magnetic-strength="" className="nav-link__inner" >

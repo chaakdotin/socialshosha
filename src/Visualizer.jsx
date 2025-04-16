@@ -88,7 +88,7 @@ const DotVisualizer = () => {
     }).to('.visualizerRef',{
       opacity:1,
     })
-  }, [])
+  }, []);
   const [isOn, setIsOn] = useState(false);
   
   const handleClick = () => {
