@@ -9,13 +9,13 @@ const ImageMarquee = () => {
   }
 
   return (
-    <section className="image-section">
+    <section className="image-section pt-5 mb-5">
       <div className="image-row row-1">
         {images.map((src, index) => (
           <img key={`row1-${index}`} src={src} alt="img" />
         ))}
       </div>
-      
+
       <div className="image-row row-2">
         {images.map((src, index) => (
           <img key={`row2-${index}`} src={src} alt="img" />
