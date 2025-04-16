@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap';
 @font-face {
     font-family: 'MarkPro';
-    src: url('./fonts/MarkPro-Medium.b3d53906.woff2') format('woff2');
+    src: url('/fonts/MarkPro-Medium.b3d53906.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -9,14 +9,14 @@
   
   @font-face {
     font-family: 'MarkPro';
-    src: url('./fonts/MarkPro-Bold.405f2505.woff2') format('woff2');
+    src: url('/fonts/MarkPro-Bold.405f2505.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
     font-family: 'MarkPro';
-    src: url('./fonts/MarkPro-Heavy.192477bd.woff2') format('woff2');
+    src: url('/fonts/MarkPro-Heavy.192477bd.woff2') format('woff2');
     font-weight: 800;
     font-style: normal;
     font-display: swap;
@@ -24,7 +24,7 @@
   
   @font-face {
     font-family: 'MarkPro';
-    src: url('./fonts/MarkPro-Black.7207860d.woff2') format('woff2');
+    src: url('/fonts/MarkPro-Black.7207860d.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
