@@ -67,7 +67,7 @@ const LetsTalk = () => {
         .video-stack {
           position: relative;
           width: 60%;
-          left: -40px;
+          left: -50px;
           top: -100px;
         }
         .video-stack video {
