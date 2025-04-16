@@ -218,7 +218,7 @@ export default function Footer() {
                     </div>
                     <div className="footer__bottom p4 ttu fw4470 slash-light">
                         <p className="footer__copyrights p-0 m-0">
-                            © <span> Social Shosha & CHAAK</span>| 2025
+                            ©  2025 |<span> Social Shosha & CHAAK</span>
                         </p>
                         <i className="footer__copyrights-slash">&nbsp;/&nbsp;</i>
                         <a href="/privacy" className="">Privacy</a>
