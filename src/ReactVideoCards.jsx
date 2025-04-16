@@ -420,7 +420,7 @@ const ReactVideoCards = () => {
             
            
 
-            <div className="card-container">
+            <div className="card-container" style={{height:"120vh"}}>
                 <div className="cards card-back"></div>
                 <div className="cards card-middle"></div>
                 <div className="cards card-front">
@@ -476,9 +476,38 @@ const ReactVideoCards = () => {
                     </div>
                     <div className='w-100 h-100 d-flex justify-content-end align-center position-relative'>
                         <div className='w-100 pt-5 mt-4 position-absolute ' style={{ left: "1vw" }}>
-                            <div className='d-flex flex-column gap-0'>
-                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", lineHeight: "30px", }}>Websites That Wow </span>
-                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "60px", }}>and Work.</span>
+                            <div className='d-flex flex-column gap-0' style={{lineHeight: ".75",  }}>
+                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "180px",fontFamily: "MarkPro, sans-serif", letterSpacing:"-.03em" }}>Bringing</span>
+                                <span className="m-0 pt-3 fw-bold" style={{ fontSize: "180px",fontFamily: "MarkPro, sans-serif", letterSpacing:"-.03em"}}>Ideas to Life.</span>
+                            </div>
+                        </div>
+                        <div className="d-flex col-6 align-items-center justify-content-center pl-5" >
+                        
+                            <div className="d-flex col-12 align-items-end justify-content-center pt-5" style={{height:"30%"}} data-v-8867a48a="">
+                                <span
+                                    className="latestWork d-flex flex-column"
+                                    data-v-8867a48a=""
+                                    style={{ opacity: 1 }}>
+                                    <span className="fs-6" data-v-8867a48a="" style={{fontFamily: "MarkPro, sans-serif", fontWeight:550}}>
+                                        Latest work
+                                    </span>
+                                    <svg
+                                        className="hidden lg:block"
+                                        width={109}
+                                        height={7}
+                                        viewBox="0 0 109 7"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        data-v-8867a48a=""
+                                    >
+                                        <path
+                                            d="M0 5.5H106L101.857 1"
+                                            stroke="black"
+                                            strokeWidth={2}
+                                            data-v-8867a48a=""
+                                        />
+                                    </svg>
+                                </span>
                             </div>
                         </div>
                         <div className="right-video-section">
@@ -486,7 +515,7 @@ const ReactVideoCards = () => {
                                 <video
 
                                     className="tops"
-                                    src="https://chaak.in/assets/OrganimoX CHAAK 1.mp4"
+                                    src="https://cdn.sanity.io/files/y63jgrcb/production/5c959f524d4010cdb155c0b8a134232f550685e8.mp4"
                                     autoPlay
                                     muted
                                     loop
@@ -494,14 +523,14 @@ const ReactVideoCards = () => {
                                 <video
 
                                     className="middles"
-                                    src="https://chaak.in/assets/2.mp4"
+                                    src="https://cdn.sanity.io/files/y63jgrcb/production/7980b7207ffc77c004799f6aa128bb03570330c9.mp4"
                                     autoPlay
                                     muted
                                     loop
                                 />
                                 <video
                                     className="bottoms"
-                                    src="https://chaak.in/assets/3.mp4"
+                                    src="https://cdn.sanity.io/files/y63jgrcb/production/ae9e15cdfac7ab73c70d56918336b0f8c40a0c68.mp4"
                                     autoPlay
                                     muted
                                     loop
