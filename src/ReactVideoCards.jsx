@@ -405,8 +405,10 @@ const ReactVideoCards = () => {
                     <div className='d-flex align-items-center justify-content-center'>
 
                         <div className='col-7 d-flex flex-column justify-content-center align-items-center h-100'>
-                            <div className='d-flex justify-content-start w-100 '>
-                                <span style={{ fontFamily: '"MarkPro", sans-serif',fontWeight:"800", padding:"0px 2vw"}}>Our Approach</span>
+                            <div className='d-flex flex-column justify-content-start w-100 '>
+                            
+                                <span style={{fontSize: 90, lineHeight: "0.83", letterSpacing: "0.83px", fontFamily: "MarkPro", fontWeight:"800", padding:"0px 2vw"}}>Our</span>
+                                <span style={{fontSize: 90, lineHeight: "0.83", letterSpacing: "0.83px", fontFamily: "MarkPro", fontWeight:"800", padding:"0px 2vw"}}>Approach</span>
                             </div>
                             <SequentialLetterColorChange />
                         </div>
