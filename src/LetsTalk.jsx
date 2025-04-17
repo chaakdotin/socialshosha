@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 const LetsTalk = () => {
   const topVideoRef = useRef(null);
   const middleVideoRef = useRef(null);
@@ -39,7 +40,83 @@ const LetsTalk = () => {
     const intervalId = setInterval(rotateVideos, 2000);
     return () => clearInterval(intervalId);
   }, []);
+  const textRef = useRef(null);
+  const textRef1 = useRef(null);
+  useEffect(() => {
+    const container = textRef.current;
+    const chars = container.querySelectorAll(".anim-char");
 
+    textRef1.current.addEventListener("mouseenter", () => {
+      gsap.to('.footer-cta__svg--clone',{
+        x: 0,
+        duration: 0.3,
+      });
+      gsap.to(chars, {
+        x: 200,
+        opacity:0,
+        stagger: 0.01,
+        duration: 0.1,
+        ease: "power2.out",
+        onComplete:()=>{
+          
+          gsap.to(chars, {
+            x: 200,
+            opacity:1,
+            stagger: 0.01,
+            duration: 0.1,
+            ease: "power2.out",
+          });
+         
+        }
+      });
+      gsap.to('.footer-cta__svg--main',{
+        x: "200",
+        duration: 0.3,
+      });
+    });
+
+    textRef1.current.addEventListener("mouseleave", () => {
+      gsap.to('.footer-cta__svg--clone',{
+        x: -200,
+        duration: 0.3,
+      });
+      gsap.to(chars, {
+        x: 0,
+        opacity:0,
+        stagger: 0.01,
+        duration: 0.2,
+        ease: "power2.inOut",
+        onComplete:()=>{
+          
+          gsap.to(chars, {
+            x: 0,
+            opacity:1,
+            stagger: 0.01,
+            duration: 0.2,
+            ease: "power2.inOut",
+          });
+         
+        }
+      });
+      gsap.to('.footer-cta__svg--main',{
+        x: 0,
+        duration: 0.3,
+      });
+    });
+  }, []);
+
+  const splitText = "Let's talk.".split("").map((char, i) => (
+    <span
+      key={i}
+        className="anim-char"
+        style={{
+          display: "inline-block",
+          position: "relative",
+        }}
+      >
+      {char === " " ? "\u00A0" : char}
+    </span>
+  ));
   return (
     <>
       <style>{`
@@ -176,11 +253,45 @@ const LetsTalk = () => {
         transform: translate(50px);
         }
         }
+        .footer-cta__svg{
+          height: 8.96991vw;
+          width: 10.70602vw;
+        }
       `}</style>
       <div className="containers">
         {/* Left text section */}
-        <div className="col-12 px-3">
-          <h1 style={{ fontSize: "140px", fontWeight: "900", lineHeight: "140px",fontFamily: "MarkPro", }}>Let's talk.</h1>
+        <div className="col-12 px-3 position-relative d-flex justify-content-between align-items-center" ref={textRef1}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 22 19"
+            className="footer-cta__svg footer-cta__svg--clone"
+            style={{transform:"translate(-200px,0%)", position:"absolute"}}
+          >
+            <path d="m10.392 16.88 7.232-7.264-7.264-7.232 1.696-1.76 8.992 8.992-8.96 8.992zM.568 8.304h18.4v2.656H.568z" />
+          </svg>
+
+          <h1
+            ref={textRef}
+            className="dfs2dfg"
+            style={{
+              fontSize: "140px",
+              fontWeight: "900",
+              lineHeight: "140px",
+              fontFamily: "MarkPro",
+              display: "inline-block",
+            }}
+          >
+            {splitText}
+          </h1>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 22 19"
+            className="footer-cta__svg footer-cta__svg--main"
+          >
+            <path d="m10.392 16.88 7.232-7.264-7.264-7.232 1.696-1.76 8.992 8.992-8.96 8.992zM.568 8.304h18.4v2.656H.568z" />
+          </svg>
         </div>
         <div className='d-flex w-100 position-relative h-100'>
           <div className="left-section">
