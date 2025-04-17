@@ -20,49 +20,49 @@ export default function Header() {
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/work" className="link--has-dot link nav-item__link">
+                            <NavLink to="#" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">Work</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/services" className="link--has-dot link nav-item__link">
+                            <NavLink to="#" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">Services</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/g" className="link--has-dot link nav-item__link">
+                            <NavLink to="#" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">About</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/f" className="link--has-dot link nav-item__link">
+                            <NavLink to="#" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">Feed</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/s" className="link--has-dot link nav-item__link">
+                            <NavLink to="#" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">Podcast</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/Contact" className="link--has-dot link nav-item__link">
+                            <NavLink to="#" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">Contact</span>
                             </NavLink>
                             <i className="nav-item__slash">/</i>
                         </li>
                         <li className="nav-item p4 ttu slash-light">
-                            <NavLink to="/d" className="link--has-dot link nav-item__link">
+                            <NavLink to="#" className="link--has-dot link nav-item__link">
                                 <span className="dot--15 dot--red dot--filled dot"></span>
                                 <span className="text">Shop</span>
                             </NavLink>
