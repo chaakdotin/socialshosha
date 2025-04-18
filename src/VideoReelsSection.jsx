@@ -84,6 +84,7 @@ const VideoReelsSection = () => {
         spaceBetween={10}
         slidesPerView={6}
         freeMode={true}
+        loop={true} // <-- Enables infinite scroll
         modules={[FreeMode]}
         className="mySwiper pt-4 px-2"
       >
