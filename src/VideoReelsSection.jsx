@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
-import video from './assets/video/video1.mp4'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import { FreeMode } from 'swiper/modules';
 
-const VideoBox = () => {
+const VideoBox = ({ video }) => {
   const videoRef = useRef(null);
-
 
   const handleMouseOver = () => {
     videoRef.current?.play();
@@ -20,12 +22,10 @@ const VideoBox = () => {
     <div
       className="video-box"
       onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut} >
+      onMouseOut={handleMouseOut}
+    >
       <video muted loop playsInline ref={videoRef}>
-        <source
-          src={video}
-          type="video/mp4"
-        />
+        <source src={video} type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
     </div>
@@ -33,48 +33,68 @@ const VideoBox = () => {
 };
 
 const VideoReelsSection = () => {
+  const videoData = [
+    "cgi Christmas Wish from Pavillion.mp4",
+    "cgianimation of new store opening.mp4",
+    "3D Venue Layout for Spacetech Festival.mp4",
+    "Almost Human at Kai Room. cgiads cgianimation.mp4",
+    "Artfront T-shirt CGI video campaign.mp4",
+    "Best way to show your sneaker sales with CGI Animation.mp4",
+    "Carabao Can Commercial CGI Animation.mp4",
+    "Casino Gameplay 3D Commercial Ads.mp4",
+    "Depicting the End of season sale at Pavillion Mall with cgianimation.mp4",
+    "End of season sale in the most trending way.mp4",
+    "How CGI transforms clothing brand into viral hits.mp4",
+    "How to promote sneaker sale with CGI animations.mp4",
+    "Live with the legends with WCL cgivideos cgianimation.mp4",
+    "Pavillion Mall's Black Friday Sale with cgianimation.mp4",
+    "Product Cans 3D Commercial Ads.mp4",
+    "Rafael Cerato at Kai Room. cgiads cgianimation.mp4",
+    "Rollings Carabao Cans VFX Animation.mp4"
+  ];
+
   return (
     <>
-      {/* Inline styles */}
-        <style>
-            {`
-                .video-row {
-                    display: flex;
-                    gap: 10px;
-                    padding: 20px;
-                }
-                .video-box {
-                    flex: 1;
-                    position: relative;
-                    overflow: hidden;
-                    aspect-ratio: 9 / 16;
-                    transition: transform 0.3s ease;
-                    cursor: pointer;
-                    border: 1px dashed black;
-                    border-radius: 15px;
-                }
-                .video-box video {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    display: block;
-                    border-radius: inherit;
-                }
-                .video-box:hover {
-                    transform: scale(1.2);
-                    border:none;
-                    z-index:9;
-                }
-            `}
-        </style>
-        <section className="video-row">
-            <VideoBox />
-            <VideoBox />
-            <VideoBox />
-            <VideoBox />
-            <VideoBox />
-            <VideoBox />
-        </section>
+      <style>
+        {`
+          .video-box {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 1px dashed black;
+            border-radius: 15px;
+          }
+          .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+          }
+          .video-box:hover {
+            transform: scale(1.05);
+            border: none;
+            z-index: 9;
+          }
+        `}
+      </style>
+      <Swiper
+        spaceBetween={10}
+        slidesPerView={6}
+        freeMode={true}
+        modules={[FreeMode]}
+        className="mySwiper pt-4 px-2"
+      >
+        {
+          videoData.map((file, index) => (
+            <SwiperSlide key={index} style={{ width: 'auto' }}>
+              <VideoBox video={`/videos/cgi/${file}`} />
+            </SwiperSlide>
+          ))
+        }
+      </Swiper>
     </>
   );
 };
