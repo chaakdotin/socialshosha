@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
-import { FreeMode } from 'swiper/modules';
+import { FreeMode,Autoplay } from 'swiper/modules';
 
 const VideoBox = ({ video }) => {
   const videoRef = useRef(null);
@@ -85,7 +85,11 @@ const VideoReelsSection = () => {
         slidesPerView={6}
         freeMode={true}
         loop={true} // <-- Enables infinite scroll
-        modules={[FreeMode]}
+        autoplay={{
+          delay: 2000,       // 1.5 seconds delay between scrolls
+          disableOnInteraction: false,
+        }}
+        modules={[FreeMode, Autoplay]}
         className="mySwiper pt-4 px-2"
       >
         {
