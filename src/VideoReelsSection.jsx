@@ -31,7 +31,7 @@ const VideoBox = ({ video }) => {
 };
 
 const VideoReelsSection = () => {
-  const videoData = [
+  const CGI_Video = [
     "cgi Christmas Wish from Pavillion.mp4",
     "cgianimation of new store opening.mp4",
     "3D Venue Layout for Spacetech Festival.mp4",
@@ -50,7 +50,40 @@ const VideoReelsSection = () => {
     "Rafael Cerato at Kai Room. cgiads cgianimation.mp4",
     "Rollings Carabao Cans VFX Animation.mp4"
   ];
-
+  const DIGITAL_INVITATIONS_Video = [
+    "3D wedding digital invite _ Animated wedding invitation.mp4",
+    "A complete wedding digital invite _ Mehendi invite _ Cocktail digital invite.mp4",
+    "Baby Gender Reveal Digital Invites _ Baby announcement invitation.mp4",
+    "Cocktail Ceremony Digital Invitation _ Shagun and cocktail e-invite.mp4",
+    "Digital invitation for Wedding Jagran.mp4",
+    "Engagement Animated Invite.mp4",
+    "Guruji Satsang and Godh Bharai Digital Invite.mp4",
+    "Haldi Carnival _ Invite your family with this digital Haldi invitation.mp4",
+    "Haldi Carnival Digital Invitation _ Wedding E-invites.mp4",
+    "Invite your close ones with this Engagement Digital Invite.mp4",
+    "Roka & Ring Ceremony video digital invitation.mp4",
+    "Roka Ceremony digital Invitation _ E-invites for wedding.mp4",
+    "Roka Ceremony Digital Invitation.mp4",
+    "ROKAFIED! Roka and Ring Ceremony Digital Invite.mp4",
+    "Shaam Mastani _ A Ring ceremony digital invitation video.mp4",
+    "Sufi Night Digital Invitation Video.mp4",
+    "Wedding bells are ringing for Vaibhav & Mansha.mp4",
+    "Wedding digital invitation with caricatures _ Caricature Wedding Invite.mp4",
+    "Wedding Kirtan Digital Invitation.mp4"
+  ];
+  const Reels_Video = [
+    "Animated Reel for Chhokra Soaps.mp4",
+    "Bloom & Hues.mp4",
+    "MHA IRI & Pisapia Promo Reel.mp4",
+    "MHA IRI & Pisapia Promo Reel.mp4.crdownload.mp4",
+    "Orillia - Kasauli.mp4",
+    "Reel shot and edited for Bloom & Hues.mp4",
+    "Reel shot and edited for Zorra Saab (1).mp4",
+    "Reel shot and edited for Zorra Saab.mp4",
+    "Sage Couture.mp4",
+    "Sardar Jewellers, Ludhiana.mp4",
+    "WCL Animated Reel.mp4"
+  ];
   return (
     <>
       <style>
@@ -106,7 +139,7 @@ const VideoReelsSection = () => {
               className="mySwiper px-2"
             >
               {
-                videoData.map((file, index) => (
+                CGI_Video.map((file, index) => (
                   <SwiperSlide key={index} style={{ width: 'auto' }}>
                     <VideoBox video={`/videos/cgi/${file}`} />
                   </SwiperSlide>
@@ -130,9 +163,9 @@ const VideoReelsSection = () => {
             className="mySwiper px-2"
           >
             {
-              videoData.map((file, index) => (
+              DIGITAL_INVITATIONS_Video.map((file, index) => (
                 <SwiperSlide key={index} style={{ width: 'auto' }}>
-                  <VideoBox video={`/videos/cgi/${file}`} />
+                  <VideoBox video={`/videos/DIGITAL INVITATIONS/${file}`} />
                 </SwiperSlide>
               ))
             }
@@ -172,9 +205,9 @@ const VideoReelsSection = () => {
             className="mySwiper px-2"
           >
             {
-              videoData.map((file, index) => (
+              Reels_Video.map((file, index) => (
                 <SwiperSlide key={index} style={{ width: 'auto' }}>
-                  <VideoBox video={`/videos/cgi/${file}`} />
+                  <VideoBox video={`/videos/Reels/${file}`} />
                 </SwiperSlide>
               ))
             }
