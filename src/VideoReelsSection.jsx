@@ -21,10 +21,8 @@ const VideoBox = ({ video }) => {
   return (
     <div
       className="video-box"
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
     >
-      <video muted loop playsInline ref={videoRef}>
+      <video muted loop playsInline autoPlay ref={videoRef}>
         <source src={video} type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
@@ -67,12 +65,14 @@ const VideoReelsSection = () => {
             border: 1px dashed black;
             border-radius: 15px;
           }
+
           .video-box video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: inherit;
           }
+          
           .video-box:hover {
             transform: scale(1.05);
             border: none;
