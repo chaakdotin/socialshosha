@@ -77,10 +77,20 @@ const VideoReelsSection = () => {
             border: none;
             z-index: 9;
           }
+            .card-300-100{
+              height:100%!important;
+            }
         `}
       </style>
-      <div className='d-flex'>
+      <div className='d-flex pt-4'>
           <div className='col-4'>
+            <div className="card-300 card-300-100">
+              <div className='text-center'>
+                <div className="cell_eyebrow mx-auto"><div className="eyebrow_14-4"><strong>FEATURED</strong></div></div>
+                <div className="cell_h4 mx-auto"><h4 className="h-h4 is-big">OUT<br />Now</h4></div>
+                <div className="cell_text-2 mx-auto"><div className="body_17">'Falling Out Of Time | True'<br /><br />Available on all streaming platforms. </div></div>
+              </div>
+            </div>
           </div>
           <div className='col-8'>
             <Swiper
@@ -93,7 +103,7 @@ const VideoReelsSection = () => {
                 disableOnInteraction: false,
               }}
               modules={[FreeMode, Autoplay]}
-              className="mySwiper pt-4 px-2"
+              className="mySwiper px-2"
             >
               {
                 videoData.map((file, index) => (
@@ -105,7 +115,7 @@ const VideoReelsSection = () => {
             </Swiper>
           </div>
       </div> 
-      <div className='d-flex' >
+      <div className='d-flex pt-4' >
         <div className='col-8'>
           <Swiper
             spaceBetween={10}
@@ -117,7 +127,7 @@ const VideoReelsSection = () => {
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Autoplay]}
-            className="mySwiper pt-4 px-2"
+            className="mySwiper px-2"
           >
             {
               videoData.map((file, index) => (
@@ -129,10 +139,24 @@ const VideoReelsSection = () => {
           </Swiper>
         </div>
         <div className='col-4'>
+          <div className="card-300 card-300-100">
+            <div className='text-center'>
+              <div className="cell_eyebrow mx-auto"><div className="eyebrow_14-4"><strong>FEATURED</strong></div></div>
+              <div className="cell_h4 mx-auto"><h4 className="h-h4 is-big">OUT<br />Now</h4></div>
+              <div className="cell_text-2 mx-auto"><div className="body_17">'Falling Out Of Time | True'<br /><br />Available on all streaming platforms. </div></div>
+            </div>
+          </div>
         </div>
       </div> 
-      <div className='d-flex' >
+      <div className='d-flex pt-4' >
         <div className='col-4'>
+          <div className="card-300 card-300-100">
+            <div className='text-center'>
+              <div className="cell_eyebrow mx-auto"><div className="eyebrow_14-4"><strong>FEATURED</strong></div></div>
+              <div className="cell_h4 mx-auto"><h4 className="h-h4 is-big">OUT<br />Now</h4></div>
+              <div className="cell_text-2 mx-auto"><div className="body_17">'Falling Out Of Time | True'<br /><br />Available on all streaming platforms. </div></div>
+            </div>
+          </div>
         </div>
         <div className='col-8'>
           <Swiper
@@ -145,7 +169,7 @@ const VideoReelsSection = () => {
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Autoplay]}
-            className="mySwiper pt-4 px-2"
+            className="mySwiper px-2"
           >
             {
               videoData.map((file, index) => (
