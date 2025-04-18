@@ -30,6 +30,7 @@ const Work = () => {
         <ResponsiveCard />
         <ScrollingTextSection />
         <VideoReelsSection />
+        
       </div>
     </>
   );

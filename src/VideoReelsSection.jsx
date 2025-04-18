@@ -83,26 +83,53 @@ const VideoReelsSection = () => {
           <div className='col-4'>
           </div>
           <div className='col-8'>
-          <Swiper
-            spaceBetween={10}
-            slidesPerView={4}
-            freeMode={true}
-            loop={true} // <-- Enables infinite scroll
-            autoplay={{
-              delay: 2000,       // 1.5 seconds delay between scrolls
-              disableOnInteraction: false,
-            }}
-            modules={[FreeMode, Autoplay]}
-            className="mySwiper pt-4 px-2"
-          >
-            {
-              videoData.map((file, index) => (
-                <SwiperSlide key={index} style={{ width: 'auto' }}>
-                  <VideoBox video={`/videos/cgi/${file}`} />
-                </SwiperSlide>
-              ))
-            }
-          </Swiper>
+            <Swiper
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              loop={true} // <-- Enables infinite scroll
+              autoplay={{
+                delay: 2000, // 1.5 seconds delay between scrolls
+                disableOnInteraction: false,
+              }}
+              modules={[FreeMode, Autoplay]}
+              className="mySwiper pt-4 px-2"
+            >
+              {
+                videoData.map((file, index) => (
+                  <SwiperSlide key={index} style={{ width: 'auto' }}>
+                    <VideoBox video={`/videos/cgi/${file}`} />
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+          </div>
+      </div> 
+      <div className='d-flex' >
+          
+          <div className='col-8'>
+            <Swiper
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              loop={true} // <-- Enables infinite scroll
+              autoplay={{
+                delay: 2000, // 1.5 seconds delay between scrolls
+                disableOnInteraction: false,
+              }}
+              modules={[FreeMode, Autoplay]}
+              className="mySwiper pt-4 px-2"
+            >
+              {
+                videoData.map((file, index) => (
+                  <SwiperSlide key={index} style={{ width: 'auto' }}>
+                    <VideoBox video={`/videos/cgi/${file}`} />
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+          </div>
+          <div className='col-4'>
           </div>
       </div> 
     </>
