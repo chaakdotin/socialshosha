@@ -25,7 +25,7 @@ const App = () => {
     normalizeWheel: false,
     smoothTouch: false
   });
-  
+
   // Sync Lenis with GSAP's ticker for better performance
   lenis.on('scroll', () => ScrollTrigger.update());
 
