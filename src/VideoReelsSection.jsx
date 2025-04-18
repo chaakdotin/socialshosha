@@ -56,8 +56,7 @@ const VideoReelsSection = () => {
       <style>
         {`
           .video-box {
-            width: 100%;
-            height: 500px;
+            height: 450px;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease;
@@ -80,26 +79,31 @@ const VideoReelsSection = () => {
           }
         `}
       </style>
-      <Swiper
-        spaceBetween={10}
-        slidesPerView={6}
-        freeMode={true}
-        loop={true} // <-- Enables infinite scroll
-        autoplay={{
-          delay: 2000,       // 1.5 seconds delay between scrolls
-          disableOnInteraction: false,
-        }}
-        modules={[FreeMode, Autoplay]}
-        className="mySwiper pt-4 px-2"
-      >
-        {
-          videoData.map((file, index) => (
-            <SwiperSlide key={index} style={{ width: 'auto' }}>
-              <VideoBox video={`/videos/cgi/${file}`} />
-            </SwiperSlide>
-          ))
-        }
-      </Swiper>
+      <div className='d-flex'>
+          <div className='col-2'></div>
+          <div className='col-10'>
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={5}
+            freeMode={true}
+            loop={true} // <-- Enables infinite scroll
+            autoplay={{
+              delay: 2000,       // 1.5 seconds delay between scrolls
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Autoplay]}
+            className="mySwiper pt-4 px-2"
+          >
+            {
+              videoData.map((file, index) => (
+                <SwiperSlide key={index} style={{ width: 'auto' }}>
+                  <VideoBox video={`/videos/cgi/${file}`} />
+                </SwiperSlide>
+              ))
+            }
+          </Swiper>
+          </div>
+      </div> 
     </>
   );
 };
