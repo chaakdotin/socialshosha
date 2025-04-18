@@ -113,7 +113,7 @@ const VideoReelsSection = () => {
             freeMode={true}
             loop={true} // <-- Enables infinite scroll
             autoplay={{
-              delay: 2000, // 1.5 seconds delay between scrolls
+              delay: 3000, // 1.5 seconds delay between scrolls
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Autoplay]}
@@ -141,7 +141,7 @@ const VideoReelsSection = () => {
             freeMode={true}
             loop={true} // <-- Enables infinite scroll
             autoplay={{
-              delay: 2000, // 1.5 seconds delay between scrolls
+              delay: 4000, // 1.5 seconds delay between scrolls
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Autoplay]}
