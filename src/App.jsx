@@ -28,7 +28,7 @@ const App = () => {
   
   // Sync Lenis with GSAP's ticker for better performance
   lenis.on('scroll', () => ScrollTrigger.update());
-  
+
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
