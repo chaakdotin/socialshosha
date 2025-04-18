@@ -80,7 +80,9 @@ const VideoReelsSection = () => {
         `}
       </style>
       <div className='d-flex'>
-          <div className='col-2'></div>
+          <div className='col-2'>
+            
+          </div>
           <div className='col-10'>
           <Swiper
             spaceBetween={10}
