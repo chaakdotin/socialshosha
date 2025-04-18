@@ -90,29 +90,29 @@ const VideoReelsSection = () => {
         {`
           .video-box {
             height: 450px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            border: 1px dashed black;
-            border-radius: 15px;
+            // border: 1px dashed black; 
           }
-
           .video-box video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: inherit;
           }
-          
-          .video-box:hover {
+          .swiper-slide{
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            border-radius: 15px;
+          }
+          .swiper-slide:hover {
             transform: scale(1.05);
             border: none;
-            z-index: 9;
+            z-index: 99999;
           }
-            .card-300-100{
-              height:100%!important;
-            }
+          .card-300-100{
+            height:100%!important;
+          }
         `}
       </style>
       <div className='d-flex pt-4'>
@@ -158,6 +158,7 @@ const VideoReelsSection = () => {
             autoplay={{
               delay: 3000, // 1.5 seconds delay between scrolls
               disableOnInteraction: false,
+              reverseDirection: true,
             }}
             modules={[FreeMode, Autoplay]}
             className="mySwiper px-2"
