@@ -80,13 +80,12 @@ const VideoReelsSection = () => {
         `}
       </style>
       <div className='d-flex'>
-          <div className='col-2'>
-            
+          <div className='col-4'>
           </div>
-          <div className='col-10'>
+          <div className='col-8'>
           <Swiper
             spaceBetween={10}
-            slidesPerView={5}
+            slidesPerView={4}
             freeMode={true}
             loop={true} // <-- Enables infinite scroll
             autoplay={{
