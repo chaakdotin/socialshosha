@@ -22,7 +22,7 @@ function newPage() {
               </div>
             </div>
             <div className="col-6">
-              <Accordion defaultActiveKey="0">
+              <Accordion >
                 <Accordion.Item eventKey="0">
                   <Accordion.Header>
                     <span className="ac-order">(01)</span> <span>Accordion Item</span>
