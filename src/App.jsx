@@ -17,6 +17,11 @@ const Work = lazy(() => import('./Work'));
 const Contact = lazy(() => import('./Contact'));
 const Services = lazy(() => import('./Services'));
 const NewPage = lazy(() => import('./newPage'));
+const NewPage1 = lazy(() => import('./newPage1'));
+const NewPage2 = lazy(() => import('./newPage2'));
+const NewPage3 = lazy(() => import('./newPage3'));
+const NewPage4 = lazy(() => import('./newPage4'));
+const NewPage5 = lazy(() => import('./newPage5'));
 import PageLoadAnimation from './PageLoadAnimation'
 
 const App = () => {
@@ -49,6 +54,11 @@ const App = () => {
             <Route path="/contact1" element={<Contact />} />
             <Route path="/services1" element={<Services />} />
             <Route path="/newPage" element={<NewPage />} />
+            <Route path="/newPage1" element={<NewPage1 />} />
+            <Route path="/newPage2" element={<NewPage2 />} />
+            <Route path="/newPage3" element={<NewPage3 />} />
+            <Route path="/newPage4" element={<NewPage4 />} />
+            <Route path="/newPage5" element={<NewPage5 />} />
           </Route>
         </Route>
       </Routes>
