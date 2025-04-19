@@ -198,24 +198,22 @@ const Contact = () => {
         <div className="containers px-5  position-relative z-3">
           {/* Left text section */}
           <div className="col-12">
-              <h1 style={{fontSize:"140px", fontWeight:"700", lineHeight:"140px"}}>Contact.</h1>
+              <h1 style={{fontSize:"140px", fontWeight:"900", lineHeight:"140px", fontFamily: 'MarkPro', letterSpacing:0.80}}>Contact.</h1>
           </div>
           <div className='d-flex w-100 position-relative h-100 px-5 justify-content-center'>
               <div className="left-section">
                 <div className='d-flex flex-column'>
                   <div>
-                      <span style={{fontSize:"40px", fontWeight:"700", lineHeight:"40px"}}>Brief us.</span>
+                      <span style={{fontSize:"40px", fontWeight:"900", lineHeight:"40px", fontFamily: 'MarkPro',letterSpacing:0.80}}>Brief us.</span>
                   </div>
-                  <div style={{marginTop:"30px", color:"rgb(148 158 169,1)", maxWidth:"100%", fontSize:"14px",lineHeight:"1.2"}}>
+                  <div style={{marginTop:"30px", color:"rgb(148 158 169,1)", maxWidth:"100%", fontSize:"14px",lineHeight:"1.0", fontFamily: 'MarkPro'}}>
                     <p>Schedule a call with Voila to discuss your branding, design and/or development project.</p>
                   </div>
                   <div style={{marginTop:"20px"}}>
-                    <button className='btn bg-transparent' style={{borderRadius:"30px", border:"1px solid #dee4ea", fontSize:"18px", paddingTop:"7px", fontWeight:"700"}}>Schedule a call</button>
+                    <button className='btn bg-transparent px-4 py-2' style={{borderRadius:"30px", border:"1px solid #dee4ea", fontSize:"14px",  fontWeight:"900", fontFamily: 'MarkPro',letterSpacing:0.80}}>Schedule a call</button>
                   </div>
                 </div>
               </div>
-
-              {/* Center video section */}
               <div className="center-section">
                 <div className="video-stack">
                     <video
@@ -249,17 +247,17 @@ const Contact = () => {
               <div className="right-section ">
                   <div className='d-flex flex-column'>
                     <div>
-                      <span>Contact.</span>
+                      <span style={{fontFamily: 'MarkPro'}}>Contact.</span>
                     </div>
                     <div>
                       <ul>
-                          <li><a href="#">Linkedln</a></li>
-                          <li><a href="#">Twitter</a></li>
-                          <li><a href="#">Instagram</a></li>
+                          <li><a href="#" style={{fontFamily: 'MarkPro'}}>Linkedln</a></li>
+                          <li><a href="#" style={{fontFamily: 'MarkPro'}}>Twitter</a></li>
+                          <li><a href="#" style={{fontFamily: 'MarkPro'}}>Instagram</a></li>
                       </ul>
                     </div>
                     <div >
-                      <button className='btn bg-transparent' href="mailto:hi@studiovoila.com">hi@studiovoila.com</button>
+                      <button className='btn bg-transparent' href="mailto:hi@studiovoila.com" style={{fontFamily: 'MarkPro'}}>hi@studiovoila.com</button>
                     </div>
                   </div>
               </div>

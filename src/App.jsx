@@ -16,6 +16,7 @@ const Home = lazy(() => import('./ReactVideoCards'));
 const Work = lazy(() => import('./Work'));
 const Contact = lazy(() => import('./Contact'));
 const Services = lazy(() => import('./Services'));
+const NewPage = lazy(() => import('./newPage'));
 import PageLoadAnimation from './PageLoadAnimation'
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/work1" element={<Work />} />
             <Route path="/contact1" element={<Contact />} />
             <Route path="/services1" element={<Services />} />
+            <Route path="/newPage" element={<NewPage />} />
           </Route>
         </Route>
       </Routes>
