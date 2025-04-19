@@ -1,9 +1,55 @@
 import React, { useEffect, useRef } from 'react'
+import Footer from './Footer'
 // import './Contact.css'
 const Contact = () => {
   const topVideoRef = useRef(null);
   const middleVideoRef = useRef(null);
   const bottomVideoRef = useRef(null);
+  const revealSectionRef = useRef(null);
+  const plainCardRef = useRef(null);
+  const revealCardRef = useRef(null);
+  useEffect(() => {
+    // Handler function for the scroll event
+    const handleScroll = () => {        
+      /* ---------- Reveal Section (Curtain Reveal) Animation ---------- */
+      const revealSection = document.querySelector('.reveal-section');
+      const plainCard = document.querySelector('.plain-card');
+      const revealCard = document.querySelector('.reveal-card');
+      if (revealSection && plainCard && revealCard) {
+        // Total upward translation distance (in pixels), computed from CSS variable.
+        const totalDistance = (window.innerHeight * parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-total-distance'))) / 100;
+        const sectionTop = revealSection.offsetTop;
+        let scrollOffset = window.scrollY - sectionTop;
+        let baseProgress = scrollOffset / totalDistance;
+        if (baseProgress < 0) baseProgress = 0;
+        
+        // Tilt thresholds for reveal section, customizable via CSS variables.
+        const tiltStart = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-tilt-start')) || 1.5;
+        const tiltEnd = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-tilt-end')) || 1.8;
+        const fullTilt = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-full-tilt')) || 5;
+        if (baseProgress < 1) {
+          plainCard.style.transform = `translateY(-${baseProgress * totalDistance}px)`;
+          revealCard.style.opacity = 0;
+        } else {
+          // Instantly reveal the card once upward translation is complete.
+          revealCard.style.opacity = 1;
+          if (baseProgress < tiltStart) {
+            plainCard.style.transform = `translateY(-${totalDistance}px)`;
+          } else {
+            let tiltProgress = (baseProgress - tiltStart) / (tiltEnd - tiltStart);
+            tiltProgress = Math.min(tiltProgress, 1);
+            plainCard.style.transform = `translateY(-${totalDistance}px) rotate(${-tiltProgress * fullTilt}deg) translateX(${-tiltProgress * fullTilt}%)`;
+          }
+        }
+      }
+    };
+    // Attach the scroll event listener when the component mounts.
+    window.addEventListener("scroll", handleScroll);
+    // Cleanup the event listener on component unmount.
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   useEffect(() => {
     const rotateVideos = () => {
       // Select the three video elements
@@ -148,7 +194,8 @@ const Contact = () => {
               margin-top: 1.25rem;
             }
         `}</style>
-        <div className="containers px-5">
+        <div className='w-100' style={{height:75}}></div>
+        <div className="containers px-5  position-relative z-3">
           {/* Left text section */}
           <div className="col-12">
               <h1 style={{fontSize:"140px", fontWeight:"700", lineHeight:"140px"}}>Contact.</h1>
@@ -217,6 +264,14 @@ const Contact = () => {
                   </div>
               </div>
           </div>
+        </div>
+        <div className="reveal-section" ref={revealSectionRef}>
+          <div className="plain-card" ref={plainCardRef}>
+
+          </div>
+        </div>
+        <div className="reveal-card" ref={revealCardRef}>
+          <Footer />
         </div>
       </>
   )

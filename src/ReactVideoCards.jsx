@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import BackgroudVideo from './assets/2759477-uhd_3840_2160_30fps.mp4'
-import './home.css'
+import home from './home.css?raw'
 import Blog from './Blog'
 import LetsTalk from './LetsTalk'
 import Slider from "./Slider"
@@ -201,10 +201,7 @@ const ReactVideoCards = () => {
         <>
             
             <style>
-                {
-                    
-                    ``
-                }
+                {home}
             </style>
             <div className="background-video">
                 <video autoPlay loop muted>

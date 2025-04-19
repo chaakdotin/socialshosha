@@ -1,10 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router';
 import { NavLink, Link } from 'react-router-dom';
-import './Header.css'
+import header from  './Header.css?raw'
 export default function Header() {
   return (
     <>
+        <style>{header}</style>
         <div className="position-fixed index-99 w-100">
             <div className="d-flex justify-content-between jduihihf">
                 <div style={{ width: 275, paddingLeft: 10 }}>

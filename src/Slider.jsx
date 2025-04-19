@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import 'swiper/css';
+
 import 'swiper/css/navigation';
 
 const Slider = () => {
@@ -42,7 +42,7 @@ const Slider = () => {
         }}
         loop={true}
         slidesPerView={3}
-        loopedSlides={6} // Helps Swiper clone the right number of slides for smooth looping
+      
         spaceBetween={20}
         style={{ padding: '10px 0' }}
       >

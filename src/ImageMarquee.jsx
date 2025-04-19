@@ -29,7 +29,7 @@ const ImageMarquee = () => {
 
       <style>{`
         .image-section {
-          height: 35vh;
+          height: 25%;
           overflow: hidden;
           display: flex;
           flex-direction: column;

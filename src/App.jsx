@@ -10,6 +10,7 @@ import {
 import {gsap,ScrollTrigger} from "gsap/all";
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
+import 'swiper/css';
 import Header from './Header'
 const Home = lazy(() => import('./ReactVideoCards'));
 const Work = lazy(() => import('./Work'));

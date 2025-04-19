@@ -20,8 +20,7 @@ const VideoBox = ({ video }) => {
 
   return (
     <div
-      className="video-box"
-    >
+      className="video-box">
       <video muted loop playsInline autoPlay ref={videoRef}>
         <source src={video} type="video/mp4" />
         Your browser does not support HTML5 video.
@@ -102,7 +101,7 @@ const VideoReelsSection = () => {
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
-            overflow: hidden;
+            
             border-radius: 15px;
           }
           .swiper-slide:hover {
@@ -149,7 +148,7 @@ const VideoReelsSection = () => {
           </div>
       </div> 
       <div className='d-flex pt-4' >
-        <div className='col-8'>
+        <div className='col-8' >
           <Swiper
             spaceBetween={10}
             slidesPerView={4}

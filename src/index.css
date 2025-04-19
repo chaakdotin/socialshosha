@@ -1,0 +1,100 @@
+@import 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap';
+@font-face {
+    font-family: 'MarkPro';
+    src: url('/fonts/MarkPro-Medium.b3d53906.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MarkPro';
+    src: url('/fonts/MarkPro-Bold.405f2505.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'MarkPro';
+    src: url('/fonts/MarkPro-Heavy.192477bd.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MarkPro';
+    src: url('/fonts/MarkPro-Black.7207860d.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+  
+  
+html{
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+:root {
+    /* Default parameters for layered cards animation */
+    --card-max-translate: -5;
+    /* in percent */
+    --card-max-rotate: -1;
+    /* in degrees */
+    /* Default tilt threshold for smooth tilt animation of subsequent cards */
+    --tilt-threshold: 0.3;
+    /* fraction of viewport height (30% of viewport height) */
+
+    /* Parameters for reveal section animation */
+    --reveal-total-distance: 50;
+    /* upward translation in vh units */
+    --reveal-tilt-start: 1.5;
+    /* baseProgress at which tilt starts */
+    --reveal-tilt-end: 1.8;
+    /* baseProgress when full tilt is achieved */
+    --reveal-full-tilt: 5;
+    /* full tilt angle in deg / shift in percent */
+}
+.no-tilt{
+    transform: translate(0%, 0%) rotate(0deg)!important;
+}
+
+/* ---------- Reveal Section (Curtain Reveal Effect) ---------- */
+.reveal-section {
+    position: relative;
+    height: 200vh;
+}
+
+/* Plain card acting as the curtain */
+.plain-card {
+    position: sticky;
+    bottom: 0;
+    height: 200vh;
+    background: #ffffff;
+    /* Teal */
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 3em;
+    color: #000;
+    transition: transform 0.3s ease;
+}
+
+/* Reveal card fixed at bottom; height 100vh */
+.reveal-card {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #4A2E00;
+    /* Distinct red */
+    z-index: 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+    opacity: 0;
+}
